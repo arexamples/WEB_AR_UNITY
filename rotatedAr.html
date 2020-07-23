@@ -83,24 +83,51 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
         }
 });
   
-var x = "test";
-var x1 = "test1";
 	
-	
-
-
-	
-AFRAME.registerComponent('displaydate', {
+AFRAME.registerComponent('cube0', {
 
   init: function(){
 
-    var x2 = "test2";
-    this.el.setAttribute('value', x2)
+    var c0 = "0 0 30";
+    this.el.setAttribute('rotation', c0)
 
   }
 
 });	
+	
+AFRAME.registerComponent('cube1', {
 
+  init: function(){
+
+    var c1 = "0 30 0";
+    this.el.setAttribute('rotation', c1)
+
+  }
+
+});
+	
+AFRAME.registerComponent('cube2', {
+
+  init: function(){
+
+    var c2 = "30 0 0";
+    this.el.setAttribute('rotation', c2)
+
+  }
+
+});
+	
+AFRAME.registerComponent('cube3', {
+
+  init: function(){
+
+    var c3 = "0 0 0";
+    this.el.setAttribute('rotation', c3)
+
+  }
+
+});
+	
 </script>
 <!-- END: Unity Compiled Events -->
 
@@ -124,21 +151,21 @@ AFRAME.registerComponent('displaydate', {
 
 		
 <a-marker id="marker" preset="hiro" emitevents="true">
-  <a-text value=x color="red" rotation="-90 20 0" align="center"></a-text>
-  <a-text id="mytext" value="Hello, world2!" color="red" rotation="-90 0 60" align="center"></a-text>
-  <a-text displaydate value="Hello, world3!" color="red" rotation="-90 0 20" align="center"></a-text>
+  <a-text value="1" color="red" rotation="-90 20 0" align="center"></a-text>
+  <a-text value="2" color="red" rotation="-90 0 60" align="center"></a-text>
+  <a-text value="3" color="red" rotation="-90 0 20" align="center"></a-text>
   
 <!-- END: Add Image Target (marker) -->
 
 <!-- BEGIN: Unity Compiled Objects -->
 
-<a-box src="" id="Cube_0" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 0.315" rotation=x color="#FF0000" transparent=False
+<a-box cube0 src="" id="Cube_0" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 0.315" rotation="0 0 0" color="#FF0000" transparent=False
 ></a-box>
-<a-box src="" id="Cube_1" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 -0.315" rotation=localStorage.getItem('rotation') color="#FF0000" transparent=False
+<a-box cube1 src="" id="Cube_1" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 -0.315" rotation="0 0 0" color="#FF0000" transparent=False
 ></a-box>
-<a-box src="" id="Cube_2" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 0.315" rotation=localStorage.getItem('rotation') color="#FF0000" transparent=False
+<a-box cube2 src="" id="Cube_2" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 0.315" rotation="0 0 0" color="#FF0000" transparent=False
 ></a-box>
-<a-box src="" id="Cube_3" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 -0.315" rotation="50 0 0" color="#FF0000" transparent=False
+<a-box cube3 src="" id="Cube_3" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 -0.315" rotation="0 0 0" color="#FF0000" transparent=False
 ></a-box>
 <!-- END: Unity Compiled Objects -->
 
