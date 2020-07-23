@@ -1,8 +1,6 @@
 <!-- BEGIN: Top HTML -->
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
 <!-- include aframe -->
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <!-- include ar.js -->
@@ -87,44 +85,8 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 </script>
 <!-- END: Unity Compiled Events -->
 
-<script>
-
-function arrowLeft() {
-    var x = 0;
-    localStorage.setItem('rotation', x);  
-}
-
-function arrowRight() {
-    var x = 90;
-    localStorage.setItem('rotation', x)  
-}
-
-function arrowUp() {
-    var x = 180;
-    localStorage.setItem('rotation', x)  
-}
-
-function arrowDown() {
-    var x = 270;
-    localStorage.setItem('rotation', x)  
-}
-</script>
-
-
 <!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-<h2>WEB AR EXAMPLE</h2>
-
-<button onclick="arrowLeft()">ARROW LEFT</button>
-<br>
-<br>
-<button onclick="arrowRight()">ARROW RIGHT</button>
-<br>
-<br>
-<button onclick="arrowUp()">ARROW UP</button>
-<br>
-<br>
-<button onclick="arrowDown()">ARROW DOWN</button>
 
 <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
         <input type="image" id="fullscreen" src="../fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'>
