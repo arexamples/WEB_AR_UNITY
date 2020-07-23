@@ -88,7 +88,7 @@ AFRAME.registerComponent('cube0', {
 
   init: function(){
 
-    var c0 = "0 0 30";
+    var c0 = localStorage.getItem('rotation');
     this.el.setAttribute('rotation', c0)
 
   }
@@ -99,7 +99,7 @@ AFRAME.registerComponent('cube1', {
 
   init: function(){
 
-    var c1 = "0 30 0";
+    var c1 = localStorage.getItem('rotation');
     this.el.setAttribute('rotation', c1)
 
   }
@@ -110,7 +110,7 @@ AFRAME.registerComponent('cube2', {
 
   init: function(){
 
-    var c2 = "30 0 0";
+    var c2 = localStorage.getItem('rotation');
     this.el.setAttribute('rotation', c2)
 
   }
@@ -121,7 +121,7 @@ AFRAME.registerComponent('cube3', {
 
   init: function(){
 
-    var c3 = "0 0 0";
+    var c3 = localStorage.getItem('rotation');
     this.el.setAttribute('rotation', c3)
 
   }
