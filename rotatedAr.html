@@ -130,6 +130,17 @@ AFRAME.registerComponent('cube3', {
 
 });
 	
+AFRAME.registerComponent('arrow', {
+
+  init: function(){
+	
+    var arrow = localStorage.getItem('rotation');
+    this.el.setAttribute('rotation', arrow)
+
+  }
+
+});
+	
 </script>
 <!-- END: Unity Compiled Events -->
 
@@ -157,7 +168,7 @@ AFRAME.registerComponent('cube3', {
   <a-text value="2" color="red" rotation="-90 0 60" align="center"></a-text>
   <a-text value="3" color="red" rotation="-90 0 20" align="center"></a-text>
 	
-  <a-entity 
+  <a-entity arrow 
     obj-model=”obj: url(/arrow-obj/arrow.obj); 
     mtl: url(/arrow-obj/arrow.mtl)”>
   </a-entity>
