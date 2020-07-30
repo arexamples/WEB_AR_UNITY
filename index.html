@@ -16,6 +16,9 @@
 <br>
 <br>
 <button onclick="arrowDown()">ARROW DOWN</button>
+<br>
+<br>
+<button onclick="object()">OBJECT</button>
 
 
 <p id="demo"></p>
@@ -49,6 +52,13 @@ function arrowDown() {
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
 }
+    
+function arrowDown() {
+    var x = "90 0 0";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+    location.assign("https://adamspanik.github.io/WEB_AR_UNITY/object.html")
+}    
 </script>
 
 </body>
