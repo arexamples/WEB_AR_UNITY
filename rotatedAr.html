@@ -129,7 +129,7 @@ AFRAME.registerComponent('cube3', {
   }
 
 });
-*/
+
 AFRAME.registerComponent('arrow', {
 
   init: function(){
@@ -139,7 +139,7 @@ AFRAME.registerComponent('arrow', {
 
   }
 
-});
+});*/
 	
 </script>
 <!-- END: Unity Compiled Events -->
@@ -169,11 +169,14 @@ AFRAME.registerComponent('arrow', {
   <a-text value="2" color="red" rotation="-90 0 60" align="center"></a-text>
   <a-text value="3" color="red" rotation="-90 0 20" align="center"></a-text>
 -->
+  <a-entity
+      id="arrow"
+      position="0 0 0"
+      scale="1 1 1"
+      obj-model=”obj: url(https://rishavjayswal.github.io/augmented-reality/resources/couch.obj); 
+      mtl: url(https://rishavjayswal.github.io/augmented-reality/resources/couch.mtl)”>
+   </a-entity>
 	
-  <a-entity arrow width="0.1" height="0.1" depth="0.1" position="0 0 0" rotation="0 0 0" transparent=False
-    obj-model=”obj: url(https://rishavjayswal.github.io/augmented-reality/resources/couch.obj); 
-    mtl: url(https://rishavjayswal.github.io/augmented-reality/resources/couch.mtl)”>
-  </a-entity>
   
 <!-- END: Add Image Target (marker) -->
 
