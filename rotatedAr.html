@@ -90,11 +90,62 @@ AFRAME.registerComponent('arrow', {
 
 });*/
 	
+function turnSlightRight() {
+    var x = "0 0 30";
+    localStorage.setItem('rotation', x);  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}
+
+function turnRight() {
+    var x = "0 0 60";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}
+
+function turnSharpRight() {
+    var x = "0 0 90";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}
+
+function continueOnStreet() {
+    var x = "0 0 0";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}
+    
+function turnSharpLeft() {
+    var x = "0 0 -90";
+    localStorage.setItem('rotation', x);  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}
+
+function turnLeft() {
+    var x = "0 0 -60";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}
+
+function turnSlightLeft() {
+    var x = "0 0 -30";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+}  	
+	
 </script>
 <!-- END: Unity Compiled Events -->
 
 <!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+<button onclick="turnSharpLeft()">"<<<"</button>
+<button onclick="turnLeft()">"<<"</button>
+<button onclick="turnSlightLeft()">"<"</button>
+<button onclick="continueOnStreet()">"^"</button>
+<button onclick="turnSlightRight()">">"</button>
+<button onclick="turnRight()">">>"</button>
+<button onclick="turnSharpRight()">">>>"</button>
+</div>	
 
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
 arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
@@ -113,7 +164,7 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 
 		
 <a-marker id="marker" preset="hiro" emitevents="true">
-  <a-text distancex id="distancex" class="intersectable" value="13 METERS" color="red" rotation="-90 0 0" align="center"></a-text>
+  <a-text distancex id="distancex" class="intersectable" value="13 METERS" color="red" rotation="-90 0 0" position="0 0 1.0" align="center"></a-text>
   <a-entity arrowx id="arrowx" class="intersectable" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 	
   
