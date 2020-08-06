@@ -90,6 +90,64 @@ AFRAME.registerComponent('arrow', {
 
 });*/
 	
+	
+</script>
+<!-- END: Unity Compiled Events -->
+
+<!-- BEGIN: Middle HTML -->
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+<button onclick="turnSharpLeft()"><<<</button>
+<button onclick="turnLeft()"><<</button>
+<button onclick="turnSlightLeft()"><</button>
+<button onclick="continueOnStreet()">^</button>
+<button onclick="turnSlightRight()">></button>
+<button onclick="turnRight()">>></button>
+<button onclick="turnSharpRight()">>>></button>
+</div>	
+
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
+arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
+-->
+<a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'>
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+<!-- END: Middle HTML -->
+
+<!-- BEGIN: Unity Compiled Assets -->
+<a-assets>
+  <a-asset-item id="dino3" src="arrow-obj/arrow.obj"></a-asset-item>
+  <a-asset-item id="dino3-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
+</a-assets>
+<!-- END: Unity Compiled Assets -->
+<!-- BEGIN: Add Image Target (marker) -->
+
+		
+<a-marker id="marker" preset="hiro" emitevents="true">
+  <a-text distancex id="distancex" class="intersectable" value="13 METERS" color="red" rotation="-90 0 0" position="0 0 -1.0" align="center"></a-text>
+  <a-entity arrowx id="arrowx" class="intersectable" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+	
+  
+<!-- END: Add Image Target (marker) -->
+
+<!-- BEGIN: Unity Compiled Objects -->
+
+
+<!-- <a-box cube0 src="" id="Cube_0" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 0.315" rotation="0 0 0" color="#FF0000" transparent=False
+></a-box>
+<a-box cube1 src="" id="Cube_1" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 -0.315" rotation="0 0 0" color="#FF0000" transparent=False
+></a-box>
+<a-box cube2 src="" id="Cube_2" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 0.315" rotation="0 0 0" color="#FF0000" transparent=False
+></a-box>
+<a-box cube3 src="" id="Cube_3" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 -0.315" rotation="0 0 0" color="#FF0000" transparent=False
+></a-box>
+-->
+<!-- END: Unity Compiled Objects -->
+
+<!-- BEGIN: Bottom HTML -->
+</a-marker>
+<a-entity camera></a-entity>
+</a-scene>
+<script>	
 function turnSlightRight() {
     var x = "0 0 30";
     localStorage.setItem('rotation', x);  
@@ -131,63 +189,7 @@ function turnSlightLeft() {
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
 }  	
-	
-</script>
-<!-- END: Unity Compiled Events -->
-
-<!-- BEGIN: Middle HTML -->
-<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-<button onclick="turnSharpLeft()">"<<<"</button>
-<button onclick="turnLeft()">"<<"</button>
-<button onclick="turnSlightLeft()">"<"</button>
-<button onclick="continueOnStreet()">"^"</button>
-<button onclick="turnSlightRight()">">"</button>
-<button onclick="turnRight()">">>"</button>
-<button onclick="turnSharpRight()">">>>"</button>
-</div>	
-
-<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
-arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
--->
-<a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'>
-<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-<!-- END: Middle HTML -->
-
-<!-- BEGIN: Unity Compiled Assets -->
-<a-assets>
-  <a-asset-item id="dino3" src="arrow-obj/arrow.obj"></a-asset-item>
-  <a-asset-item id="dino3-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
-</a-assets>
-<!-- END: Unity Compiled Assets -->
-<!-- BEGIN: Add Image Target (marker) -->
-
-		
-<a-marker id="marker" preset="hiro" emitevents="true">
-  <a-text distancex id="distancex" class="intersectable" value="13 METERS" color="red" rotation="-90 0 0" position="0 0 1.0" align="center"></a-text>
-  <a-entity arrowx id="arrowx" class="intersectable" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
-	
-  
-<!-- END: Add Image Target (marker) -->
-
-<!-- BEGIN: Unity Compiled Objects -->
-
-
-<!-- <a-box cube0 src="" id="Cube_0" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 0.315" rotation="0 0 0" color="#FF0000" transparent=False
-></a-box>
-<a-box cube1 src="" id="Cube_1" class="intersectable" width="0.1" height="0.1" depth="0.1" position="-0.315 0.05 -0.315" rotation="0 0 0" color="#FF0000" transparent=False
-></a-box>
-<a-box cube2 src="" id="Cube_2" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 0.315" rotation="0 0 0" color="#FF0000" transparent=False
-></a-box>
-<a-box cube3 src="" id="Cube_3" class="intersectable" width="0.1" height="0.1" depth="0.1" position="0.315 0.05 -0.315" rotation="0 0 0" color="#FF0000" transparent=False
-></a-box>
--->
-<!-- END: Unity Compiled Objects -->
-
-<!-- BEGIN: Bottom HTML -->
-</a-marker>
-<a-entity camera></a-entity>
-</a-scene>
+</script>	
 </body>
 </html><!-- END: Bottom HTML -->
 <!--
