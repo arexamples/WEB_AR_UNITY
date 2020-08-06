@@ -71,7 +71,7 @@ function turnSharpRight() {
 
 function continueOnStreet() {
     setDistance();
-    var x = "0 90 0";
+    var x = "0 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -79,7 +79,7 @@ function continueOnStreet() {
     
 function turnSharpLeft() {
     setDistance();
-    var x = "0 -90 0";
+    var x = "0 90 0";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -87,7 +87,7 @@ function turnSharpLeft() {
 
 function turnLeft() {
     setDistance();
-    var x = "0 -60 90";
+    var x = "0 -90 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
