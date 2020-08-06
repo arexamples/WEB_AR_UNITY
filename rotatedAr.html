@@ -151,13 +151,21 @@ AFRAME.registerComponent('arrow', {
         <input type="image" id="fullscreen" src="../fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'>
         </input>
     </div>
-<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
+arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
+-->
     <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'>
     <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
 <!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
+    <a-asset-item id="dino" src="arrow-obj/arrow.glb"></a-asset-item>
+    <a-asset-item id="dino2" src="/arrow-obj/arrow.glb"></a-asset-item>
+	<a-asset-item id="dino3" src="arrow-obj/arrow.obj"></a-asset-item>
+	<a-asset-item id="dino4" src="/arrow-obj/arrow.obj"></a-asset-item>
+	<a-asset-item id="dino3-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
+	<a-asset-item id="dino4-mtl" src="/arrow-obj/arrow.mtl"></a-asset-item>
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
@@ -171,14 +179,22 @@ AFRAME.registerComponent('arrow', {
 -->
 	
   <a-text value="1" color="red" rotation="-90 20 0" align="center"></a-text>
-	
-  <a-entity
-      id="arrow"
-      position="0 0 0"
-      scale="0.001 0.001 0.001"
-      obj-model=”obj: url(https://rishavjayswal.github.io/augmented-reality/resources/couch.obj); 
-      mtl: url(https://rishavjayswal.github.io/augmented-reality/resources/couch.mtl)”>
-   </a-entity>
+  <a-entity id="animated-dino" gltf-model="#dino"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.001 0.001 0.001"
+        crossOrigin="anonymous"
+        dinoInteractionListener>
+  </a-entity>
+	<a-entity id="animated-dino2" gltf-model="#dino2"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.001 0.001 0.001"
+        crossOrigin="anonymous"
+        dinoInteractionListener>
+  </a-entity>
+	<a-entity obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.001 0.001 0.001"></a-entity>
+	<a-entity obj-model="obj: #dino4; mtl: #dino4-mtl" scale="0.001 0.001 0.001"></a-entity>
 	
   
 <!-- END: Add Image Target (marker) -->
