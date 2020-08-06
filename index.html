@@ -47,7 +47,7 @@ function setDistance() {
 
 function turnSlightRight() {
     setDistance();
-    var x = "90 30 0";
+    var x = "90 0 30";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -55,7 +55,7 @@ function turnSlightRight() {
 
 function turnRight() {
     setDistance();
-    var x = "90 60 0";
+    var x = "90 0 60";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -63,7 +63,7 @@ function turnRight() {
 
 function turnSharpRight() {
     setDistance();
-    var x = "90 90 0";
+    var x = "90 0 90";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -79,7 +79,7 @@ function continueOnStreet() {
     
 function turnSharpLeft() {
     setDistance();
-    var x = "90 -90 0";
+    var x = "90 0 -90";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -87,7 +87,7 @@ function turnSharpLeft() {
 
 function turnLeft() {
     setDistance();
-    var x = "90 -60 0";
+    var x = "90 0 -60";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -95,7 +95,7 @@ function turnLeft() {
 
 function turnSlightLeft() {
     setDistance();
-    var x = "90 -30 0";
+    var x = "90 0 -30";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
