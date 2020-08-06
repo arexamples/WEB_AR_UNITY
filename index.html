@@ -5,60 +5,89 @@
 <body>
 
 <h2>WEB AR EXAMPLE</h2>
+<!--   
+public static final int TURN_SLIGHT_RIGHT = 1; 30
+public static final int TURN_RIGHT = 2; 60
+public static final int TURN_SHARP_RIGHT = 3; 90
+public static final int CONTINUE_ON_STREET = 0; 0
+public static final int TURN_SHARP_LEFT = -3; -90
+public static final int TURN_LEFT = -2; -60
+public static final int TURN_SLIGHT_LEFT = -1; -30    
+-->
 
-<button onclick="arrowLeft()">ARROW LEFT</button>
+<button onclick="turnSlightRight()">TURN_SLIGHT_RIGHT 30</button>
 <br>
 <br>
-<button onclick="arrowRight()">ARROW RIGHT</button>
+<button onclick="turnRight()">TURN_RIGHT 60</button>
 <br>
 <br>
-<button onclick="arrowUp()">ARROW UP</button>
+<button onclick="turnSharpRight()">TURN_SHARP_RIGH 90</button>
 <br>
 <br>
-<button onclick="arrowDown()">ARROW DOWN</button>
+<button onclick="continueOnStreet()">CONTINUE_ON_STREET 0</button>
 <br>
 <br>
-<button onclick="myobject()">OBJECT</button>
+<button onclick="turnSharpLeft()">TURN_SHARP_LEFT 90</button>
+<br>
+<br>
+<button onclick="turnLeft()">TURN_LEFT -60</button>
+<br>
+<br>
+<button onclick="turnSlightLeft()">TURN_SLIGHT_LEFT -30</button>
 
 
 <p id="demo"></p>
 
 <script>
 
-function arrowLeft() {
-    var x = "-45 0 0";
+function turnSlightRight() {
+    var x = "30 0 0";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
 }
 
-function arrowRight() {
-    var x = "45 0 0";
+function turnRight() {
+    var x = "60 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
 }
 
-function arrowUp() {
-    var x = "135 0 0";
+function turnSharpRight() {
+    var x = "90 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
 }
 
-function arrowDown() {
-    var x = "225 0 0";
+function continueOnStreet() {
+    var x = "0 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
 }
     
-function myobject() {
-    var x = "90 0 0";
+function turnSharpLeft() {
+    var x = "-90 0 0";
+    localStorage.setItem('rotation', x);  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+    location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
+}
+
+function turnLeft() {
+    var x = "-60 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
-    location.assign("https://adamspanik.github.io/WEB_AR_UNITY/object.html")
-}    
+    location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
+}
+
+function turnSlightLeft() {
+    var x = "-30 0 0";
+    localStorage.setItem('rotation', x)  
+    document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
+    location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
+}   
 </script>
 
 </body>
