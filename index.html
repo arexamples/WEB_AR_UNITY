@@ -41,13 +41,13 @@ public static final int TURN_SLIGHT_LEFT = -1; -30
 <script>
     
 function setDistance() {
-    var x = "15";
+    var x = "12";
     localStorage.setItem('distance', x);  
 }    
 
 function turnSlightRight() {
     setDistance();
-    var x = "0 90 30";
+    var x = "0 30 90";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -55,7 +55,7 @@ function turnSlightRight() {
 
 function turnRight() {
     setDistance();
-    var x = "0 90 60";
+    var x = "0 60 90";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -71,7 +71,7 @@ function turnSharpRight() {
 
 function continueOnStreet() {
     setDistance();
-    var x = "90 0 0";
+    var x = "0 0 90";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -79,7 +79,7 @@ function continueOnStreet() {
     
 function turnSharpLeft() {
     setDistance();
-    var x = "90 -90 0";
+    var x = "0 -90 90";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -87,7 +87,7 @@ function turnSharpLeft() {
 
 function turnLeft() {
     setDistance();
-    var x = "90 -60 0";
+    var x = "0 -60 90";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -95,7 +95,7 @@ function turnLeft() {
 
 function turnSlightLeft() {
     setDistance();
-    var x = "90 -30 0";
+    var x = "0 -30 90";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
