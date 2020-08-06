@@ -41,13 +41,13 @@ public static final int TURN_SLIGHT_LEFT = -1; -30
 <script>
     
 function setDistance() {
-    var x = "14";
+    var x = "10";
     localStorage.setItem('distance', x);  
 }    
 
 function turnSlightRight() {
     setDistance();
-    var x = "0 0 90";
+    var x = "90 0 0";
     localStorage.setItem('rotation', x);  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -55,7 +55,7 @@ function turnSlightRight() {
 
 function turnRight() {
     setDistance();
-    var x = "0 0 -90";
+    var x = "-90 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
@@ -63,7 +63,7 @@ function turnRight() {
 
 function turnSharpRight() {
     setDistance();
-    var x = "0 0 180";
+    var x = "180 0 0";
     localStorage.setItem('rotation', x)  
     document.getElementById("demo").innerHTML = localStorage.getItem('rotation');
     location.assign("https://adamspanik.github.io/WEB_AR_UNITY/rotatedAr.html")
