@@ -12,39 +12,23 @@
 <!-- END: Top HTML -->
 <!-- BEGIN: Unity Compiled Events -->
 <script>
-var markerFound = 0;
-console.log(localStorage.getItem('rotation'));
-var elem = document.documentElement;
-var marker = document.querySelector("#marker");
-
-marker.addEventListener("markerFound", function (evt) {
-markerFound = 1;
-});
-marker.addEventListener("markerLost", function (evt) {
-markerFound = 0;
-});
-	
-if (markerFound == 1) {
-    console.log(localStorage.getItem('rotation'));
-}
-
-AFRAME.registerComponent('arrow', {
+AFRAME.registerComponent('arrowX', {
 
   init: function(){
     console.log(localStorage.getItem('rotation'));
-    var rotation = localStorage.getItem('rotation');
-    this.el.setAttribute('rotation', rotation)
+    var r = localStorage.getItem('rotation');
+    this.el.setAttribute('rotation', r)
 
   }
 
 });	
 	
-AFRAME.registerComponent('distance', {
+AFRAME.registerComponent('distanceX', {
 
   init: function(){
     console.log(localStorage.getItem('distance'));
-    var distance = localStorage.getItem('distance');
-    this.el.setAttribute('value', distance + " METERS")
+    var d = localStorage.getItem('distance');
+    this.el.setAttribute('value', d + " METERS")
 
   }
 
@@ -129,8 +113,8 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 
 		
 <a-marker id="marker" preset="hiro" emitevents="true">
-  <a-text distance id="distanceText" value="13 METERS" color="black" rotation="-90 0 0" align="center"></a-text>
-  <a-entity arrow id="arrow" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+  <a-text distanceX id="distanceText" value="13 METERS" color="black" rotation="-90 0 0" align="center"></a-text>
+  <a-entity arrowX id="arrow" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 	
   
 <!-- END: Add Image Target (marker) -->
