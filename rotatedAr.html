@@ -23,7 +23,7 @@ AFRAME.registerComponent('arrowX', {
 
 });	
 	
-AFRAME.registerComponent('distanceX', {
+/*AFRAME.registerComponent('distanceX', {
 
   init: function(){
     console.log(localStorage.getItem('distance'));
@@ -32,7 +32,7 @@ AFRAME.registerComponent('distanceX', {
 
   }
 
-});	
+});*/	
   
 /*
 AFRAME.registerComponent('cube0', {
@@ -113,8 +113,8 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 
 		
 <a-marker id="marker" preset="hiro" emitevents="true">
-  <a-text distanceX id="distanceText" value="13 METERS" color="black" rotation="-90 0 0" align="center"></a-text>
-  <a-entity arrowX id="arrow" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+  <a-text distanceX id="distanceX" value="13 METERS" color="black" rotation="-90 0 0" align="center"></a-text>
+  <a-entity arrowX id="arrowX" obj-model="obj: #dino3; mtl: #dino3-mtl" scale="0.1 0.1 0.1" rotation="90 0 0"></a-entity>
 	
   
 <!-- END: Add Image Target (marker) -->
