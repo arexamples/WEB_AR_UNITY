@@ -6,11 +6,111 @@
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
 
 <script>
+
+var json = 
+{
+    "origin": {
+        "identifier": "Q407",
+        "label_en": "navigation sign 001",
+        "label": "navigační cedule 0001",
+        "description": "navigační cedule - recepce",
+        "properties": ["TODO property itemu z /items/Q407 API"]
+    },
+    "destination": {
+        "identifier": "Q17",
+        "label_en": "Gastroenterological clinic",
+        "label": "Gastroenterologická poradna",
+        "description": "Interní oddělení - poradna Gastroenterologie",
+        "properties": ["TODO property itemu z /items/Q17 API"]
+    },
+    "instructions": [
+        {
+            "sign": "-3",
+            "time": "3200",
+            "distance": "4.785",
+            "osmId": "0",
+            "name": "Recepce",
+            "ref": "cgi-praha-laurinova-2np-sever-recepce",
+            "level": "2"
+        },
+        {
+            "sign": "2",
+            "time": "700",
+            "distance": "0.425",
+            "osmId": "1",
+            "name": "Recepce",
+            "ref": "cgi-praha-laurinova-2np-sever-recepce",
+            "level": "2"
+        },
+        {
+            "sign": "0",
+            "time": "10500",
+            "distance": "15.425",
+            "osmId": "2",
+            "name": "Východní chodba",
+            "ref": "cgi-praha-laurinova-2np-sever-vychodni-chodba",
+            "level": "2"
+        }
+    ],
+    "geo": {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": { "type": "Point", "coordinates": [14.3047481, 50.0479905] },
+                "properties": { "prop0": "value0" }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [[14.3047481, 50.0479905], [14.3045786, 50.0482782]]
+                },
+                "properties": {
+                    "prop0": "value0",
+                    "prop1": 0.0
+                }
+            }
+        ]
+    }
+}
+
+function getRotation(json) {
+    switch(json.instructions[0].sign) {
+      case -3:
+        return "0 0 -90"
+        break;
+      case -2:
+        return "0 0 -60"
+        break;
+      case -1:
+        return "0 0 -30"
+        break;
+      case 0:
+        return "0 0 0"
+        break;
+      case 1:
+        return "0 0 30"
+        break;
+      case 2:
+        return "0 0 60"
+        break;
+      case 3:
+        return "0 0 90"
+        break;          
+      default:
+        return "0 0 0"
+    }
+}
+
+function getDistance(json) {
+    return json.instructions[0].distance;
+}
+
 AFRAME.registerComponent('arrow', {
 
     init: function(){
-        var rotation = localStorage.getItem('rotation');
-        this.el.setAttribute('rotation', rotation)
+        this.el.setAttribute('rotation', getRotation(json))
     }
 
 });
@@ -18,8 +118,7 @@ AFRAME.registerComponent('arrow', {
 AFRAME.registerComponent('distance', {
 
     init: function(){
-        var distance = localStorage.getItem('distance');
-        this.el.setAttribute('value', distance + " m")
+        this.el.setAttribute('value', getDistance(json) + " m")
     }
 
 });	
