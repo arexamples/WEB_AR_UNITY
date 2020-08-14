@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!-- include aframe -->
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<!-- include ar.js -->
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+
+<script>
+AFRAME.registerComponent('arrow', {
+
+    init: function(){
+        var rotation = localStorage.getItem('rotation');
+        this.el.setAttribute('rotation', rotation)
+    }
+
+});
+    
+AFRAME.registerComponent('distance', {
+
+    init: function(){
+        var distance = localStorage.getItem('distance');
+        this.el.setAttribute('value', distance + " m")
+    }
+
+});	
+</script>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+<a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'>
+    <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+
+    <!-- BEGIN: Unity Compiled Assets -->
+    <a-assets>
+        <a-asset-item id="arrow-obj" src="arrow-obj/arrow.obj"></a-asset-item>
+        <a-asset-item id="arrow-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
+    </a-assets>
+    <!-- END: Unity Compiled Assets -->
+
+    <!-- BEGIN: Add Image Target (marker) -->
+    <a-marker id="marker" preset="hiro" emitevents="true">
+        <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
+        <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+    </a-marker>  
+    <!-- END: Add Image Target (marker) -->
+    <a-entity camera></a-entity>
+</a-scene>
+
+</body>
+</html>
