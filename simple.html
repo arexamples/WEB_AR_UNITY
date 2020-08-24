@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<!-- include aframe -->
+<script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
+<!-- include ar.js -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+<a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'>
+    <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+    <!-- BEGIN: Add Image Target (marker) -->
+    <a-marker id="marker" preset="hiro" emitevents="true">
+        <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
+    </a-marker>  
+    <!-- END: Add Image Target (marker) -->
+    <a-entity camera></a-entity>
+</a-scene>
+
+</body>
+</html>
