@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <!-- include aframe -->
-<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
 <!-- include ar.js -->
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 <!-- END: Top HTML -->
@@ -22,7 +22,7 @@ AFRAME.registerComponent('distance', {
   init: function(){
     console.log(localStorage.getItem('distance'));
     var distance = localStorage.getItem('distance');
-    this.el.setAttribute('value', distance + " m")
+    this.el.setAttribute('value', distance + " xm")
   }
 
 });	
