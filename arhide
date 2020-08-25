@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script>
+    function addScene() {
+      var scene = document.createElement("iframe")
+      scene.setAttribute("src", "simple.html")
+      scene.setAttribute("width", "300")
+      scene.setAttribute("height", "300")
+      document.querySelector("body").appendChild(scene)
+    }
+    </script>
+  </head>  
+  <body>
+    <h1>Hi there!</h1>
+  <button onclick="addScene()">
+    <p>
+      Add ar.js scene !
+    </p>
+    </button>
+  </body>
+</html>
