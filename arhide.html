@@ -18,6 +18,11 @@
       scene.setAttribute("height", "300")
       document.querySelector("body").appendChild(scene)
     }
+      
+    function removeScene() {
+      var scene = document.getElementById("iframe");
+      scene.remove();
+    }  
     </script>
   </head>  
   <body>
@@ -25,6 +30,11 @@
   <button onclick="addScene()">
     <p>
       Add ar.js scene !
+    </p>
+    </button>
+    <button onclick="removeScene()">
+    <p>
+      Remove ar.js scene !
     </p>
     </button>
   </body>
