@@ -22,7 +22,27 @@ AFRAME.registerComponent('distance', {
   init: function(){
     console.log(localStorage.getItem('distance'));
     var distance = localStorage.getItem('distance');
-    this.el.setAttribute('value', distance + " xm")
+    this.el.setAttribute('value', distance + " m")
+  }
+
+});	
+	
+AFRAME.registerComponent('arrow2', {
+
+  init: function(){
+    console.log(localStorage.getItem('rotation'));
+    var rotation = localStorage.getItem('rotation');
+    this.el.setAttribute('rotation', rotation)
+  }
+
+});
+	
+AFRAME.registerComponent('distance2', {
+
+  init: function(){
+    console.log(localStorage.getItem('distance'));
+    var distance = localStorage.getItem('distance');
+    this.el.setAttribute('value', distance + " m")
   }
 
 });	
@@ -64,8 +84,8 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 	
 <!-- <a-marker id="marker" preset="hiro" emitevents="true">  -->
 <a-marker id="marker2" type='pattern' url='markers/pattern-arqrmarker.patt' emitevents="true"> 
-  <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
-  <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+  <a-text distance2 id="distance2" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
+  <a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 <!-- END: Add Image Target (marker) -->
 </a-marker>
 <a-entity camera></a-entity>
@@ -75,6 +95,7 @@ function turnSlightRight() {
     var x = "0 0 30";
     localStorage.setItem('rotation', x);  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }
 
 function turnRight() {
@@ -87,30 +108,35 @@ function turnSharpRight() {
     var x = "0 0 90";
     localStorage.setItem('rotation', x)  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }
 
 function continueOnStreet() {
     var x = "0 0 0";
     localStorage.setItem('rotation', x)  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }
     
 function turnSharpLeft() {
     var x = "0 0 -90";
     localStorage.setItem('rotation', x);  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }
 
 function turnLeft() {
     var x = "0 0 -60";
     localStorage.setItem('rotation', x)  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }
 
 function turnSlightLeft() {
     var x = "0 0 -30";
     localStorage.setItem('rotation', x)  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }  	
 </script>	
 </body>
