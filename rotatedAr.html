@@ -56,15 +56,17 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
+<a-marker id="marker" preset="hiro" emitevents="true">
+  <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
+  <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 
-pattern-arqrmarker
+</a-marker>
 	
 <!-- <a-marker id="marker" preset="hiro" emitevents="true">  -->
 <a-marker id="marker" type='pattern' url='markers/pattern-arqrmarker.patt' emitevents="true"> 
   <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
   <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 <!-- END: Add Image Target (marker) -->
-<!-- BEGIN: Bottom HTML -->
 </a-marker>
 <a-entity camera></a-entity>
 </a-scene>
@@ -113,8 +115,8 @@ function turnSlightLeft() {
 </script>	
 </body>
 </html>
-<!-- END: Bottom HTML -->
-	
+
+
 <!--
 public static final int TURN_SLIGHT_RIGHT = 1; 30
 public static final int TURN_RIGHT = 2; 60
