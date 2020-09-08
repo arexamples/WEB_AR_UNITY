@@ -28,10 +28,40 @@
         }
 
       };
+      
+      AFRAME.registerComponent('arrow', {
+
+        init: function(){
+          console.log(localStorage.getItem('rotation'));
+          var rotation = localStorage.getItem('rotation');
+          this.el.setAttribute('rotation', rotation)
+        }
+
+      });
+
+      AFRAME.registerComponent('distance', {
+
+        init: function(){
+          console.log(localStorage.getItem('distance'));
+          var distance = localStorage.getItem('distance');
+          this.el.setAttribute('value', distance + " m")
+        }
+
+      });	
     </script>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
+    <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+      <button onclick="turnSharpLeft()"><<<</button>
+      <button onclick="turnLeft()"><<</button>
+      <button onclick="turnSlightLeft()"><</button>
+      <button onclick="continueOnStreet()">^</button>
+      <button onclick="turnSlightRight()">></button>
+      <button onclick="turnRight()">>></button>
+      <button onclick="turnSharpRight()">>>></button>
+    </div>	
+  
     <a-scene vr-mode-ui="enabled: false">
       <a-assets>
         <a-asset-item id="arrow-obj" src="arrow-obj/nnf-arrow.obj"></a-asset-item>
@@ -39,8 +69,7 @@
       </a-assets>
       <a-entity id="wrapper" position="0 -8 0">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
-        <a-entity arrow id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 10" scale="10 10 10" rotation="0 0 0"></a-entity>
-        <a-text id="GEO" value="GEO" scale="75 75 75" color="#000000" position="-30 0 -150"></a-text>
+        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="-30 0 -150" align="center"></a-text>
         <!-- look-at="[gps-camera]" -->
 
       </a-entity>
@@ -54,5 +83,48 @@
       -->
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
+    <script>	
+      function turnSlightRight() {
+          var x = "0 0 30";
+          localStorage.setItem('rotation', x);  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }
+
+      function turnRight() {
+          var x = "0 0 60";
+          localStorage.setItem('rotation', x)  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }
+
+      function turnSharpRight() {
+          var x = "0 0 90";
+          localStorage.setItem('rotation', x)  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }
+
+      function continueOnStreet() {
+          var x = "0 0 0";
+          localStorage.setItem('rotation', x)  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }
+
+      function turnSharpLeft() {
+          var x = "0 0 -90";
+          localStorage.setItem('rotation', x);  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }
+
+      function turnLeft() {
+          var x = "0 0 -60";
+          localStorage.setItem('rotation', x)  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }
+
+      function turnSlightLeft() {
+          var x = "0 0 -30";
+          localStorage.setItem('rotation', x)  
+          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+      }  	
+    </script>    
   </body>
 </html>
