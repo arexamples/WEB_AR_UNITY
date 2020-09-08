@@ -39,7 +39,7 @@
       AFRAME.registerComponent('distance', {
 
         init: function(){
-          var distance = 10;
+          var distance = 20;
           this.el.setAttribute('value', distance + " m")
         }
 
@@ -66,7 +66,7 @@
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity id="wrapper" position="0 -8 0" emitevents="true">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
-        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 0 -150"></a-text>
+        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 100 -150" align="center"></a-text>
         <!-- look-at="[gps-camera]" -->
       </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
