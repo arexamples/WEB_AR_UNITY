@@ -15,8 +15,8 @@
 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
-            let gps = document.createAttribute('gps-entity-place'),
-            arjs = document.createAttribute('arjs'),
+            let gps = document.createAttribute('gps-entity-place');
+            let arjs = document.createAttribute('arjs');
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${position.coords.latitude - 0.001}; longitude: ${position.coords.longitude + 0.001}`;
             log(gps.value);
@@ -64,7 +64,7 @@
         <a-asset-item id="arrow-mtl" src="arrow-obj/nnf-arrow.mtl"></a-asset-item>
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-      <a-entity id="wrapper" position="0 -8 0">
+      <a-entity id="wrapper" position="0 -8 0" emitevents="true">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 0 -150" align="center"></a-text>
         <!-- look-at="[gps-camera]" -->
