@@ -65,7 +65,8 @@
         <a-asset-item id="arrow-obj" src="arrow-obj/nnf-arrow.obj"></a-asset-item>
         <a-asset-item id="arrow-mtl" src="arrow-obj/nnf-arrow.mtl"></a-asset-item>
       </a-assets>
-      <a-entity id="wrapper" position="0 -8 0" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;">
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+      <a-entity id="wrapper" position="0 -8 0">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 0 -150" align="center"></a-text>
         <!-- look-at="[gps-camera]" -->
