@@ -30,8 +30,7 @@
       AFRAME.registerComponent('arrow', {
 
         init: function(){
-          console.log(localStorage.getItem('rotation'));
-          var rotation = localStorage.getItem('rotation');
+          var rotation = "0 0 -90";
           this.el.setAttribute('rotation', rotation)
         }
 
@@ -40,8 +39,7 @@
       AFRAME.registerComponent('distance', {
 
         init: function(){
-          console.log(localStorage.getItem('distance'));
-          var distance = localStorage.getItem('distance');
+          var distance = 10;
           this.el.setAttribute('value', distance + " m")
         }
 
