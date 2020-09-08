@@ -73,19 +73,19 @@
     </a-scene>
     <script>	
       function turnSlightRight() {
-          var x = "0 30 0";
+          var x = "0 -30 0";
           localStorage.setItem('rotation', x);  
           document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
       }
 
       function turnRight() {
-          var x = "0 60 0";
+          var x = "0 -60 0";
           localStorage.setItem('rotation', x)  
           document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
       }
 
       function turnSharpRight() {
-          var x = "0 90 0";
+          var x = "0 -90 0";
           localStorage.setItem('rotation', x)  
           document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
       }
@@ -97,19 +97,19 @@
       }
 
       function turnSharpLeft() {
-          var x = "-90 0 0";
+          var x = "0 -90 0";
           localStorage.setItem('rotation', x);  
           document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
       }
 
       function turnLeft() {
-          var x = "-60 0 0";
+          var x = "0 -60 0";
           localStorage.setItem('rotation', x)  
           document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
       }
 
       function turnSlightLeft() {
-          var x = "-30 0 0";
+          var x = "0 -30 0";
           localStorage.setItem('rotation', x)  
           document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
       }  	
