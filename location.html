@@ -45,6 +45,8 @@
           var angle = Math.atan2(y, x);
 
           angle = angle * (180/Math.PI);
+          angle = (angle + 360) % 360;
+          angle = 360 - angle;
           
           var rotation = "0 " + angle + " 0";
           
