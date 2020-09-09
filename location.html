@@ -30,7 +30,24 @@
       AFRAME.registerComponent('arrow', {
 
         init: function(){
-          var rotation = "0 0 0";
+          var lat1 = 49.8294996; 
+          var long1 = 18.1634786; 
+
+          var lat2 = 49.8294019;
+          var long2 = 18.1638268;
+          //var rotation = "0 0 0";
+          var dLon = (long2 - long1);
+
+          var y = Math.sin(dLon) * Math.cos(lat2);
+          var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
+                  * Math.cos(lat2) * Math.cos(dLon);
+
+          var angle = Math.atan2(y, x);
+
+          angle = angle * (180/Math.PI);
+          
+          var rotation = "0 " + angle + " 0";
+          
           this.el.setAttribute('rotation', rotation)
         }
 
