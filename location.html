@@ -50,14 +50,9 @@
         init: function(){
           if(angle !== undefined)
           {
-            log(angle)
+            var rotation = "0 " + angle + " 0"; 
+            this.el.setAttribute('rotation', rotation);
           }
-          else
-          {
-            log("fail")
-          }
-          var rotation = "0 0 0"; 
-          this.el.setAttribute('rotation', rotation);
         }
 
       });
@@ -67,16 +62,10 @@
         init: function(){
           if(angle !== undefined)
           {
-            log(angle)
-          }
-          else
-          {
-            log("fail")
+            var rotation = "0 " + angle + " 0"; 
           }
           var distance = 20;
-          var rotation = "0 0 0"; 
           this.el.setAttribute('value', distance + " m");
-          this.el.setAttribute('rotation', rotation);
         }
 
       });
