@@ -22,11 +22,11 @@
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
             log(gps.value);
+            log(angle);
+            log("xxx");
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
             
-            log("LAT" + position.coords.latitude);
-            log("LONG" + position.coords.longitude);
             var lat2 = 49.8294996; 
             var long2 = 18.1634786; 
 
@@ -40,9 +40,7 @@
                     * Math.cos(lat2) * Math.cos(dLon);
 
             angle = Math.atan2(y, x);
-
             angle = angle * (180/Math.PI);
-            log("1" + angle);
           });
         }
 
@@ -51,7 +49,6 @@
       AFRAME.registerComponent('arrow', {
 
         init: function(){
-          log("a" + angle);
           var rotation = "0 " + angle + " 0"; 
           this.el.setAttribute('rotation', rotation);
         }
