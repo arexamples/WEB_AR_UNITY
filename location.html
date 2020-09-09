@@ -18,7 +18,7 @@
             let gps = document.createAttribute('gps-entity-place');
             let arjs = document.createAttribute('arjs');
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
-            gps.value = `latitude: ${position.coords.latitude + 0.001}; longitude: ${position.coords.longitude - 0.001}`;
+            gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
             log(gps.value);
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
@@ -30,6 +30,8 @@
       AFRAME.registerComponent('arrow', {
 
         init: function(){
+          log("LAT" + position.coords.latitude);
+          log("LONG" + position.coords.longitude);
           var lat1 = 49.8294996; 
           var long1 = 18.1634786; 
 
@@ -45,8 +47,8 @@
           var angle = Math.atan2(y, x);
 
           angle = angle * (180/Math.PI);
-          angle = (angle + 360) % 360;
-          angle = 360 - angle;
+          angle = -angle;
+
           
           var rotation = "0 " + angle + " 0";
           
