@@ -11,6 +11,7 @@
     <script>
       const log = console.log;
       var angle;
+      var mylog = "L";
       
       
 
@@ -21,6 +22,7 @@
 
           init: function(){
             log("arr");
+             mylog = mylog + "arr";
             log(angle); 
             if(angle !== undefined)
             {
@@ -35,6 +37,7 @@
 
           init: function(){
             log("dis");
+            mylog = mylog + "dis";
             log(angle);   
             var distance = "qwe";
             if(angle !== undefined)
@@ -43,7 +46,7 @@
               this.el.setAttribute('rotation', rotation);
               distance = "qw" + angle;
             }
-            this.el.setAttribute('value', distance + " m");
+            this.el.setAttribute('value', mylog + " m");
           }
 
         });
@@ -74,8 +77,11 @@
             angle = Math.atan2(y, x);
             angle = angle * (180/Math.PI);
             
+            mylog = mylog + "NAV";
             log("NAV");   
+            mylog = mylog + "angle";
             log(angle);  
+            mylog = mylog + "DONE";
             log("DONE");
 
           });
