@@ -35,7 +35,7 @@
           });
         }
         
-        return 0;
+        return 1;
       }
       
       AFRAME.registerComponent('arrow', {
@@ -53,7 +53,7 @@
           var distance = "13";
           var rotation = "0 " + getAngle() + " 0"; 
           this.el.setAttribute('rotation', rotation);
-          this.el.setAttribute('value', distance + " m");
+          this.el.setAttribute('value', getAngle() + " m");
         }
 
       });
