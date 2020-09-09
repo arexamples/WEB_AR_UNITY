@@ -45,37 +45,37 @@
 
         AFRAME.registerComponent('arrow', {
 
-        init: function(){
-          if(angle !== undefined)
-          {
-            var rotation = "0 " + angle + " 0"; 
-            this.el.setAttribute('rotation', rotation);
+          init: function(){
+            if(angle !== undefined)
+            {
+              var rotation = "0 " + angle + " 0"; 
+              this.el.setAttribute('rotation', rotation);
+            }
+            else{
+              var rotation = "0 150 0"; 
+              this.el.setAttribute('rotation', rotation);
+            }
           }
-          else{
-            var rotation = "0 150 0"; 
-            this.el.setAttribute('rotation', rotation);
+
+        });
+
+        AFRAME.registerComponent('distance', {
+
+          init: function(){
+            if(angle !== undefined)
+            {
+              var rotation = "0 " + angle + " 0"; 
+              this.el.setAttribute('rotation', rotation);
+            }
+            else{
+              var rotation = "0 0 0"; 
+              this.el.setAttribute('rotation', rotation);
+            }
+            var distance = 03;
+            this.el.setAttribute('value', distance + " m");
           }
-        }
 
-      });
-
-      AFRAME.registerComponent('distance', {
-
-        init: function(){
-          if(angle !== undefined)
-          {
-            var rotation = "0 " + angle + " 0"; 
-            this.el.setAttribute('rotation', rotation);
-          }
-          else{
-            var rotation = "0 0 0"; 
-            this.el.setAttribute('rotation', rotation);
-          }
-          var distance = 13;
-          this.el.setAttribute('value', distance + " m");
-        }
-
-      });
+        });
       };
       
       
