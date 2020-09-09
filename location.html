@@ -39,43 +39,41 @@
 
             angle = Math.atan2(y, x);
             angle = angle * (180/Math.PI);
+            
+            AFRAME.registerComponent('arrow', {
+
+              init: function(){
+                if(angle !== undefined)
+                {
+                  var rotation = "0 " + angle + " 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                }
+                else{
+                  var rotation = "0 0 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                }
+              }
+
+            });
+
+            AFRAME.registerComponent('distance', {
+
+              init: function(){
+                var distance = angle;
+                if(angle !== undefined)
+                {
+                  var rotation = "0 " + angle + " 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                }
+                this.el.setAttribute('value', distance + " m");
+              }
+
+        });
 
           });
         }
-
-        AFRAME.registerComponent('arrow', {
-
-          init: function(){
-            if(angle !== undefined)
-            {
-              var rotation = "0 " + angle + " 0"; 
-              this.el.setAttribute('rotation', rotation);
-            }
-            else{
-              var rotation = "0 0 0"; 
-              this.el.setAttribute('rotation', rotation);
-            }
-          }
-
-        });
-
-        AFRAME.registerComponent('distance', {
-
-          init: function(){
-            var distance = angle;
-            if(angle !== undefined)
-            {
-              var rotation = "0 " + angle + " 0"; 
-              this.el.setAttribute('rotation', rotation);
-            }
-            this.el.setAttribute('value', distance + " m");
-          }
-
-        });
       };
-      
-      
-    	
+  
     </script>
   </head>
 
