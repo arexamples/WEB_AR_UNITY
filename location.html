@@ -12,6 +12,26 @@
       const log = console.log;
       var angle;
       
+      AFRAME.registerComponent('arrow', {
+
+        init: function(){
+          var rotation = "0 0 0"; 
+          this.el.setAttribute('rotation', rotation);
+        }
+
+      });
+
+      AFRAME.registerComponent('distance', {
+
+        init: function(){
+          var distance = 20;
+          var rotation = "0 0 0"; 
+          this.el.setAttribute('value', distance + " m");
+          this.el.setAttribute('rotation', rotation);
+        }
+
+      });
+      
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
 
@@ -22,8 +42,6 @@
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
             log(gps.value);
-            log(angle);
-            log("xxx");
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
             
@@ -41,30 +59,16 @@
 
             angle = Math.atan2(y, x);
             angle = angle * (180/Math.PI);
+            
+            var rotation = "0 " + angle + " 0";   
+            document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', rotation);
+            document.querySelector('[distance]').components.distance.el.setAttribute('rotation', rotation);
           });
         }
 
       };
       
-      AFRAME.registerComponent('arrow', {
-
-        init: function(){
-          var rotation = "0 " + angle + " 0"; 
-          this.el.setAttribute('rotation', rotation);
-        }
-
-      });
-
-      AFRAME.registerComponent('distance', {
-
-        init: function(){
-          var distance = 20;
-          var rotation = "0 " + angle + " 0"; 
-          this.el.setAttribute('value', distance + " m");
-          this.el.setAttribute('rotation', rotation);
-        }
-
-      });	
+    	
     </script>
   </head>
 
