@@ -21,6 +21,7 @@
 
           init: function(){
             log("arr");
+            log(angle); 
             if(angle !== undefined)
             {
               var rotation = "0 " + angle + " 0"; 
@@ -34,6 +35,7 @@
 
           init: function(){
             log("dis");
+            log(angle);   
             var distance = "qwe";
             if(angle !== undefined)
             {
@@ -45,9 +47,7 @@
           }
 
         });
-        
-        let arrow = document.querySelector('[arrow]');
-        let distance = document.querySelector('[distance]');     
+          
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -74,12 +74,8 @@
             angle = Math.atan2(y, x);
             angle = angle * (180/Math.PI);
             
-            var rotation = "0 " + angle + " 0"; 
-            log("NAV");
-            arrow.components.arrow.el.setAttribute('rotation', rotation);
-            distance.components.distance.el.setAttribute('rotation', rotation);
-            distance.components.distance.el.setAttribute('value', angle + " xms");
-            
+            log("NAV");   
+            log(angle);  
             log("DONE");
 
           });
