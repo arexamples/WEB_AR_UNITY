@@ -10,8 +10,11 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script>
       const log = console.log;
+      var angle;
+      
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        var po
 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -22,6 +25,24 @@
             log(gps.value);
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
+            
+            log("LAT" + position.coords.latitude);
+            log("LONG" + position.coords.longitude);
+            var lat2 = 49.8294996; 
+            var long2 = 18.1634786; 
+
+            var lat1 = 49.8294019;
+            var long1 = 18.1638268;
+            //var rotation = "0 0 0";
+            var dLon = (long2 - long1);
+
+            var y = Math.sin(dLon) * Math.cos(lat2);
+            var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
+                    * Math.cos(lat2) * Math.cos(dLon);
+
+            angle = Math.atan2(y, x);
+
+            angle = angle * (180/Math.PI);
           });
         }
 
@@ -30,28 +51,7 @@
       AFRAME.registerComponent('arrow', {
 
         init: function(){
-          log("LAT" + ${position.coords.latitude});
-          log("LONG" + ${position.coords.longitude});
-          var lat2 = 49.8294996; 
-          var long2 = 18.1634786; 
-
-          var lat1 = 49.8294019;
-          var long1 = 18.1638268;
-          //var rotation = "0 0 0";
-          var dLon = (long2 - long1);
-
-          var y = Math.sin(dLon) * Math.cos(lat2);
-          var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
-                  * Math.cos(lat2) * Math.cos(dLon);
-
-          var angle = Math.atan2(y, x);
-
-          angle = angle * (180/Math.PI);
-          angle = angle;
-
-          
-          var rotation = "0 " + angle + " 0";
-          
+          var rotation = "0 " + angle + " 0"; 
           this.el.setAttribute('rotation', rotation)
         }
 
