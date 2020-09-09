@@ -12,35 +12,40 @@
       const log = console.log;
       var angle;
       
-      AFRAME.registerComponent('arrow', {
-
-              init: function(){
-                if(angle !== undefined)
-                {
-                  var rotation = "0 " + angle + " 0"; 
-                  this.el.setAttribute('rotation', rotation);
-                }
-              }
-
-            });
-
-            AFRAME.registerComponent('distance', {
-
-              init: function(){
-                var distance = "qwe";
-                if(angle !== undefined)
-                {
-                  var rotation = "0 " + angle + " 0"; 
-                  this.el.setAttribute('rotation', rotation);
-                  distance = "qw" + angle;
-                }
-                this.el.setAttribute('value', distance + " m");
-              }
-
-        });
+      
 
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        
+        AFRAME.registerComponent('arrow', {
+
+          init: function(){
+            log("arr");
+            if(angle !== undefined)
+            {
+              var rotation = "0 " + angle + " 0"; 
+              this.el.setAttribute('rotation', rotation);
+            }
+          }
+
+        });
+
+        AFRAME.registerComponent('distance', {
+
+          init: function(){
+            log("dis");
+            var distance = "qwe";
+            if(angle !== undefined)
+            {
+              var rotation = "0 " + angle + " 0"; 
+              this.el.setAttribute('rotation', rotation);
+              distance = "qw" + angle;
+            }
+            this.el.setAttribute('value', distance + " m");
+          }
+
+        });
+        
         let arrow = document.querySelector('[arrow]');
         let distance = document.querySelector('[distance]');     
         
@@ -70,7 +75,7 @@
             angle = angle * (180/Math.PI);
             
             var rotation = "0 " + angle + " 0"; 
-            
+            log("NAV");
             arrow.components.arrow.el.setAttribute('rotation', rotation);
             distance.components.distance.el.setAttribute('rotation', rotation);
             distance.components.distance.el.setAttribute('value', angle + " xms");
