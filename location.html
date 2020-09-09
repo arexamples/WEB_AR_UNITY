@@ -11,10 +11,39 @@
     <script>
       const log = console.log;
       var angle;
+      
+      AFRAME.registerComponent('arrow', {
+
+              init: function(){
+                if(angle !== undefined)
+                {
+                  var rotation = "0 " + angle + " 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                }
+              }
+
+            });
+
+            AFRAME.registerComponent('distance', {
+
+              init: function(){
+                var distance = "qwe";
+                if(angle !== undefined)
+                {
+                  var rotation = "0 " + angle + " 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                  distance = "qw" + angle;
+                }
+                this.el.setAttribute('value', distance + " m");
+              }
+
+        });
 
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
-
+        let arrow = document.querySelector('[arrow]');
+        let distance = document.querySelector('[distance]');     
+        
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
             let gps = document.createAttribute('gps-entity-place');
@@ -40,35 +69,13 @@
             angle = Math.atan2(y, x);
             angle = angle * (180/Math.PI);
             
-            AFRAME.registerComponent('arrow', {
-
-              init: function(){
-                if(angle !== undefined)
-                {
-                  var rotation = "0 " + angle + " 0"; 
-                  this.el.setAttribute('rotation', rotation);
-                }
-                else{
-                  var rotation = "0 0 0"; 
-                  this.el.setAttribute('rotation', rotation);
-                }
-              }
-
-            });
-
-            AFRAME.registerComponent('distance', {
-
-              init: function(){
-                var distance = "xx" + angle;
-                if(angle !== undefined)
-                {
-                  var rotation = "0 " + angle + " 0"; 
-                  this.el.setAttribute('rotation', rotation);
-                }
-                this.el.setAttribute('value', distance + " m");
-              }
-
-        });
+            var rotation = "0 " + angle + " 0"; 
+            
+            arrow.components.arrow.el.setAttribute('rotation', rotation);
+            distance.components.distance.el.setAttribute('rotation', rotation);
+            distance.components.distance.el.setAttribute('value', angle + " xms");
+            
+            log("DONE");
 
           });
         }
