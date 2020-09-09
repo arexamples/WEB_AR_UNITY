@@ -52,7 +52,7 @@
               this.el.setAttribute('rotation', rotation);
             }
             else{
-              var rotation = "0 150 0"; 
+              var rotation = "0 0 0"; 
               this.el.setAttribute('rotation', rotation);
             }
           }
@@ -62,16 +62,12 @@
         AFRAME.registerComponent('distance', {
 
           init: function(){
+            var distance = angle;
             if(angle !== undefined)
             {
               var rotation = "0 " + angle + " 0"; 
               this.el.setAttribute('rotation', rotation);
             }
-            else{
-              var rotation = "0 0 0"; 
-              this.el.setAttribute('rotation', rotation);
-            }
-            var distance = 03;
             this.el.setAttribute('value', distance + " m");
           }
 
