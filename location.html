@@ -14,7 +14,6 @@
       
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
-        var po
 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -43,6 +42,7 @@
             angle = Math.atan2(y, x);
 
             angle = angle * (180/Math.PI);
+            log("1" + angle);
           });
         }
 
@@ -51,8 +51,9 @@
       AFRAME.registerComponent('arrow', {
 
         init: function(){
+          log("a" + angle);
           var rotation = "0 " + angle + " 0"; 
-          this.el.setAttribute('rotation', rotation)
+          this.el.setAttribute('rotation', rotation);
         }
 
       });
@@ -61,7 +62,9 @@
 
         init: function(){
           var distance = 20;
-          this.el.setAttribute('value', distance + " m")
+          var rotation = "0 " + angle + " 0"; 
+          this.el.setAttribute('value', distance + " m");
+          this.el.setAttribute('rotation', rotation);
         }
 
       });	
