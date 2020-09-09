@@ -18,38 +18,7 @@
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
         
-        AFRAME.registerComponent('arrow', {
-
-          init: function(){
-            log("arr");
-             mylog = mylog + "arr";
-            log(angle); 
-            if(angle !== undefined)
-            {
-              var rotation = "0 " + angle + " 0"; 
-              this.el.setAttribute('rotation', rotation);
-            }
-          }
-
-        });
-
-        AFRAME.registerComponent('distance', {
-
-          init: function(){
-            log("dis");
-            mylog = mylog + "dis";
-            log(angle);   
-            var distance = "qwe";
-            if(angle !== undefined)
-            {
-              var rotation = "0 " + angle + " 0"; 
-              this.el.setAttribute('rotation', rotation);
-              distance = "qw" + angle;
-            }
-            this.el.setAttribute('value', mylog + " m");
-          }
-
-        });
+        
           
         
         if (navigator.geolocation) {
@@ -83,6 +52,39 @@
             log(angle);  
             mylog = mylog + "DONE";
             log("DONE");
+            
+            AFRAME.registerComponent('arrow', {
+
+              init: function(){
+                log("arr");
+                mylog = mylog + "arr";
+                log(angle); 
+                if(angle !== undefined)
+                {
+                  var rotation = "0 " + angle + " 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                }
+              }
+
+            });
+
+            AFRAME.registerComponent('distance', {
+
+              init: function(){
+                log("dis");
+                mylog = mylog + "dis";
+                log(angle);   
+                var distance = "qwe";
+                if(angle !== undefined)
+                {
+                  var rotation = "0 " + angle + " 0"; 
+                  this.el.setAttribute('rotation', rotation);
+                  distance = "qw" + angle;
+                }
+                this.el.setAttribute('value', mylog + " m");
+              }
+
+            });
 
           });
         }
