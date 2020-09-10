@@ -42,6 +42,9 @@
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
         let arrow = document.querySelector('[arrow]');
         let distance = document.querySelector('[distance]');
+      
+        distance.setAttribute('value', '000 m');
+            arrow.setAttribute('rotation', '0 150 0');
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
