@@ -86,7 +86,7 @@
       
       function getAngle(lat2, lon2) {       
         var lat1 = userLat;
-        var lon1 = userLong;
+        var lon1 = userLon;
         var dLon = (lon2 - lon1);
         var y = Math.sin(dLon) * Math.cos(lat2);
         var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
@@ -111,7 +111,7 @@
       
       function getDistance(lat2, lon2) {         
         var lat1 = userLat;
-        var lon1 = userLong;
+        var lon1 = userLon;
         var R = 6371; // km
         var dLat = toRad(lat2-lat1);
         var dLon = toRad(lon2-lon1);
