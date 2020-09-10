@@ -47,8 +47,8 @@
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
-        arrow = document.querySelector('[arrow]');
-        distance = document.querySelector('[distance]');
+        arrowEl = document.querySelector('[arrow]');
+        distanceEl = document.querySelector('[distance]');
 
         
         if (navigator.geolocation) {
@@ -146,25 +146,25 @@
       function pragueOfficeTurn() {
           var angle = getPragueAngle();
           var distance = getPragueDistance();
-          distance.setAttribute('value', distance + " km");
-          distance.setAttribute('rotation', '0 ' + angle + ' 0');
-          arrow.setAttribute('rotation', '0 ' + angle + ' 0');
+          distanceEl.setAttribute('value', distance + " km");
+          distanceEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
       }
       
       function brnoOfficeTurn() {
           var angle = getBrnoAngle();
           var distance = getBrnoDistance();
-          distance.setAttribute('value', distance + " km");
-          distance.setAttribute('rotation', '0 ' + angle + ' 0');
-          arrow.setAttribute('rotation', '0 ' + angle + ' 0');
+          distanceEl.setAttribute('value', distance + " km");
+          distanceEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
           var angle = getOstravaAngle();
           var distance = getOstravaDistance();
-          distance.setAttribute('value', distance + " km");
-          distance.setAttribute('rotation', '0 ' + angle + ' 0');
-          arrow.setAttribute('rotation', '0 ' + angle + ' 0');
+          distanceEl.setAttribute('value', distance + " km");
+          distanceEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
       }
   
       function turnSlightRight() {
