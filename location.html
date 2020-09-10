@@ -49,8 +49,7 @@
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
         arrow = document.querySelector('[arrow]');
         distance = document.querySelector('[distance]');
-        userLat;
-        userLon;
+
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -63,9 +62,7 @@
             userLat = position.coords.latitude;
             userLon = position.coords.longitude;
             
-            log(gps.value);
-            log(arrow);
-            log(distance);           
+            log(gps.value);       
             
           }, function (e) {
               log(e.message);
