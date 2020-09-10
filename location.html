@@ -84,23 +84,17 @@
         return getAngle(OstravaLat, OstravaLon);
       }
       
-      function getAngle(lat2, lon2) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {            
-            var lat1 = position.coords.latitude;
-            var lon1 = position.coords.longitude;
-            var dLon = (lon2 - lon1);
-            var y = Math.sin(dLon) * Math.cos(lat2);
-            var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
-                    * Math.cos(lat2) * Math.cos(dLon);
-            var angle = Math.atan2(y, x);
-            angle = angle * (180/Math.PI);       
-            
-            return angle;
-          });
-        }
-        log("fail getAngle");
-        return 0;
+      function getAngle(lat2, lon2) {       
+        var lat1 = userLat;
+        var lon1 = userLong;
+        var dLon = (lon2 - lon1);
+        var y = Math.sin(dLon) * Math.cos(lat2);
+        var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
+                * Math.cos(lat2) * Math.cos(dLon);
+        var angle = Math.atan2(y, x);
+        angle = angle * (180/Math.PI);       
+
+        return angle;
       }
       
       function getPragueDistance() {
@@ -115,26 +109,21 @@
         return getAngle(OstravaLat, OstravaLon);
       }
       
-      function getDistance(lat2, lon2) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {            
-            var lat1 = position.coords.latitude;
-            var lon1 = position.coords.longitude;
-            var R = 6371; // km
-            var dLat = toRad(lat2-lat1);
-            var dLon = toRad(lon2-lon1);
-            var lat1 = toRad(lat1);
-            var lat2 = toRad(lat2);
+      function getDistance(lat2, lon2) {         
+        var lat1 = userLat;
+        var lon1 = userLong;
+        var R = 6371; // km
+        var dLat = toRad(lat2-lat1);
+        var dLon = toRad(lon2-lon1);
+        var lat1 = toRad(lat1);
+        var lat2 = toRad(lat2);
 
-            var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-            var distance = R * c;
-            return distance;
-          });
-        }
-        log("fail getDistance");
-        return 0;
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var distance = R * c;
+
+        return distance;
       }
       
       // Converts numeric degrees to radians
