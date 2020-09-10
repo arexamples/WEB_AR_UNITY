@@ -126,27 +126,21 @@
       function pragueOfficeTurn() {
           var angle = - getPragueAngle();
           var distance = getPragueDistance();
-          log(angle);
-          log(distance);
-          distanceEl.setAttribute('value', angle + " km");
+          distanceEl.setAttribute('value', distance + " km");
           arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
       }
       
       function brnoOfficeTurn() {
           var angle = getBrnoAngle();
           var distance = getBrnoDistance();
-          log(angle);
-          log(distance);
-          distanceEl.setAttribute('value', angle + " km");
+          distanceEl.setAttribute('value', distance + " km");
           arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
           var angle = getOstravaAngle();
           var distance = getOstravaDistance();
-          log(angle);
-          log(distance);
-          distanceEl.setAttribute('value', angle + " km");
+          distanceEl.setAttribute('value', distance + " km");
           arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
     </script>    
