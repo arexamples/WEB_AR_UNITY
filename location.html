@@ -33,18 +33,24 @@
         
     <script>
       const log = console.log;
+      const PragueLat = 50.0481443;
+      const PragueLon = 14.3022351;
+      const BrnoLat = 49.1711527;
+      const BrnoLon = 16.5971738;
+      const OstravaLat = 49.8384949;
+      const OstravaLon = 18.1549161;
       var scene; /* Apply to whole scene */
       var arrow;
       var distance;
       var userLat;
-      var userLong;
+      var userLon;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
         arrow = document.querySelector('[arrow]');
         distance = document.querySelector('[distance]');
         userLat;
-        userLong;
+        userLon;
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -55,7 +61,7 @@
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);    
             userLat = position.coords.latitude;
-            userLong = position.coords.longitude;
+            userLon = position.coords.longitude;
             
             log(gps.value);
             log(arrow);
@@ -69,19 +75,99 @@
         }
       };
       
+      function getPragueAngle() {
+        return getAngle(PragueLat, PragueLon);
+      }
+      
+      function getBrnoAngle() {
+        return getAngle(BrnoLat, BrnoLon);
+      }
+      
+      function getOstravaAngle() {
+        return getAngle(OstravaLat, OstravaLon);
+      }
+      
+      function getAngle(lat2, lon2) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {            
+            var lat1 = position.coords.latitude;
+            var lon1 = position.coords.longitude;
+            var dLon = (lon2 - lon1);
+            var y = Math.sin(dLon) * Math.cos(lat2);
+            var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
+                    * Math.cos(lat2) * Math.cos(dLon);
+            var angle = Math.atan2(y, x);
+            angle = angle * (180/Math.PI);       
+            
+            return angle;
+          });
+        }
+        
+        return 0;
+      }
+      
+      function getPragueDistance() {
+        return getAngle(PragueLat, PragueLon);
+      }
+      
+      function getBrnoDistance() {
+        return getAngle(BrnoLat, BrnoLon);
+      }
+      
+      function getOstravaDistance() {
+        return getAngle(OstravaLat, OstravaLon);
+      }
+      
+      function getDistance(lat2, lon2) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {            
+            var lat1 = position.coords.latitude;
+            var lon1 = position.coords.longitude;
+            var R = 6371; // km
+            var dLat = toRad(lat2-lat1);
+            var dLon = toRad(lon2-lon1);
+            var lat1 = toRad(lat1);
+            var lat2 = toRad(lat2);
+
+            var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            var distance = R * c;
+            return distance;
+          });
+        }
+        
+        return 0;
+      }
+      
+      // Converts numeric degrees to radians
+      function toRad(value) 
+      {
+          return value * Math.PI / 180;
+      }
+      
       function pragueOfficeTurn() {
-          distance.setAttribute('value', '500 km');
-          arrow.setAttribute('rotation', '0 -150 0');
+          var angle = getPragueAngle();
+          var distance = getPragueDistance();
+          distance.setAttribute('value', distance + " km");
+          distance.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrow.setAttribute('rotation', '0 ' + angle + ' 0');
       }
       
       function brnoOfficeTurn() {
-          distance.setAttribute('value', '200 km');
-          arrow.setAttribute('rotation', '0 0 0');
+          var angle = getBrnoeAngle();
+          var distance = getBrnoDistance();
+          distance.setAttribute('value', distance + " km");
+          distance.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrow.setAttribute('rotation', '0 ' + angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
-          distance.setAttribute('value', '2 km');
-          arrow.setAttribute('rotation', '0 150 0');
+          var angle = getOstravaAngle();
+          var distance = getOstravaDistance();
+          distance.setAttribute('value', distance + " km");
+          distance.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrow.setAttribute('rotation', '0 ' + angle + ' 0');
       }
   
       function turnSlightRight() {
