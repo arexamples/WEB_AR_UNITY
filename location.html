@@ -68,6 +68,15 @@
             arrow.setAttribute('rotation', '20 150 150');
             
           });
+          navigator.geolocation.getCurrentPosition(function (position) {
+              distance.setAttribute('value', '14 m');
+              arrow.setAttribute('rotation', '20 150 150');
+          }, function (e) {
+              distance.setAttribute('value', "ERR");
+              arrow.setAttribute('rotation', '20 150 150');
+          }, {
+              enableHighAccuracy: true
+          });
         }
       };
   
