@@ -6,40 +6,15 @@
     <!-- include aframe -->
     <script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
     <!-- include ar.js -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script>
-      const log = console.log;
-
-      
-       AFRAME.registerComponent('arrow', {
-
-              init: function(){
-              }
-
-            });
-
-            AFRAME.registerComponent('distance', {
-
-              init: function(){
-                var distance = "xx";
-                this.el.setAttribute('value', distance + " m");
-              }
-
-        });
-  
-    </script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    
   </head>
 
   <body style="margin: 0; overflow: hidden;">
     <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-      <button onclick="turnSharpLeft()"><<<</button>
-      <button onclick="turnLeft()"><<</button>
-      <button onclick="turnSlightLeft()"><</button>
-      <button onclick="continueOnStreet()">^</button>
-      <button onclick="turnSlightRight()">></button>
-      <button onclick="turnRight()">>></button>
-      <button onclick="turnSharpRight()">>>></button>
+      <button onclick="pragueOfficeTurn()">CGI PRAGUE</button>
+      <button onclick="brnoOfficeTurn()">CGI BRNO</button>
+      <button onclick="ostravaOfficeTurn()">CGI OVA</button>
     </div>	
   
     <a-scene vr-mode-ui="enabled: false">
@@ -55,100 +30,125 @@
       </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
-    <script>	
+        
+    <script>
+      const log = console.log;
+      const PragueLat = 50.0481443;
+      const PragueLng = 14.3022351;
+      const BrnoLat = 49.1711527;
+      const BrnoLng = 16.5971738;
+      const OstravaLat = 49.8384949;
+      const OstravaLng = 18.1549161;
+      var scene; /* Apply to whole scene */
+      var arrow;
+      var distance;
+      var userLat;
+      var userLng;
+
       window.onload = () => {
-        let scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        arrowEl = document.querySelector('[arrow]');
+        distanceEl = document.querySelector('[distance]');
+        userLat = 49.8291455;
+        userLng = 18.1640326;
 
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            let gps = document.createAttribute('gps-entity-place');
-            let arjs = document.createAttribute('arjs');
-            arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
-            gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
-            log(gps.value);
-            scene.setAttributeNode(gps); /* Apply to whole scene */
-            scene.setAttributeNode(arjs);
-            
-            var lat2 = 49.8294996; 
-            var long2 = 18.1634786; 
-
-            var lat1 = 49.8294019;
-            var long1 = 18.1638268;
-            //var rotation = "0 0 0";
-            var dLon = (long2 - long1);
-
-            var y = Math.sin(dLon) * Math.cos(lat2);
-            var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
-                    * Math.cos(lat2) * Math.cos(dLon);
-
-            angle = Math.atan2(y, x);
-            angle = angle * (180/Math.PI);
-            
-            var rotation = "0 " + angle + " 0"; 
-            
-            document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', rotation);
-            document.querySelector('[distance]').components.distance.el.setAttribute('rotation', rotation);
-            
-           
-
-          });
-        }
+        
       };
       
-      function turnSlightRight() {
-          var x = "0 -30 0";
-          var d = "0 0 -30";
-          localStorage.setItem('rotation', x);  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+      function getPragueAngle() {
+        return getAngle(PragueLat, PragueLng);
       }
-
-      function turnRight() {
-          var x = "0 -60 0";
-          var d = "0 0 -60";
-          localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+      
+      function getBrnoAngle() {
+        return getAngle(BrnoLat, BrnoLng);
       }
-
-      function turnSharpRight() {
-          var x = "0 -90 0";
-          var d = "0 0 -90";
-          localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+      
+      function getOstravaAngle() {
+        return getAngle(OstravaLat, OstravaLng);
       }
+      
+      function getAngle(destLat, destLng) {       
+        var startLat = userLat;
+        var startLng = userLng;
+        
+        startLat = toRadians(startLat);
+        startLng = toRadians(startLng);
+        destLat = toRadians(destLat);
+        destLng = toRadians(destLng);
 
-      function continueOnStreet() {
-          var x = "0 0 0";
-          localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', x);
+        y = Math.sin(destLng - startLng) * Math.cos(destLat);
+        x = Math.cos(startLat) * Math.sin(destLat) -
+              Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+        var angle = Math.atan2(y, x);
+        angle = toDegrees(angle);
+
+        return Math.round(angle * 10) / 10;
       }
-
-      function turnSharpLeft() {
-          var x = "0 90 0";
-          var d = "0 0 90";
-          localStorage.setItem('rotation', x);  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+      
+      function getPragueDistance() {
+        return getDistance(PragueLat, PragueLng);
       }
-
-      function turnLeft() {
-          var x = "0 60 0";
-          var d = "0 0 60";
-          localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+      
+      function getBrnoDistance() {
+        return getDistance(BrnoLat, BrnoLng);
       }
+      
+      function getOstravaDistance() {
+        return getDistance(OstravaLat, OstravaLng);
+      }
+      
+      function getDistance(destLat, destLng) {         
+        var startLat = userLat;
+        var startLng = userLng;
+        var R = 6371; // km
+        var dLat = toRadians(destLat-startLat);
+        var dLon = toRadians(destLng-startLng);
+        var lat1 = toRadians(lat1);
+        var lat2 = toRadians(lat2);
 
-      function turnSlightLeft() {
-          var x = "0 30 0";
-          var d = "0 0 30";
-          localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
-      }  	
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var distance = R * c;
+
+        return Math.round(distance * 10) / 10;
+      }
+      
+      function toRadians(degrees) {
+        return degrees * Math.PI / 180;
+      };
+
+      // Converts from radians to degrees.
+      function toDegrees(radians) {
+        return radians * 180 / Math.PI;
+      }
+      
+      function pragueOfficeTurn() {
+          var angle = - getPragueAngle();
+          var distance = getPragueDistance();
+          log(angle);
+          log(distance);
+          distanceEl.setAttribute('value', angle + " km");
+          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
+      }
+      
+      function brnoOfficeTurn() {
+          var angle = getBrnoAngle();
+          var distance = getBrnoDistance();
+          log(angle);
+          log(distance);
+          distanceEl.setAttribute('value', angle + " km");
+          arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
+      }
+      
+      function ostravaOfficeTurn() {
+          var angle = getOstravaAngle();
+          var distance = getOstravaDistance();
+          log(angle);
+          log(distance);
+          distanceEl.setAttribute('value', angle + " km");
+          arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
+      }
     </script>    
   </body>
 </html>
