@@ -99,7 +99,7 @@
             return angle;
           });
         }
-        
+        log("fail getAngle");
         return 0;
       }
       
@@ -133,7 +133,7 @@
             return distance;
           });
         }
-        
+        log("fail getDistance");
         return 0;
       }
       
@@ -146,6 +146,8 @@
       function pragueOfficeTurn() {
           var angle = getPragueAngle();
           var distance = getPragueDistance();
+          log(angle);
+          log(distance);
           distanceEl.setAttribute('value', distance + " km");
           distanceEl.setAttribute('rotation', '0 ' + angle + ' 0');
           arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
@@ -154,6 +156,8 @@
       function brnoOfficeTurn() {
           var angle = getBrnoAngle();
           var distance = getBrnoDistance();
+          log(angle);
+          log(distance);
           distanceEl.setAttribute('value', distance + " km");
           distanceEl.setAttribute('rotation', '0 ' + angle + ' 0');
           arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
@@ -162,6 +166,8 @@
       function ostravaOfficeTurn() {
           var angle = getOstravaAngle();
           var distance = getOstravaDistance();
+          log(angle);
+          log(distance);
           distanceEl.setAttribute('value', distance + " km");
           distanceEl.setAttribute('rotation', '0 ' + angle + ' 0');
           arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
