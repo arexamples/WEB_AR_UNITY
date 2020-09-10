@@ -38,41 +38,10 @@
         
     <script>
       const log = console.log;
-      var angle;
-      
-      function getAngle() {        
-        if (navigator.geolocation) {
-          log("navigator READY");
-          navigator.geolocation.getCurrentPosition(function (position) {        
-            log("current READY");
-            var lat2 = 49.8294996; 
-            var long2 = 18.1634786; 
-            var lat1 = 49.8294019;
-            var long1 = 18.1638268;
-            var dLon = (long2 - long1);
-            var y = Math.sin(dLon) * Math.cos(lat2);
-            var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
-                    * Math.cos(lat2) * Math.cos(dLon);
-            angle = Math.atan2(y, x);
-            angle = angle * (180/Math.PI);       
-            
-            return angle;
-          });
-        }
-        log("navigator NOT READY");
-        return 1;
-      }
-      
-      
-      
 
-      
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
         let arrow = document.querySelector('[arrow]');
         let distance = document.querySelector('[distance]');
-
-
-        
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -100,55 +69,55 @@
           var x = "0 -30 0";
           var d = "0 0 -30";
           localStorage.setItem('rotation', x);  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', d);
       }
 
       function turnRight() {
           var x = "0 -60 0";
           var d = "0 0 -60";
           localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', d);
       }
 
       function turnSharpRight() {
           var x = "0 -90 0";
           var d = "0 0 -90";
           localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', d);
       }
 
       function continueOnStreet() {
           var x = "0 0 0";
           localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', x);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', x);
       }
 
       function turnSharpLeft() {
           var x = "0 90 0";
           var d = "0 0 90";
           localStorage.setItem('rotation', x);  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', d);
       }
 
       function turnLeft() {
           var x = "0 60 0";
           var d = "0 0 60";
           localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', d);
       }
 
       function turnSlightLeft() {
           var x = "0 30 0";
           var d = "0 0 30";
           localStorage.setItem('rotation', x)  
-          document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
-          document.querySelector('[distance]').components.distance.el.setAttribute('rotation', d);
+          document.querySelector('[arrow]').setAttribute('rotation', x);
+          document.querySelector('[distance]')..setAttribute('rotation', d);
       }  	
     </script>    
   </body>
