@@ -44,8 +44,8 @@
         let arrow = document.querySelector('[arrow]');
         let distance = document.querySelector('[distance]');
       
-        distance.setAttribute('value', '000 m');
-            arrow.setAttribute('rotation', '0 150 0');
+        distance.setAttribute('value', '010 m');
+        arrow.setAttribute('rotation', '0 150 0');
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -61,7 +61,7 @@
             scene.setAttributeNode(arjs);
             
             
-            distance.setAttribute('value', '20 m');
+            distance.setAttribute('value', '13 m');
             arrow.setAttribute('rotation', '20 150 150');
             
           });
