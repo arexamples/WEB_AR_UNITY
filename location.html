@@ -72,7 +72,7 @@
               distance.setAttribute('value', '14 m');
               arrow.setAttribute('rotation', '20 150 150');
           }, function (e) {
-              distance.setAttribute('value', e);
+              distance.setAttribute('value', e.message);
               arrow.setAttribute('rotation', '20 150 150');
           }, {
               enableHighAccuracy: true
