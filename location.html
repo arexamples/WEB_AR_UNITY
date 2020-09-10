@@ -12,13 +12,9 @@
 
   <body style="margin: 0; overflow: hidden;">
     <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-      <button onclick="turnSharpLeft()"><<<</button>
-      <button onclick="turnLeft()"><<</button>
-      <button onclick="turnSlightLeft()"><</button>
-      <button onclick="continueOnStreet()">^</button>
-      <button onclick="turnSlightRight()">></button>
-      <button onclick="turnRight()">>></button>
-      <button onclick="turnSharpRight()">>>></button>
+      <button onclick="pragueOfficeTurn()">CGI PRAGUE</button>
+      <button onclick="brnoOfficeTurn()"><CGI BRNO</button>
+      <button onclick="ostravaOfficeTurn()">CGI OVA</button>
     </div>	
   
     <a-scene vr-mode-ui="enabled: false">
@@ -37,51 +33,57 @@
         
     <script>
       const log = console.log;
+      var scene; /* Apply to whole scene */
+      var arrow;
+      var distance;
+      var userLat;
+      var userLong;
 
       window.onload = () => {
-        let scene = document.querySelector('a-scene'); /* Apply to whole scene */
-        let arrow = document.querySelector('[arrow]');
-        let distance = document.querySelector('[distance]');
-      
-        distance.setAttribute('value', '010 m');
-        arrow.setAttribute('rotation', '0 150 0');
+        scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        arrow = document.querySelector('[arrow]');
+        distance = document.querySelector('[distance]');
+        userLat;
+        userLong;
         
         if (navigator.geolocation) {
-          distance.setAttribute('value', '15 m');
-            arrow.setAttribute('rotation', '20 150 150');
           navigator.geolocation.getCurrentPosition(function (position) {
-            distance.setAttribute('value', '14 m');
-            arrow.setAttribute('rotation', '20 150 150');
             let gps = document.createAttribute('gps-entity-place');
             let arjs = document.createAttribute('arjs');
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
+            scene.setAttributeNode(gps); /* Apply to whole scene */
+            scene.setAttributeNode(arjs);    
+            userLat = position.coords.latitude;
+            userLong = position.coords.longitude;
+            
             log(gps.value);
             log(arrow);
-            log(distance);
-             
-            scene.setAttributeNode(gps); /* Apply to whole scene */
-            scene.setAttributeNode(arjs);
+            log(distance);           
             
-            
-            distance.setAttribute('value', '13 m');
-            arrow.setAttribute('rotation', '20 150 150');
-            
-          });
-          navigator.geolocation.getCurrentPosition(function (position) {
-              distance.setAttribute('value', '14 m');
-              arrow.setAttribute('rotation', '20 150 150');
           }, function (e) {
-              distance.setAttribute('value', e.message);
-              arrow.setAttribute('rotation', '20 150 150');
+              log(e.message);
           }, {
               enableHighAccuracy: true
           });
         }
       };
+      
+      function pragueOfficeTurn() {
+          distance.setAttribute('value', '500 km');
+          arrow.setAttribute('rotation', '0 -150 0');
+      }
+      
+      function brnoOfficeTurn() {
+          distance.setAttribute('value', '200 km');
+          arrow.setAttribute('rotation', '0 0 0');
+      }
+      
+      function ostravaOfficeTurn() {
+          distance.setAttribute('value', '2 km');
+          arrow.setAttribute('rotation', '0 150 0');
+      }
   
-    </script>    
-    <script>	
       function turnSlightRight() {
           var x = "0 -30 0";
           var d = "0 0 -30";
