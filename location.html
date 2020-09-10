@@ -34,16 +34,16 @@
     <script>
       const log = console.log;
       const PragueLat = 50.0481443;
-      const PragueLon = 14.3022351;
+      const PragueLng = 14.3022351;
       const BrnoLat = 49.1711527;
-      const BrnoLon = 16.5971738;
+      const BrnoLng = 16.5971738;
       const OstravaLat = 49.8384949;
-      const OstravaLon = 18.1549161;
+      const OstravaLng = 18.1549161;
       var scene; /* Apply to whole scene */
       var arrow;
       var distance;
       var userLat;
-      var userLon;
+      var userLng;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
@@ -60,7 +60,7 @@
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);    
             userLat = position.coords.latitude;
-            userLon = position.coords.longitude;
+            userLng = position.coords.longitude;
             
             log(gps.value);       
             
@@ -73,50 +73,55 @@
       };
       
       function getPragueAngle() {
-        return getAngle(PragueLat, PragueLon);
+        return getAngle(PragueLat, PragueLng);
       }
       
       function getBrnoAngle() {
-        return getAngle(BrnoLat, BrnoLon);
+        return getAngle(BrnoLat, BrnoLng);
       }
       
       function getOstravaAngle() {
-        return getAngle(OstravaLat, OstravaLon);
+        return getAngle(OstravaLat, OstravaLng);
       }
       
-      function getAngle(lat2, lon2) {       
-        var lat1 = userLat;
-        var lon1 = userLon;
-        var dLon = (lon2 - lon1);
-        var y = Math.sin(dLon) * Math.cos(lat2);
-        var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)
-                * Math.cos(lat2) * Math.cos(dLon);
+      function getAngle(destLat, destLng) {       
+        var startLat = userLat;
+        var startLng = userLng;
+        
+        startLat = toRadians(startLat);
+        startLng = toRadians(startLng);
+        destLat = toRadians(destLat);
+        destLng = toRadians(destLng);
+
+        y = Math.sin(destLng - startLng) * Math.cos(destLat);
+        x = Math.cos(startLat) * Math.sin(destLat) -
+              Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
         var angle = Math.atan2(y, x);
-        angle = angle * (180/Math.PI);       
+        angle = toDegrees(angle);
 
         return Math.round(angle * 10) / 10;
       }
       
       function getPragueDistance() {
-        return getDistance(PragueLat, PragueLon);
+        return getDistance(PragueLat, PragueLng);
       }
       
       function getBrnoDistance() {
-        return getDistance(BrnoLat, BrnoLon);
+        return getDistance(BrnoLat, BrnoLng);
       }
       
       function getOstravaDistance() {
-        return getDistance(OstravaLat, OstravaLon);
+        return getDistance(OstravaLat, OstravaLng);
       }
       
-      function getDistance(lat2, lon2) {         
-        var lat1 = userLat;
-        var lon1 = userLon;
+      function getDistance(destLat, destLng) {         
+        var startLat = userLat;
+        var startLng = userLng;
         var R = 6371; // km
-        var dLat = toRad(lat2-lat1);
-        var dLon = toRad(lon2-lon1);
-        var lat1 = toRad(lat1);
-        var lat2 = toRad(lat2);
+        var dLat = toRadians(destLat-startLat);
+        var dLon = toRadians(destLng-startLng);
+        var lat1 = toRadians(lat1);
+        var lat2 = toRadians(lat2);
 
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
           Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
@@ -126,10 +131,13 @@
         return Math.round(distance * 10) / 10;
       }
       
-      // Converts numeric degrees to radians
-      function toRad(value) 
-      {
-          return value * Math.PI / 180;
+      function toRadians(degrees) {
+        return degrees * Math.PI / 180;
+      };
+
+      // Converts from radians to degrees.
+      function toDegrees(radians) {
+        return radians * 180 / Math.PI;
       }
       
       function pragueOfficeTurn() {
