@@ -63,35 +63,14 @@
         return 1;
       }
       
-      AFRAME.registerComponent('arrow', {
-
-        init: function(){
-            var rotation = "0 " + getAngle() + " 0"; 
-            this.el.setAttribute('rotation', rotation);
-        }
-
-      });
-
-      AFRAME.registerComponent('distance', {
-
-        init: function(){
-          var distance = "13";
-          var rotation = "0 " + getAngle() + " 0"; 
-          this.el.setAttribute('rotation', rotation);
-          this.el.setAttribute('value', getAngle() + " m");
-        }
-
-      });
+      
       
 
       
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
         let arrow = document.querySelector('[arrow]');
         let distance = document.querySelector('[distance]');
-        let arrow2 = document.querySelector('[arrow]').components;
-        let distance2 = document.querySelector('[distance]').components;
-        let arrow3 = document.querySelector('[arrow]').components.arrow;
-        let distance3 = document.querySelector('[distance]').components.arrow;
+
 
         
         
@@ -111,6 +90,9 @@
             
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
+            
+            distance.value = 20;
+            arrow.rotation = "10 10 10";
             
           });
         }
