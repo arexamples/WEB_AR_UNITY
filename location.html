@@ -59,6 +59,7 @@
         log(4);
         log(arrow4);
         log(distance4);
+        distance4.setAttribute('value', 50);
       });
       
       window.onload = () => {
@@ -87,7 +88,7 @@
             
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
-            distance4.setAttribute('value', 50);
+            
           });
         }
       };
