@@ -12,12 +12,7 @@
       const log = console.log;
       var angle;
       
-      function getAngle() {
-        if(angle !== undefined)
-        {
-          return angle;
-        }
-        
+      function getAngle() {        
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {            
             var lat2 = 49.8294996; 
@@ -60,6 +55,14 @@
       
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        let arrow = document.querySelector('[arrow]');
+        let distance = document.querySelector('[distance]');
+        let arrow2 = document.querySelector('[arrow]').components;
+        let distance2 = document.querySelector('[distance]').components;
+        let arrow3 = document.querySelector('[arrow]').components.arrow;
+        let distance3 = document.querySelector('[distance]').components.arrow;
+        let arrow4 = document.querySelector('[arrow]').components.arrow.el;
+        let distance4 = document.querySelector('[distance]').components.arrow.el;
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -68,8 +71,17 @@
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
             log(gps.value);
+            log(arrow);
+            log(distance);
+            log(arrow2);
+            log(distance2);
+            log(arrow3);
+            log(distance3);
+            log(arrow4);
+            log(distance4);
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
+            distance4.setAttribute('value', 50);
           });
         }
       };
