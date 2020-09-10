@@ -53,6 +53,14 @@
 
       });
       
+      $(function(){
+        let arrow4 = document.querySelector('[arrow]').components.arrow.el;
+        let distance4 = document.querySelector('[distance]').components.arrow.el;
+        log(4);
+        log(arrow4);
+        log(distance4);
+      });
+      
       window.onload = () => {
         let scene = document.querySelector('a-scene'); /* Apply to whole scene */
         let arrow = document.querySelector('[arrow]');
@@ -61,8 +69,7 @@
         let distance2 = document.querySelector('[distance]').components;
         let arrow3 = document.querySelector('[arrow]').components.arrow;
         let distance3 = document.querySelector('[distance]').components.arrow;
-        let arrow4 = document.querySelector('[arrow]').components.arrow.el;
-        let distance4 = document.querySelector('[distance]').components.arrow.el;
+        
         
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -77,8 +84,7 @@
             log(distance2);
             log(arrow3);
             log(distance3);
-            log(arrow4);
-            log(distance4);
+            
             scene.setAttributeNode(gps); /* Apply to whole scene */
             scene.setAttributeNode(arjs);
             distance4.setAttribute('value', 50);
