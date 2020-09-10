@@ -141,7 +141,7 @@
       }
       
       function pragueOfficeTurn() {
-          var angle = getPragueAngle();
+          var angle = - getPragueAngle();
           var distance = getPragueDistance();
           log(angle);
           log(distance);
@@ -155,7 +155,7 @@
           log(angle);
           log(distance);
           distanceEl.setAttribute('value', angle + " km");
-          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
@@ -164,7 +164,7 @@
           log(angle);
           log(distance);
           distanceEl.setAttribute('value', angle + " km");
-          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
     </script>    
   </body>
