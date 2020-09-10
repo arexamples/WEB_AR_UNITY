@@ -42,7 +42,9 @@
       
       function getAngle() {        
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {            
+          log("navigator READY");
+          navigator.geolocation.getCurrentPosition(function (position) {        
+            log("current READY");
             var lat2 = 49.8294996; 
             var long2 = 18.1634786; 
             var lat1 = 49.8294019;
@@ -57,7 +59,7 @@
             return angle;
           });
         }
-        
+        log("navigator NOT READY");
         return 1;
       }
       
@@ -90,8 +92,7 @@
         let distance2 = document.querySelector('[distance]').components;
         let arrow3 = document.querySelector('[arrow]').components.arrow;
         let distance3 = document.querySelector('[distance]').components.arrow;
-        let arrow4 = document.querySelector('[arrow]').components.arrow.el;
-        let distance4 = document.querySelector('[distance]').components.arrow.el;
+
         
         
         if (navigator.geolocation) {
