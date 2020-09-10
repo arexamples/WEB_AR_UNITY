@@ -120,8 +120,8 @@
         var R = 6371; // km
         var dLat = toRadians(destLat-startLat);
         var dLon = toRadians(destLng-startLng);
-        var lat1 = toRadians(lat1);
-        var lat2 = toRadians(lat2);
+        var lat1 = toRadians(startLat);
+        var lat2 = toRadians(destLat);
 
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
           Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
