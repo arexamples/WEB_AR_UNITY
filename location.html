@@ -30,7 +30,7 @@
       <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 -75 -85" rotation="0 0 0" align="center"></a-text>
-        <a-box material="color: yellow" gps-entity-place="latitude: 49.8294747; longitude: 18.164694" position="0 0 0"/>
+        <a-box material="color: yellow" gps-entity-place="latitude: 49.8295141; longitude: 18.1642419" position="0 0 0"/>
         <!-- look-at="[gps-camera]" -->
       </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
@@ -159,7 +159,7 @@
         
         entityEl.setAttribute('id', "arrow" + arrowId);
         entityEl.setAttribute('class', "intersectable");
-        entityEl.setAttribute('scale', "5 5 5");
+        entityEl.setAttribute('scale', "10 10 10");
         entityEl.setAttribute('position', "0 " + position + " "  + position);
         entityEl.setAttribute('rotation', "0 0 0");
         if(arrowId % 2 == 0)
