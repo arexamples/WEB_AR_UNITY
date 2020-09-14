@@ -176,7 +176,7 @@
           for (i = 0; i < 10; i++) {
             var entityEl = createArrow();
             listOfArrows.push(entityEl);
-            scene.appendChild(entityEl);
+            wrapper.appendChild(entityEl);
 
           }               
         
@@ -192,8 +192,9 @@
           arrowId = 0;
           listOfArrows.forEach(function (item, index) {
             console.log(item, index);
-            scene.removeChild(item);
+            wrapper.removeChild(item);
           });
+          listOfArrows = [];
         
           var angle = getBrnoAngle();
           var distance = getBrnoDistance();
