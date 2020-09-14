@@ -158,18 +158,19 @@
         
         entityEl.setAttribute('id', "arrow" + arrowId);
         entityEl.setAttribute('class', "intersectable");
-        if(arrowId % 2 == 0)
-        {
-          entityEl.setAttribute('obj-model', 'obj: #arrow0-obj; mtl: #arrow0-mtl');
-        }
-        else
-        {
-          entityEl.setAttribute('obj-model', 'obj: #arrow1-obj; mtl: #arrow1-mtl');
-        }
-        
         entityEl.setAttribute('scale', "5 5 5");
         entityEl.setAttribute('position', "0 " + position + " "  + position);
         entityEl.setAttribute('rotation', "0 0 0");
+        if(arrowId % 2 == 0)
+        {
+          entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
+        }
+        else
+        {
+          entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
+        }
+        
+        
         
         return entityEl;
       }
