@@ -44,6 +44,7 @@
       var distance;
       var userLat;
       var userLng;
+      var arrowId = 0;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
@@ -141,6 +142,17 @@
       }
       
       function pragueOfficeTurn() {
+          arrowId = arrowId + 1;
+          var entityEl = document.createElement('a-entity');
+          entityEl.setAttribute('id', "arrow" + arrowId);
+          entityEl.setAttribute('class', "intersectable");
+          entityEl.setAttribute('obj-model', 'obj: #arrow-obj; mtl: #arrow-mtl');
+          entityEl.setAttribute('scale', "5 5 5 ");
+          entityEl.setAttribute('position', "0 0 -10");
+          entityEl.setAttribute('rotation', "0 " + arrowId + " 0");
+          scene.appendChild(entityEl);
+                
+        
           var angle = - getPragueAngle();
           var distance = getPragueDistance();
           log(angle);
