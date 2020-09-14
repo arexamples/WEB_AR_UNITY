@@ -30,6 +30,7 @@
       <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 -75 -85" rotation="0 0 0" align="center"></a-text>
+        <a-box material="color: yellow" gps-entity-place="latitude: 49.8294747; longitude: 18.164694" position="0 0 0"/>
         <!-- look-at="[gps-camera]" -->
       </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
@@ -57,8 +58,8 @@
         wrapper = document.querySelector('[wrapper]');
         arrowEl = document.querySelector('[arrow]');
         distanceEl = document.querySelector('[distance]');
-        userLat = 49.8291455;
-        userLng = 18.1640326;
+        userLat = 49.8295141;
+        userLng = 18.1642419;
         
 
         
