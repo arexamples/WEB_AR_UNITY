@@ -23,7 +23,7 @@
         <a-asset-item id="arrow-mtl" src="arrow-obj/nnf-arrow.mtl"></a-asset-item>
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-      <a-entity id="wrapper" position="0 -8 0" emitevents="true">
+      <a-entity id="wrapper" position="0 0 0" emitevents="true">
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 -75 -85" rotation="0 0 0" align="center"></a-text>
         <!-- look-at="[gps-camera]" -->
@@ -45,11 +45,14 @@
       var userLat;
       var userLng;
       var arrowId = 0;
+      var listOfArrows = [];
+      var wrapper;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
         arrowEl = document.querySelector('[arrow]');
         distanceEl = document.querySelector('[distance]');
+        wrapper = document.querySelector('wrapper');
 
         
         if (navigator.geolocation) {
@@ -141,17 +144,29 @@
         return radians * 180 / Math.PI;
       }
       
+      function createArrow(){
+        arrowId = arrowId + 1;
+        var position = arrowId * -10;
+        var entityEl = document.createElement('a-entity');
+        
+        entityEl.setAttribute('id', "arrow" + arrowId);
+        entityEl.setAttribute('class', "intersectable");
+        entityEl.setAttribute('obj-model', 'obj: #arrow-obj; mtl: #arrow-mtl');
+        entityEl.setAttribute('scale', "5 5 5 ");
+        entityEl.setAttribute('position', "0 -10 " + position);
+        entityEl.setAttribute('rotation', "0 0 0");
+        
+        return entityEl;
+      }
+      
       function pragueOfficeTurn() {
-          arrowId = arrowId + 1;
-          var entityEl = document.createElement('a-entity');
-          entityEl.setAttribute('id', "arrow" + arrowId);
-          entityEl.setAttribute('class', "intersectable");
-          entityEl.setAttribute('obj-model', 'obj: #arrow-obj; mtl: #arrow-mtl');
-          entityEl.setAttribute('scale', "5 5 5 ");
-          entityEl.setAttribute('position', "0 0 -10");
-          entityEl.setAttribute('rotation', "0 " + arrowId + " 0");
-          scene.appendChild(entityEl);
-                
+          
+          for (i = 0; i < 10; i++) {
+            var entityEl = createArrow();
+            listOfArrows.push(entityEl);
+            scene.appendChild(entityEl);
+
+          }               
         
           var angle = - getPragueAngle();
           var distance = getPragueDistance();
@@ -162,6 +177,12 @@
       }
       
       function brnoOfficeTurn() {
+          arrowId = 0;
+          listOfArrows.forEach(function (item, index) {
+            console.log(item, index);
+            scene.removeChild(item);
+          });
+        
           var angle = getBrnoAngle();
           var distance = getBrnoDistance();
           log(angle);
