@@ -28,8 +28,8 @@
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
-        <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="5 5 5" rotation="0 0 0"></a-entity>
-        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="75 75 75" position="0 -75 -85" rotation="0 0 0" align="center"></a-text>
+        <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="1 1 1" position="0 -75 -85" rotation="0 0 0" align="center"></a-text>
         <a-box material="color: yellow" gps-entity-place="latitude: 49.8295141; longitude: 18.1642419" position="0 0 0"/>
         <!-- look-at="[gps-camera]" -->
       </a-entity>
@@ -169,7 +169,7 @@
         }
         else
         {
-          entityEl.setAttribute('position', {x: 100, y: -750, z: position});
+          entityEl.setAttribute('position', {x: 100, y: -400, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
         }
         
