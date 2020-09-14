@@ -154,7 +154,7 @@
       
       function createArrow(){
         arrowId = arrowId + 1;
-        var position = arrowId * -10;
+        var position = arrowId * -50;
         var entityEl = document.createElement('a-entity');
         
         entityEl.setAttribute('id', "arrow" + arrowId);
@@ -164,12 +164,12 @@
         entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
         if(arrowId % 2 == 0)
         {
-          entityEl.setAttribute('position', {x: 0, y: -200, z: position});
+          entityEl.setAttribute('position', {x: 0, y: -500, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
         }
         else
         {
-          entityEl.setAttribute('position', {x: 0, y: -150, z: position});
+          entityEl.setAttribute('position', {x: 0, y: -350, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
         }
         
