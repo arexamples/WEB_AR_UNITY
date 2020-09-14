@@ -57,17 +57,19 @@
         wrapper = document.querySelector('[wrapper]');
         arrowEl = document.querySelector('[arrow]');
         distanceEl = document.querySelector('[distance]');
+        userLat = 49.8291455;
+        userLng = 18.1640326;
         
 
         
-        if (navigator.geolocation) {
+       /* if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
             let gps = document.createAttribute('gps-entity-place');
             let arjs = document.createAttribute('arjs');
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
             scene.setAttributeNode(gps); /* Apply to whole scene */
-            scene.setAttributeNode(arjs);    
+        /*    scene.setAttributeNode(arjs);    
             userLat = position.coords.latitude;
             userLng = position.coords.longitude;
             
@@ -78,7 +80,7 @@
           }, {
               enableHighAccuracy: true
           });
-        }
+        }*/
       };
       
       function getPragueAngle() {
