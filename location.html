@@ -29,7 +29,7 @@
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
         
-        <a-box material="color: yellow" gps-entity-place="latitude: 49.8295141; longitude: 18.1642419" position="0 0 0"/>
+       <!--  <a-box material="color: yellow" gps-entity-place="latitude: 49.8295141; longitude: 18.1642419" position="0 0 0"/> -->
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="1 1 1" position="0 -75 -85" rotation="0 0 0" align="center"></a-text>
        <!-- 
@@ -71,17 +71,17 @@
         
 
         
-        if (navigator.geolocation) {
+       /* if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
             let gps = document.createAttribute('gps-entity-place');
             let arjs = document.createAttribute('arjs');
             arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
             gps.value = `latitude: ${userLat}; longitude: ${userLng}`;
             scene.setAttributeNode(gps); /* Apply to whole scene */
-            scene.setAttributeNode(arjs);    
+        /*    scene.setAttributeNode(arjs);    
             /*userLat = position.coords.latitude;
             userLng = position.coords.longitude;*/
-            
+        /*    
             log(gps.value);       
             
           }, function (e) {
@@ -90,7 +90,7 @@
               enableHighAccuracy: true
           });
         }
-      };
+      };*/
       
       function getPragueAngle() {
         return getAngle(PragueLat, PragueLng);
@@ -162,7 +162,7 @@
       
       function createArrow(){
         arrowId = arrowId + 1;
-        var position = arrowId * -50;
+        var position = arrowId * -100;
         var entityEl = document.createElement('a-entity');
         
         entityEl.setAttribute('id', "arrow" + arrowId);
@@ -173,15 +173,15 @@
         if(arrowId % 2 == 0)
         {
           entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
-          entityEl.setAttribute('scale', {x: 10, y: 10, z: 10});
+          entityEl.setAttribute('scale', {x: 100, y: 100, z: 100});
           entityEl.setAttribute('position', {x: 0, y: -500, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
         }
         else
         {
           entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
-          entityEl.setAttribute('scale', {x: 50, y: 50, z: 50});
-          entityEl.setAttribute('position', {x: 100, y: -400, z: position});
+          entityEl.setAttribute('scale', {x: 100, y: 100, z: 100});
+          entityEl.setAttribute('position', {x: 0, y: -500, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
         }
         
