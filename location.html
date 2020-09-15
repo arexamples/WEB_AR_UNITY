@@ -63,6 +63,8 @@
       var arrowId = 0;
       var listOfArrows = [];
       var wrapper;
+      var positionX;
+      var positionY;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
@@ -165,27 +167,55 @@
       
       function createArrow(){
         arrowId = arrowId + 1;
-        var position = (arrowId * -10) + 10;
+        
         var entityEl = document.createElement('a-entity');
         
         entityEl.setAttribute('id', "arrow" + arrowId);
         entityEl.setAttribute('class', "intersectable");
        
-        
-
         if(arrowId % 2 == 0)
         {
-          entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
-          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
-          entityEl.setAttribute('position', {x: 0, y: 0, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
         }
         else
         {
+          entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
+        }
+        
+        if(arrowId <= 10)
+        {
+          positionX = (arrowId * -10) + 10;
+          positionY = 0;
           entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
           entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
-          entityEl.setAttribute('position', {x: 0, y: 0, z: position});
-          entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
+          entityEl.setAttribute('position', {x: 0, y: 0, z: positionX});
+        }
+        
+        if(arrowId > 10 &&  arrowId <= 20)
+        {
+          positionX = positionX - 5;
+          positionY = positionY - 5;
+          entityEl.setAttribute('rotation', {x: 0, y: -45, z: 0});
+          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
+          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
+        }
+        
+        if(arrowId > 20 &&  arrowId <= 30)
+        {
+          positionX = positionX + 5;
+          positionY = positionY + 5;
+          entityEl.setAttribute('rotation', {x: 0, y: 45, z: 0});
+          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
+          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
+        }
+        
+        if(arrowId > 30 &&  arrowId <= 40)
+        {
+          positionX = positionX;
+          positionY = positionY + 10;
+          entityEl.setAttribute('rotation', {x: 0, y: 90, z: 0});
+          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
+          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
         }
         
         
