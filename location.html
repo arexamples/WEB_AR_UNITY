@@ -167,17 +167,20 @@
         
         entityEl.setAttribute('id', "arrow" + arrowId);
         entityEl.setAttribute('class', "intersectable");
-        entityEl.setAttribute('scale', {x: 50, y: 50, z: 50});
+       
         
-        entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
-        entityEl.object3D.rotation.set(50, 20, 30);
+       
         if(arrowId % 2 == 0)
         {
+          entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
+          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
           entityEl.setAttribute('position', {x: 0, y: -500, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
         }
         else
         {
+          entityEl.setAttribute('rotation', {x: 0, y: 0, z: 90});
+          entityEl.setAttribute('scale', {x: 10, y: 10, z: 10});
           entityEl.setAttribute('position', {x: 100, y: -400, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
         }
