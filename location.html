@@ -168,6 +168,7 @@
         entityEl.setAttribute('scale', {x: 50, y: 50, z: 50});
         
         entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
+        entityEl.object3D.rotation.set(50, 20, 30);
         if(arrowId % 2 == 0)
         {
           entityEl.setAttribute('position', {x: 0, y: -500, z: position});
