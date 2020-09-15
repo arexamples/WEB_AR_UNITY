@@ -16,8 +16,11 @@
       <button onclick="brnoOfficeTurn()">CGI BRNO</button>
       <button onclick="ostravaOfficeTurn()">CGI OVA</button>
     </div>	
-  
-    <a-scene vr-mode-ui="enabled: false">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true; trackingMethod: best;"
+    >
       <a-assets>
         <a-asset-item id="arrow-obj" src="arrow-obj/nnf-arrow.obj"></a-asset-item>
         <a-asset-item id="arrow-mtl" src="arrow-obj/nnf-arrow.mtl"></a-asset-item>
@@ -174,14 +177,14 @@
         {
           entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
           entityEl.setAttribute('scale', {x: 75, y: 75, z: 75});
-          entityEl.setAttribute('position', {x: 0, y: -500, z: position});
+          entityEl.setAttribute('position', {x: 0, y: 0, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
         }
         else
         {
           entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
           entityEl.setAttribute('scale', {x: 75, y: 75, z: 75});
-          entityEl.setAttribute('position', {x: 0, y: -500, z: position});
+          entityEl.setAttribute('position', {x: 0, y: 0, z: position});
           entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
         }
         
