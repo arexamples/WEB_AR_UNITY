@@ -182,7 +182,7 @@
           entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
         }
         
-        if(arrowId <= 10)
+        if(arrowId <5)
         {
           positionX = (arrowId * -10) + 10;
           positionY = 0;
@@ -191,7 +191,7 @@
           entityEl.setAttribute('position', {x: 0, y: 0, z: positionX});
         }
         
-        if(arrowId > 10 &&  arrowId <= 20)
+        if(arrowId >= 5 &&  arrowId < 10)
         {
           positionX = positionX - 5;
           positionY = positionY - 5;
@@ -200,40 +200,21 @@
           entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
         }
         
-        if(arrowId > 20 &&  arrowId <= 30)
+        if(arrowId >= 10 &&  arrowId < 15)
         {
-          positionX = positionX + 5;
-          positionY = positionY + 5;
-          entityEl.setAttribute('rotation', {x: 0, y: 45, z: 0});
+          positionX = positionX - 10;
+          positionY = positionY;
+          entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
           entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
           entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
         }
-        
-        if(arrowId > 30 &&  arrowId <= 40)
-        {
-          positionX = positionX;
-          positionY = positionY + 10;
-          entityEl.setAttribute('rotation', {x: 0, y: 90, z: 0});
-          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
-          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
-        }
-        
-        if(arrowId > 40)
-        {
-          positionX = positionX + 10;
-          entityEl.setAttribute('rotation', {x: 0, y: 180, z: 0});
-          entityEl.setAttribute('scale', {x: 1, y: 1, z: 1});
-          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
-        }
-        
-        
         
         return entityEl;
       }
       
       function pragueOfficeTurn() {
           
-          for (i = 0; i < 100; i++) {
+          for (i = 0; i < 15; i++) {
             var entityEl = createArrow();
             listOfArrows.push(entityEl);
             wrapper.appendChild(entityEl);
