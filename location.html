@@ -168,7 +168,7 @@
       function createWay(angle, distance){
         for (i = 1; i <= distance; i++) {
           
-          var entityEl = createArrow(angle, i * Math.cos(toRadians(angle), i * Math.sin(toRadians(angle))));
+          var entityEl = createArrow(angle, i * 7.5 * Math.cos(toRadians(angle), i * 7.5 * Math.sin(toRadians(angle))));
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
         }
