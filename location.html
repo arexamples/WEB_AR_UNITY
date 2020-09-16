@@ -168,7 +168,7 @@
       function createWay(angle, distance){
         for (i = 1; i <= distance; i++) {
           
-          var entityEl = createArrow(angle, i * -7.5 * Math.cos(toRadians(angle)), i * -7.5 * Math.sin(toRadians(angle)));
+          var entityEl = createArrow(angle, i * -7.5 * Math.cos(toRadians(angle)), i * 7.5 * Math.sin(toRadians(angle)));
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
         }
@@ -245,7 +245,13 @@
       */
       function pragueOfficeTurn() {
           createWay(0, 10);
+          createWay(45, 5);
           createWay(90, 10);
+          createWay(135, 5);
+          createWay(180, 10);
+          createWay(225, 5);
+          createWay(270, 10);
+          createWay(315, 5);
          /* createWay(90, 8);
           createWay(135, 6);
           createWay(180, 4);
