@@ -102,7 +102,9 @@
           log("test");
           if (navigator.geolocation)
           {
+            log("test2");
           navigator.geolocation.getCurrentPosition(function(position) {
+              log("test3");
               let gps = document.createAttribute('gps-entity-place');
               gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
               scene.setAttributeNode(gps);
