@@ -42,7 +42,7 @@
 
         <!-- look-at="[gps-camera]" -->
       </a-entity>
-      <a-camera gps-camera rotation-reader> 
+      <a-camera gps-camera="simulateLatitude: 49.8291455; simulateLongitude: 18.1640326;" rotation-reader simulateLatitude simulateLongitude> 
         <a-text distance id="distance" class="intersectable" value="23 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
       </a-camera>
     </a-scene>
@@ -95,14 +95,7 @@
               enableHighAccuracy: true
           });
         }*/
-      };
-      
-      setInterval(
-        function(){ 
-          log("test");
-         
-        },
-      3000);
+      };   
       
       function getPragueAngle() {
         return getAngle(PragueLat, PragueLng);
@@ -251,17 +244,6 @@
       }
       */
       function pragueOfficeTurn() {
-         if (navigator.geolocation)
-          {
-            log("test2");
-          navigator.geolocation.getCurrentPosition(function(position) {
-              log("test3");
-              let gps = document.createAttribute('gps-entity-place');
-              gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
-              scene.setAttributeNode(gps);
-              log(gps.value);   
-          }); 
-          }
           createWay(0, 10);
           createWay(45, 5);
           createWay(90, 10);
