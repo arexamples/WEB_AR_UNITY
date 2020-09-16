@@ -100,17 +100,7 @@
       setInterval(
         function(){ 
           log("test");
-          if (navigator.geolocation)
-          {
-            log("test2");
-          navigator.geolocation.getCurrentPosition(function(position) {
-              log("test3");
-              let gps = document.createAttribute('gps-entity-place');
-              gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
-              scene.setAttributeNode(gps);
-              log(gps.value);   
-          }); 
-          }
+         
         },
       3000);
       
@@ -261,6 +251,17 @@
       }
       */
       function pragueOfficeTurn() {
+         if (navigator.geolocation)
+          {
+            log("test2");
+          navigator.geolocation.getCurrentPosition(function(position) {
+              log("test3");
+              let gps = document.createAttribute('gps-entity-place');
+              gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
+              scene.setAttributeNode(gps);
+              log(gps.value);   
+          }); 
+          }
           createWay(0, 10);
           createWay(45, 5);
           createWay(90, 10);
