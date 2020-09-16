@@ -165,6 +165,35 @@
         return radians * 180 / Math.PI;
       }
       
+      function createWay(angle, distance){
+        for (i = 1; i <= distance; i++) {
+          
+          var entityEl = createArrow(angle, i * Math.cos(toRadians(angle), i * Math.sin(toRadians(angle)));
+          listOfArrows.push(entityEl);
+          wrapper.appendChild(entityEl);
+        }
+      }
+      
+      function createArrow(angle, positionX, positionY){
+        arrowId = arrowId + 1;
+        var entityEl = document.createElement('a-entity');
+        entityEl.setAttribute('id', "arrow" + arrowId);
+        entityEl.setAttribute('class', "intersectable");
+        if(arrowId % 2 == 0)
+        {
+          entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
+        }
+        else
+        {
+          entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
+        }
+        entityEl.setAttribute('rotation', {x: 0, y: angle, z: 0});
+        entityEl.setAttribute('scale', {x: 5, y: 5, z: 5});
+        entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
+        
+        return entityEl;
+      }
+      
       function createArrow(){
         arrowId = arrowId + 1;
         
@@ -212,8 +241,14 @@
       }
       
       function pragueOfficeTurn() {
-          
-          for (i = 0; i < 30; i++) {
+          createWay(45, 10);
+          createWay(90, 8);
+          createWay(135, 6);
+          createWay(180, 4);
+          createWay(225, 2);
+        
+          distanceEl.setAttribute('value', distance + " km"); 
+         /* for (i = 0; i < 30; i++) {
             var entityEl = createArrow();
             listOfArrows.push(entityEl);
             wrapper.appendChild(entityEl);
@@ -225,7 +260,7 @@
           log(angle);
           log(distance);
           distanceEl.setAttribute('value', distance + " km");
-          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');*/
       }
       
       function brnoOfficeTurn() {
