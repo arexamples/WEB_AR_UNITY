@@ -97,6 +97,20 @@
         }*/
       };
       
+      setInterval(
+        function(){ 
+          if (navigator.geolocation)
+          {
+          navigator.geolocation.getCurrentPosition(function(position) {
+              let gps = document.createAttribute('gps-entity-place');
+              gps.value = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`;
+              scene.setAttributeNode(gps);
+              log(gps.value);   
+          }); 
+          }
+        },
+      3000);
+      
       function getPragueAngle() {
         return getAngle(PragueLat, PragueLng);
       }
