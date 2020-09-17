@@ -285,6 +285,7 @@
       var positionY = 0;
       var lastPositionX = 0;
       var lastPositionY = 0;
+      var totalDistance = 0;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
@@ -503,6 +504,10 @@
           createWay(225, 5);
           createWay(270, 10);
           createWay(315, 5);*/
+        var lastPositionX = 0;
+        var lastPositionY = 0;
+        var totalDistance = 0;
+        
         for (var key in json.geoJson.features) {
            if(json.geoJson.features[key].geometry.type === "LineString"){ 
             var startLat =  json.geoJson.features[key].geometry.coordinates[0][0];
@@ -514,8 +519,10 @@
             var angle = getAngle(startLat, startLng, endLat, endLng);  
             log(angle + " - " + distance);
             createWay(angle, distance);
+            totalDistance = totalDistance + distance; 
             }
         }
+        distanceEl.setAttribute('value', totalDistance + " m");
          /* createWay(90, 8);
           createWay(135, 6);
           createWay(180, 4);
