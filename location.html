@@ -419,8 +419,8 @@
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
         }
-        lastPositionX = distance * -7.5 * Math.cos(toRadians(angle));
-        lastPositionY = distance * 7.5 * Math.sin(toRadians(angle));
+        lastPositionX = lastPositionX + (distance-1) * -7.5 * Math.cos(toRadians(angle));
+        lastPositionY = lastPositionY + (distance-1) * 7.5 * Math.sin(toRadians(angle));
         log("a " + lastPositionX + " *** " + lastPositionY);
       }
       
