@@ -339,7 +339,7 @@
         return Math.round(angle * 10) / 10;
       }
       
-      function getAngle(destLat, destLng) {       
+    /*  function getAngle(destLat, destLng) {       
         var startLat = userLat;
         var startLng = userLng;
         
@@ -355,7 +355,7 @@
         angle = (toDegrees(angle) + 360) % 360;
 
         return Math.round(angle * 10) / 10;
-      }
+      }*/
       
       function getPragueDistance() {
         return getDistance(PragueLat, PragueLng);
@@ -384,7 +384,7 @@
         return Math.round(distance * 10) / 10;
       }
       
-      function getDistance(destLat, destLng) {         
+     /* function getDistance(destLat, destLng) {         
         var startLat = userLat;
         var startLng = userLng;
         var R = 6371; // km
@@ -399,7 +399,7 @@
         var distance = R * c;
 
         return Math.round(distance * 10) / 10;
-      }
+      }*/
       
       function toRadians(degrees) {
         return degrees * Math.PI / 180;
