@@ -413,6 +413,7 @@
       }
       
       function createWay(angle, distance){
+        log(lastPositionX + " *** " + lastPositionY);
         for (i = 1; i <= distance; i++) {
           var entityEl = createArrow(angle, lastPositionX + i * -7.5 * Math.cos(toRadians(angle)), lastPositionY + i * 7.5 * Math.sin(toRadians(angle)));
           listOfArrows.push(entityEl);
@@ -420,6 +421,7 @@
         }
         lastPositionX = distance * -7.5 * Math.cos(toRadians(angle));
         lastPositionY = distance * 7.5 * Math.sin(toRadians(angle));
+        log("a " + lastPositionX + " *** " + lastPositionY);
       }
       
       function createArrow(angle, positionX, positionY){
@@ -438,9 +440,8 @@
         entityEl.setAttribute('rotation', {x: 0, y: -angle, z: 0});
         entityEl.setAttribute('scale', {x: 5, y: 1, z: 5});
         entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
-        log(angle);
-        log(positionX);
-        log(positionY);
+        log(angle + " - " + positionX + " - " + positionY);
+
         
         return entityEl;
       }
