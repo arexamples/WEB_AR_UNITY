@@ -223,8 +223,10 @@
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity wrapper id="wrapper" position="0 -1.5 0" emitevents="true">
-      <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+      
      <!-- 
+        <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+
         <a-box material="color: yellow" position="0 0 -1"></a-box>
         <a-box material="color: blue" position="0 -1.5 -1"></a-box>
   
@@ -290,7 +292,6 @@
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
         wrapper = document.querySelector('[wrapper]');
-        arrowEl = document.querySelector('[arrow]');
         distanceEl = document.querySelector('[distance]');
 
         
@@ -536,12 +537,12 @@
 
           }               
           */
-          var angle = - getPragueAngle();
+         /* var angle = - getPragueAngle();
           var distance = getPragueDistance();
           log(angle);
           log(distance);
-          distanceEl.setAttribute('value', distance + " km");
-          arrowEl.setAttribute('rotation', '0 ' + angle + ' 0');
+          distanceEl.setAttribute('value', distance + " km");*/
+
       }
       
       function brnoOfficeTurn() {
@@ -559,7 +560,7 @@
           log(angle);
           log(distance);
           distanceEl.setAttribute('value', distance + " km");
-          arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
+          //arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
@@ -568,7 +569,7 @@
           log(angle);
           log(distance);
           distanceEl.setAttribute('value', distance + " km");
-          arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
+          //arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
     </script>    
   </body>
