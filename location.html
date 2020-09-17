@@ -418,10 +418,8 @@
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
         }
-        if(distance > 0){
-            lastPositionX = distance * -7.5 * Math.cos(toRadians(angle));
-            lastPositionY = distance * 7.5 * Math.sin(toRadians(angle));
-        }
+        lastPositionX = distance * -7.5 * Math.cos(toRadians(angle));
+        lastPositionY = distance * 7.5 * Math.sin(toRadians(angle));
       }
       
       function createArrow(angle, positionX, positionY){
