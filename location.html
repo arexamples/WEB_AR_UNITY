@@ -326,6 +326,21 @@
         return getAngle(OstravaLat, OstravaLng);
       }
       
+      function getAngle(startLat, startLng, destLat, destLng) {             
+        startLat = toRadians(startLat);
+        startLng = toRadians(startLng);
+        destLat = toRadians(destLat);
+        destLng = toRadians(destLng);
+
+        y = Math.sin(destLng - startLng) * Math.cos(destLat);
+        x = Math.cos(startLat) * Math.sin(destLat) -
+              Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+        var angle = Math.atan2(y, x);
+        angle = (toDegrees(angle) + 360) % 360;
+
+        return Math.round(angle * 10) / 10;
+      }
+      
       function getAngle(destLat, destLng) {       
         var startLat = userLat;
         var startLng = userLng;
@@ -339,7 +354,7 @@
         x = Math.cos(startLat) * Math.sin(destLat) -
               Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
         var angle = Math.atan2(y, x);
-        angle = toDegrees(angle);
+        angle = (toDegrees(angle) + 360) % 360;
 
         return Math.round(angle * 10) / 10;
       }
@@ -354,6 +369,21 @@
       
       function getOstravaDistance() {
         return getDistance(OstravaLat, OstravaLng);
+      }
+      
+      function getDistance(startLat, startLng, destLat, destLng) {         
+        var R = 6371; // km
+        var dLat = toRadians(destLat-startLat);
+        var dLon = toRadians(destLng-startLng);
+        var lat1 = toRadians(startLat);
+        var lat2 = toRadians(destLat);
+
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var distance = R * c;
+
+        return Math.round(distance * 10) / 10;
       }
       
       function getDistance(destLat, destLng) {         
@@ -461,14 +491,25 @@
       }
       */
       function pragueOfficeTurn() {
-          createWay(0, 10);
+ /*         createWay(0, 10);
           createWay(45, 5);
           createWay(90, 10);
           createWay(135, 5);
           createWay(180, 10);
           createWay(225, 5);
           createWay(270, 10);
-          createWay(315, 5);
+          createWay(315, 5);*/
+        for (var key in json.geoJson.features) {
+           if(json.geoJson.features[key].geometry.type === "LineString"){ 
+            var startLat =  json.geoJson.features[key].geometry.coordinates[0][0];
+            var startLng =  json.geoJson.features[key].geometry.coordinates[0][1];
+            var endLat =  json.geoJson.features[key].geometry.coordinates[1][0];
+            var endLng =  json.geoJson.features[key].geometry.coordinates[1][1];
+            var distance = getDistance(startLat, startLng, endLat, endLng); 
+            var angle = getAngle(startLat, startLng, endLat, endLng);  
+            createWay(angle, distance);
+            }
+        }
          /* createWay(90, 8);
           createWay(135, 6);
           createWay(180, 4);
