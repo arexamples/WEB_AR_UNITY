@@ -505,6 +505,7 @@
             var endLng =  json.geoJson.features[key].geometry.coordinates[1][1];
             var distance = getDistance(startLat, startLng, endLat, endLng); 
             var angle = getAngle(startLat, startLng, endLat, endLng);  
+            log(angle + " - " + distance);
             createWay(angle, distance);
             }
         }
