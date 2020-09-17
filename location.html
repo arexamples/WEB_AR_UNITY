@@ -281,8 +281,8 @@
       var wrapper;
       var positionX = 5;
       var positionY = 0;
-      var lastPositionX;
-      var lastPositionY;
+      var lastPositionX = 0;
+      var lastPositionY = 0;
 
       window.onload = () => {
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
@@ -414,14 +414,7 @@
       
       function createWay(angle, distance){
         for (i = 1; i <= distance; i++) {
-          if(listOfArrows.length > 0)
-          {
-            var entityEl = createArrow(angle, lastPositionX + i * -7.5 * Math.cos(toRadians(angle)), lastPositionY + i * 7.5 * Math.sin(toRadians(angle)));
-          }
-          else{
-            var entityEl = createArrow(angle, i * -7.5 * Math.cos(toRadians(angle)), i * 7.5 * Math.sin(toRadians(angle)));
-          }
-          
+          var entityEl = createArrow(angle, lastPositionX + i * -7.5 * Math.cos(toRadians(angle)), lastPositionY + i * 7.5 * Math.sin(toRadians(angle)));
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
         }
