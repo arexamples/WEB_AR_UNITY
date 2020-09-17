@@ -497,6 +497,14 @@
       }
       */
       function pragueOfficeTurn() {
+        arrowId = 0;
+        listOfArrows.forEach(function (item, index) {
+          console.log(item, index);
+          wrapper.removeChild(item);
+        });
+        listOfArrows = [];
+        positionX = 5;
+        positionY = 0;
  /*         createWay(0, 10);
           createWay(45, 5);
           createWay(90, 10);
@@ -505,9 +513,9 @@
           createWay(225, 5);
           createWay(270, 10);
           createWay(315, 5);*/
-        var lastPositionX = 0;
-        var lastPositionY = 0;
-        var totalDistance = 0;
+        lastPositionX = 0;
+        lastPositionY = 0;
+        totalDistance = 0;
         
         for (var key in json.geoJson.features) {
            if(json.geoJson.features[key].geometry.type === "LineString"){ 
