@@ -260,7 +260,7 @@
         <!-- look-at="[gps-camera]" -->
       </a-entity>
       <a-camera gps-camera="simulateLatitude: 50.04799738633627; simulateLongitude: 14.30474551703212;" rotation-reader> 
-        <a-text distance id="distance" class="intersectable" value="" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
+        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
       </a-camera>
     </a-scene>
         
@@ -414,8 +414,8 @@
         
         return entityEl;
       }
-
-      function pragueOfficeTurn() {
+      
+      function buttonWay(){
         arrowId = 0;
         listOfArrows.forEach(function (item, index) {
           console.log(item, index);
@@ -457,9 +457,16 @@
         }
         distanceEl.setAttribute('value', totalDistance + " m");
       }
+
+      function pragueOfficeTurn() {
+        buttonWay();
+        wrapper.setAttribute('position', {x: 0, y: -1.5, z: 0});
+      }
       
       function brnoOfficeTurn() {
-          arrowId = 0;
+        buttonWay();
+        wrapper.setAttribute('position', {x: 0, y: -1.0, z: 0});
+        /*  arrowId = 0;
           listOfArrows.forEach(function (item, index) {
             console.log(item, index);
             wrapper.removeChild(item);
@@ -472,16 +479,18 @@
           var distance = getBrnoDistance();
           log(angle);
           log(distance);
-          distanceEl.setAttribute('value', distance + " km");
+          distanceEl.setAttribute('value', distance + " km");*/
           //arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
-          var angle = getOstravaAngle();
+        buttonWay();
+        wrapper.setAttribute('position', {x: 0, y: -0.5, z: 0});
+         /* var angle = getOstravaAngle();
           var distance = getOstravaDistance();
           log(angle);
           log(distance);
-          distanceEl.setAttribute('value', distance + " km");
+          distanceEl.setAttribute('value', distance + " km");*/
           //arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
     </script>    
