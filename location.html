@@ -348,8 +348,6 @@
         entityEl.setAttribute('rotation', {x: 0, y: -angle, z: 0});
         entityEl.setAttribute('scale', {x: SCALE, y: 1, z: SCALE});
         entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
-        log(angle + " - " + positionX + " - " + positionY);
-
         
         return entityEl;
       }
@@ -357,7 +355,6 @@
       function buttonWay(){
         arrowId = 0;
         listOfArrows.forEach(function (item, index) {
-          console.log(item, index);
           wrapper.removeChild(item);
         });
         listOfArrows = [];
@@ -374,7 +371,6 @@
             var startLng =  json.geoJson.features[key].geometry.coordinates[0][0];
             var endLat =  json.geoJson.features[key].geometry.coordinates[1][1];
             var endLng =  json.geoJson.features[key].geometry.coordinates[1][0];
-            log(startLat + " - " + startLng + " - " + endLat + " - " + endLng);
              
             var entityEl = document.createElement('a-sphere');
             entityEl.setAttribute('material', "color: blue"); 
