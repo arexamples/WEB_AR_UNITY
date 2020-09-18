@@ -438,8 +438,10 @@
              
             var entityEl = document.createElement('a-sphere');
             entityEl.setAttribute('material', "color: blue"); 
-            entityEl.setAttribute('class', "intersectable");
-            entityEl.setAttribute('gps-entity-place', "latitude: ${endLat}; longitude: ${endLng}");
+            entityEl.setAttribute('class', "intersectable");     
+            let gps = document.createAttribute('gps-entity-place');
+            gps.value = `latitude: ${endLat}; longitude: ${endLng}`;
+            entityEl.setAttributeNode(gps);
             entityEl.setAttribute('position', {x: 0, y: 0.5, z: 0});
             entityEl.setAttribute('radius', "1");
             wrapper.appendChild(entityEl); 
