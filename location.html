@@ -382,7 +382,8 @@
       
       function createWay(angle, distance){
         log(lastPositionX + " *** " + lastPositionY);
-        for (i = 0; i < ((distance-1) / SCALE); i++) {
+        var finalDistance = ((distance-SPACE) / SPACE);
+        for (i = 0; i < finalDistance; i++) {
           var entityEl = createArrow(angle, lastPositionX + i * -SPACE * Math.cos(toRadians(angle)), lastPositionY + i * SPACE * Math.sin(toRadians(angle)));
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
