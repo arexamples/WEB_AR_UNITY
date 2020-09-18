@@ -235,9 +235,9 @@
       const BrnoLng = 16.5971738;
       const OstravaLat = 49.8384949;
       const OstravaLng = 18.1549161;
-      var SCALE = 1; // 5
-      var SPACE = 1.5; // 7.5
-      var scene; /* Apply to whole scene */
+      const SCALE = 1; // 5
+      const SPACE = 1.5; // 7.5
+      var scene;
       var arrow;
       var distance;
       var userLat;
@@ -252,7 +252,7 @@
       var totalDistance = 0;
 
       window.onload = () => {
-        scene = document.querySelector('a-scene'); /* Apply to whole scene */
+        scene = document.querySelector('a-scene');
         wrapper = document.querySelector('[wrapper]');
         distanceEl = document.querySelector('[distance]');
       };   
