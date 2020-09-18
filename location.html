@@ -273,7 +273,7 @@
       const OstravaLat = 49.8384949;
       const OstravaLng = 18.1549161;
       var SCALE = 1; // 5
-      var SPACE = 1; // 7.5
+      var SPACE = 1.5; // 7.5
       var scene; /* Apply to whole scene */
       var arrow;
       var distance;
@@ -382,7 +382,7 @@
       
       function createWay(angle, distance){
         log(lastPositionX + " *** " + lastPositionY);
-        for (i = 0; i < distance; i++) {
+        for (i = 0; i < ((distance-1) / SCALE); i++) {
           var entityEl = createArrow(angle, lastPositionX + i * -SPACE * Math.cos(toRadians(angle)), lastPositionY + i * SPACE * Math.sin(toRadians(angle)));
           listOfArrows.push(entityEl);
           wrapper.appendChild(entityEl);
