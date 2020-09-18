@@ -8,6 +8,7 @@
     <!-- include ar.js -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script>
+      /* TODO tendle json at chodi od tebe */
       var json = 
       {
         "instructions": [
@@ -214,10 +215,10 @@
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
       <a-assets>
-        <a-asset-item id="arrow0-obj" src="arrow-obj/arrow0.obj"></a-asset-item>
-        <a-asset-item id="arrow0-mtl" src="arrow-obj/arrow0.mtl"></a-asset-item>
-        <a-asset-item id="arrow1-obj" src="arrow-obj/arrow1.obj"></a-asset-item>
-        <a-asset-item id="arrow1-mtl" src="arrow-obj/arrow1.mtl"></a-asset-item>
+        <a-asset-item id="arrow0-obj" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow0.obj"></a-asset-item>
+        <a-asset-item id="arrow0-mtl" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow0.mtl"></a-asset-item>
+        <a-asset-item id="arrow1-obj" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow1.obj"></a-asset-item>
+        <a-asset-item id="arrow1-mtl" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow1.mtl"></a-asset-item>
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity wrapper id="wrapper" position="0 -1.5 0" emitevents="true">
