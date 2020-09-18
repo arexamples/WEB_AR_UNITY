@@ -214,8 +214,6 @@
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
       <a-assets>
-        <a-asset-item id="arrow-obj" src="arrow-obj/nnf-arrow.obj"></a-asset-item>
-        <a-asset-item id="arrow-mtl" src="arrow-obj/nnf-arrow.mtl"></a-asset-item>
         <a-asset-item id="arrow0-obj" src="arrow-obj/arrow0.obj"></a-asset-item>
         <a-asset-item id="arrow0-mtl" src="arrow-obj/arrow0.mtl"></a-asset-item>
         <a-asset-item id="arrow1-obj" src="arrow-obj/arrow1.obj"></a-asset-item>
@@ -223,41 +221,6 @@
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity wrapper id="wrapper" position="0 -1.5 0" emitevents="true">
-     <!-- 
-        <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
-
-        <a-box material="color: yellow" position="0 0 -1"></a-box>
-        <a-box material="color: blue" position="0 -1.5 -1"></a-box>
-  
-        <a-box material="color: yellow" gps-entity-place="latitude: 49.8291255; longitude: 18.1640326" position="0 0 0" scale="1 1 1"></a-box>
-        <a-box material="color: blue" gps-entity-place="latitude: 49.8291655; longitude: 18.1640326" position="0 0 0" scale="2 1 2"></a-box>
-        <a-box material="color: red" gps-entity-place="latitude: 49.8291455; longitude: 18.1640526" position="0 0 0" scale="1 1 1"></a-box>
-        <a-box material="color: green" gps-entity-place="latitude: 49.8291455; longitude: 18.1640126" position="0 0 0" scale="1 1 1"></a-box>
-        
-        <a-box material="color: yellow" position="0 0 -2.224"></a-box>
-        <a-box material="color: blue" position="0 0 2.224"></a-box>
-        <a-box material="color: red" position="-1.435 0 0"></a-box>
-        <a-box material="color: red" position="-2.435 0 0"></a-box>
-        <a-box material="color: red" position="-3.435 0 0"></a-box>
-        <a-box material="color: green" position="1.435 0 0"></a-box>
-        <a-box material="color: yellow" position="6.435 0 0"></a-box>
-        <a-box material="color: green" position="8.935 0 0"></a-box>
-
-        
-        <a-entity class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="0 0 -2.224" scale="2 1 2" rotation="0 0 0"></a-entity>
-        <a-entity class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="0 0 2.224" scale="2 1 2" rotation="0 180 0"></a-entity>
-        <a-entity class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="-1.435 0 0" scale="2 1 2" rotation="0 90 0"></a-entity>
-        <a-entity class="intersectable" obj-model="obj: #arrow1-obj; mtl: #arrow1-mtl" position="-1.435 0 0" scale="1 1 1" rotation="0 90 0"></a-entity>
-        <a-entity class="intersectable" obj-model="obj: #arrow1-obj; mtl: #arrow1-mtl" position="-2.435 0 0" scale="1 1 1" rotation="0 90 0"></a-entity>
-        <a-entity class="intersectable" obj-model="obj: #arrow1-obj; mtl: #arrow1-mtl" position="-3.435 0 0" scale="1 1 1" rotation="0 90 0"></a-entity>
-        <a-entity class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="1.435 0 0" scale="5 1 5" rotation="0 270 0"></a-entity>
-        
-        <a-entity arrow45 id="arrow45" class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="0 0 1" scale="2 2 2" rotation="0 0 0"></a-entity>
-        <a-entity arrow46 id="arrow46" class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="0 0 -1" scale="2 2 2" rotation="0 0 0"></a-entity>
-        <a-entity arrow47 id="arrow47" class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="0 1 0" scale="2 2 2" rotation="0 0 0"></a-entity>
-        <a-entity arrow48 id="arrow48" class="intersectable" obj-model="obj: #arrow0-obj; mtl: #arrow0-mtl" position="0 -1 0" scale="2 2 2" rotation="0 0 0"></a-entity>
-
-        <!-- look-at="[gps-camera]" -->
       </a-entity>
       <a-camera gps-camera="simulateLatitude: 50.04799738633627; simulateLongitude: 14.30474551703212;" rotation-reader> 
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
@@ -292,29 +255,6 @@
         scene = document.querySelector('a-scene'); /* Apply to whole scene */
         wrapper = document.querySelector('[wrapper]');
         distanceEl = document.querySelector('[distance]');
-
-        
-
-        
-       /* if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            let gps = document.createAttribute('gps-entity-place');
-            let arjs = document.createAttribute('arjs');
-            arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
-            gps.value = `latitude: ${userLat}; longitude: ${userLng}`;
-            scene.setAttributeNode(gps); /* Apply to whole scene */
-        /*    scene.setAttributeNode(arjs);    
-            /*userLat = position.coords.latitude;
-            userLng = position.coords.longitude;*/
-        /*    
-            log(gps.value);       
-            
-          }, function (e) {
-              log(e.message);
-          }, {
-              enableHighAccuracy: true
-          });
-        }*/
       };   
       
       function getPragueAngle() {
@@ -375,7 +315,6 @@
         return degrees * Math.PI / 180;
       };
 
-      // Converts from radians to degrees.
       function toDegrees(radians) {
         return radians * 180 / Math.PI;
       }
@@ -390,7 +329,6 @@
         }
         lastPositionX = lastPositionX + (distance/SPACE) * -SPACE * Math.cos(toRadians(angle));
         lastPositionY = lastPositionY + (distance/SPACE) * SPACE * Math.sin(toRadians(angle));
-        log("a " + lastPositionX + " *** " + lastPositionY);
       }
       
       function createArrow(angle, positionX, positionY){
@@ -450,7 +388,6 @@
              
             var distance = getDistance(startLat, startLng, endLat, endLng); 
             var angle = getAngle(startLat, startLng, endLat, endLng);  
-            log(angle + " - " + distance);
             createWay(angle, distance);
             totalDistance = totalDistance + distance; 
             }
@@ -466,32 +403,11 @@
       function brnoOfficeTurn() {
         buttonWay();
         wrapper.setAttribute('position', {x: 0, y: -1.0, z: 0});
-        /*  arrowId = 0;
-          listOfArrows.forEach(function (item, index) {
-            console.log(item, index);
-            wrapper.removeChild(item);
-          });
-          listOfArrows = [];
-          positionX = 5;
-          positionY = 0;
-        
-          var angle = getBrnoAngle();
-          var distance = getBrnoDistance();
-          log(angle);
-          log(distance);
-          distanceEl.setAttribute('value', distance + " km");*/
-          //arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
       
       function ostravaOfficeTurn() {
         buttonWay();
         wrapper.setAttribute('position', {x: 0, y: -0.5, z: 0});
-         /* var angle = getOstravaAngle();
-          var distance = getOstravaDistance();
-          log(angle);
-          log(distance);
-          distanceEl.setAttribute('value', distance + " km");*/
-          //arrowEl.setAttribute('rotation', '0 ' + -angle + ' 0');
       }
     </script>    
   </body>
