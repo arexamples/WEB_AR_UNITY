@@ -223,7 +223,9 @@
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
       <a-entity wrapper id="wrapper" position="0 -1.5 0" emitevents="true">
-       
+        <a-sphere material="color: blue" gps-entity-place="latitude: 50.04799738633627; longitude: 14.30474551703212" position="0 0.5 0" radius="1"></a-sphere>
+        <a-sphere material="color: blue" gps-entity-place="latitude: 50.047986024200604; longitude: 14.304616621984913" position="0 0.5 0" radius="1"></a-sphere>
+
      <!-- 
         <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -10" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 
@@ -260,7 +262,7 @@
 
         <!-- look-at="[gps-camera]" -->
       </a-entity>
-      <a-camera gps-camera="simulateLatitude: 49.8291455; simulateLongitude: 18.1640326;" rotation-reader> 
+      <a-camera gps-camera="simulateLatitude: 50.04799738633627; simulateLongitude: 14.30474551703212;" rotation-reader> 
         <a-text distance id="distance" class="intersectable" value="" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
       </a-camera>
     </a-scene>
@@ -345,24 +347,6 @@
         return Math.round(angle * 10) / 10;
       }
       
-    /*  function getAngle(destLat, destLng) {       
-        var startLat = userLat;
-        var startLng = userLng;
-        
-        startLat = toRadians(startLat);
-        startLng = toRadians(startLng);
-        destLat = toRadians(destLat);
-        destLng = toRadians(destLng);
-
-        y = Math.sin(destLng - startLng) * Math.cos(destLat);
-        x = Math.cos(startLat) * Math.sin(destLat) -
-              Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
-        var angle = Math.atan2(y, x);
-        angle = (toDegrees(angle) + 360) % 360;
-
-        return Math.round(angle * 10) / 10;
-      }*/
-      
       function getPragueDistance() {
         return getDistance(PragueLat, PragueLng);
       }
@@ -389,23 +373,6 @@
         // km to meters
         return Math.round(distance * 10000) / 10;
       }
-      
-     /* function getDistance(destLat, destLng) {         
-        var startLat = userLat;
-        var startLng = userLng;
-        var R = 6371; // km
-        var dLat = toRadians(destLat-startLat);
-        var dLon = toRadians(destLng-startLng);
-        var lat1 = toRadians(startLat);
-        var lat2 = toRadians(destLat);
-
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        var distance = R * c;
-        // km to meters
-        return Math.round(distance * 10) / 10;
-      }*/
       
       function toRadians(degrees) {
         return degrees * Math.PI / 180;
@@ -449,53 +416,7 @@
         
         return entityEl;
       }
-      /*
-      function createArrow(){
-        arrowId = arrowId + 1;
-        
-        var entityEl = document.createElement('a-entity');
-        
-        entityEl.setAttribute('id', "arrow" + arrowId);
-        entityEl.setAttribute('class', "intersectable");
-       
-        if(arrowId % 2 == 0)
-        {
-          entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
-        }
-        else
-        {
-          entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
-        }
-        
-        if(arrowId <=10)
-        {
-          positionX = positionX - 7.5;
-          entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
-          entityEl.setAttribute('scale', {x: 5, y: 5, z: 5});
-          entityEl.setAttribute('position', {x: 0, y: 0, z: positionX});
-        }
-        
-        if(arrowId > 10 &&  arrowId <= 20)
-        {
-          positionX = positionX - 5;
-          positionY = positionY - 5;
-          entityEl.setAttribute('rotation', {x: 0, y: 45, z: 0});
-          entityEl.setAttribute('scale', {x: 5, y: 5, z: 5});
-          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
-        }
-        
-        if(arrowId > 20 &&  arrowId <= 30)
-        {
-          positionX = positionX - 7.5;
-          positionY = positionY;
-          entityEl.setAttribute('rotation', {x: 0, y: 0, z: 0});
-          entityEl.setAttribute('scale', {x: 5, y: 5, z: 5});
-          entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
-        }
-        
-        return entityEl;
-      }
-      */
+
       function pragueOfficeTurn() {
         arrowId = 0;
         listOfArrows.forEach(function (item, index) {
@@ -505,24 +426,17 @@
         listOfArrows = [];
         positionX = 5;
         positionY = 0;
- /*         createWay(0, 10);
-          createWay(45, 5);
-          createWay(90, 10);
-          createWay(135, 5);
-          createWay(180, 10);
-          createWay(225, 5);
-          createWay(270, 10);
-          createWay(315, 5);*/
+
         lastPositionX = 0;
         lastPositionY = 0;
         totalDistance = 0;
         
         for (var key in json.geoJson.features) {
            if(json.geoJson.features[key].geometry.type === "LineString"){ 
-            var startLat =  json.geoJson.features[key].geometry.coordinates[0][0];
-            var startLng =  json.geoJson.features[key].geometry.coordinates[0][1];
-            var endLat =  json.geoJson.features[key].geometry.coordinates[1][0];
-            var endLng =  json.geoJson.features[key].geometry.coordinates[1][1];
+            var startLat =  json.geoJson.features[key].geometry.coordinates[0][1];
+            var startLng =  json.geoJson.features[key].geometry.coordinates[0][0];
+            var endLat =  json.geoJson.features[key].geometry.coordinates[1][1];
+            var endLng =  json.geoJson.features[key].geometry.coordinates[1][0];
             log(startLat + " - " + startLng + " - " + endLat + " - " + endLng);
              
             var entityEl = document.createElement('a-sphere');
@@ -542,25 +456,6 @@
             }
         }
         distanceEl.setAttribute('value', totalDistance + " m");
-         /* createWay(90, 8);
-          createWay(135, 6);
-          createWay(180, 4);
-          createWay(225, 2);*/
-        
-
-         /* for (i = 0; i < 30; i++) {
-            var entityEl = createArrow();
-            listOfArrows.push(entityEl);
-            wrapper.appendChild(entityEl);
-
-          }               
-          */
-         /* var angle = - getPragueAngle();
-          var distance = getPragueDistance();
-          log(angle);
-          log(distance);
-          distanceEl.setAttribute('value', distance + " km");*/
-
       }
       
       function brnoOfficeTurn() {
