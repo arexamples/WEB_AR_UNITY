@@ -205,14 +205,7 @@
   <!-- 5th decimal place lat 0.001112 km lng 0.0007173 km -->
 
   <body style="margin: 0; overflow: hidden;">
-    <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-      <button onclick="pragueOfficeTurn()">CGI PRAGUE</button>
-      <button onclick="brnoOfficeTurn()">CGI BRNO</button>
-      <button onclick="ostravaOfficeTurn()">CGI OVA</button>
-    </div>	
-    <a-scene
-      vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; debugUIEnabled: false;"
+    <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;"
     >
       <a-assets>
         <a-asset-item id="arrow0-obj" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow0.obj"></a-asset-item>
@@ -229,25 +222,14 @@
     </a-scene>
         
     <script>
-      const log = console.log;
-      const PragueLat = 50.0481443;
-      const PragueLng = 14.3022351;
-      const BrnoLat = 49.1711527;
-      const BrnoLng = 16.5971738;
-      const OstravaLat = 49.8384949;
-      const OstravaLng = 18.1549161;
       const SCALE = 1; // 5
       const SPACE = 1.5; // 7.5
       var scene;
       var arrow;
       var distance;
-      var userLat;
-      var userLng;
       var arrowId = 0;
       var listOfArrows = [];
       var wrapper;
-      var positionX = 5;
-      var positionY = 0;
       var lastPositionX = 0;
       var lastPositionY = 0;
       var totalDistance = 0;
@@ -256,20 +238,8 @@
         scene = document.querySelector('a-scene');
         wrapper = document.querySelector('[wrapper]');
         distanceEl = document.querySelector('[distance]');
-        pragueOfficeTurn();
+        createCompleteWay();
       };   
-      
-      function getPragueAngle() {
-        return getAngle(PragueLat, PragueLng);
-      }
-      
-      function getBrnoAngle() {
-        return getAngle(BrnoLat, BrnoLng);
-      }
-      
-      function getOstravaAngle() {
-        return getAngle(OstravaLat, OstravaLng);
-      }
       
       function getAngle(startLat, startLng, destLat, destLng) {             
         startLat = toRadians(startLat);
@@ -277,8 +247,8 @@
         destLat = toRadians(destLat);
         destLng = toRadians(destLng);
 
-        y = Math.sin(destLng - startLng) * Math.cos(destLat);
-        x = Math.cos(startLat) * Math.sin(destLat) -
+        var y = Math.sin(destLng - startLng) * Math.cos(destLat);
+        var x = Math.cos(startLat) * Math.sin(destLat) -
               Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
         var angle = Math.atan2(y, x);
         angle = (toDegrees(angle) + 360) % 360;
@@ -286,17 +256,6 @@
         return Math.round(angle * 10) / 10;
       }
       
-      function getPragueDistance() {
-        return getDistance(PragueLat, PragueLng);
-      }
-      
-      function getBrnoDistance() {
-        return getDistance(BrnoLat, BrnoLng);
-      }
-      
-      function getOstravaDistance() {
-        return getDistance(OstravaLat, OstravaLng);
-      }
       
       function getDistance(startLat, startLng, destLat, destLng) {         
         var R = 6371; // km
@@ -321,8 +280,7 @@
         return radians * 180 / Math.PI;
       }
       
-      function createWay(angle, distance){
-        log(lastPositionX + " *** " + lastPositionY);
+      function createSingleWay(angle, distance){
         var finalDistance = ((distance-SPACE) / SPACE);
         for (i = 0; i < finalDistance; i++) {
           var entityEl = createArrow(angle, lastPositionX + i * -SPACE * Math.cos(toRadians(angle)), lastPositionY + i * SPACE * Math.sin(toRadians(angle)));
@@ -353,14 +311,12 @@
         return entityEl;
       }
       
-      function buttonWay(){
+      function createCompleteWay(){
         arrowId = 0;
         listOfArrows.forEach(function (item, index) {
           wrapper.removeChild(item);
         });
         listOfArrows = [];
-        positionX = 5;
-        positionY = 0;
 
         lastPositionX = 0;
         lastPositionY = 0;
@@ -373,39 +329,13 @@
             var endLat =  json.geoJson.features[key].geometry.coordinates[1][1];
             var endLng =  json.geoJson.features[key].geometry.coordinates[1][0];
              
-            var entityEl = document.createElement('a-sphere');
-            entityEl.setAttribute('material', "color: blue"); 
-            entityEl.setAttribute('class', "intersectable");     
-            let gps = document.createAttribute('gps-entity-place');
-            gps.value = `latitude: ${endLat}; longitude: ${endLng}`;
-            entityEl.setAttributeNode(gps);
-            entityEl.setAttribute('position', {x: 0, y: 0.5, z: 0});
-            entityEl.setAttribute('radius', "0.5");
-            wrapper.appendChild(entityEl); 
-             
-             
             var distance = getDistance(startLat, startLng, endLat, endLng); 
             var angle = getAngle(startLat, startLng, endLat, endLng);  
-            createWay(angle, distance);
+            createSingleWay(angle, distance);
             totalDistance = totalDistance + distance; 
             }
         }
         distanceEl.setAttribute('value', totalDistance + " m");
-      }
-
-      function pragueOfficeTurn() {
-        buttonWay();
-        wrapper.setAttribute('position', {x: 0, y: -1.5, z: 0});
-      }
-      
-      function brnoOfficeTurn() {
-        buttonWay();
-        wrapper.setAttribute('position', {x: 0, y: -1.0, z: 0});
-      }
-      
-      function ostravaOfficeTurn() {
-        buttonWay();
-        wrapper.setAttribute('position', {x: 0, y: -0.5, z: 0});
       }
     </script>    
   </body>
