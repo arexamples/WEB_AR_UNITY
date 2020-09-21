@@ -321,20 +321,28 @@
         lastPositionX = 0;
         lastPositionY = 0;
         totalDistance = 0;
+        var lineStringCounter = 0;
         
-        for (var key in json.geoJson.features) {
-           if(json.geoJson.features[key].geometry.type === "LineString"){ 
-            var startLat =  json.geoJson.features[key].geometry.coordinates[0][1];
-            var startLng =  json.geoJson.features[key].geometry.coordinates[0][0];
-            var endLat =  json.geoJson.features[key].geometry.coordinates[1][1];
-            var endLng =  json.geoJson.features[key].geometry.coordinates[1][0];
-             
+        for (var i = 0; i < json.geoJson.features.length; i++) {
+          if(json.geoJson.features[i].geometry.type === "LineString"){ 
+            lineStringCounter++;
+            var startLat =  json.geoJson.features[i].geometry.coordinates[0][1];
+            var startLng =  json.geoJson.features[i].geometry.coordinates[0][0];
+            var endLat =  json.geoJson.features[i].geometry.coordinates[1][1];
+            var endLng =  json.geoJson.features[i].geometry.coordinates[1][0];
+
             var distance = getDistance(startLat, startLng, endLat, endLng); 
             var angle = getAngle(startLat, startLng, endLat, endLng);  
             createSingleWay(angle, distance);
             totalDistance = totalDistance + distance; 
+            
+            if(lineStringCounter >= 5)
+            {
+              break;
             }
+          }
         }
+        
         distanceEl.setAttribute('value', totalDistance + " m");
       }
     </script>    
