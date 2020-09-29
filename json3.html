@@ -281,6 +281,7 @@
 
             var distance = getDistance(startLat, startLng, endLat, endLng); 
             var angle = getAngle(startLat, startLng, endLat, endLng);  
+            console.log(startLat + "," + startLng + " - " endLat + "," + endLng + " distance " + distance + " angle " + angle);
             createSingleWay(angle, distance);
             totalDistance = totalDistance + distance; 
             
