@@ -1,16 +1,16 @@
 {
   "instructions": [
     {
-      "sign": 0,
+      "sign": 0
     },
     {
-      "sign": -2,
+      "sign": -2
     },
     {
-      "sign": 0,
+      "sign": 0
     },
     {
-      "sign": 4,
+      "sign": 4
     }
   ]
 }
