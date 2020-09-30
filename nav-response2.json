@@ -160,18 +160,6 @@
           "level": ""
         },
         "properties": {}
-      },
-      {
-        "type": "Feature",
-        "geometry": {
-          "coordinates": [
-            14.30474551703212,
-            50.04799738633627
-          ],
-          "type": "Point",
-          "level": "2.0"
-        },
-        "properties": {}
       }
     ]
   }
