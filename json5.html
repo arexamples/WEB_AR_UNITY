@@ -1,0 +1,284 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location-based AR.js</title>
+    <!-- include aframe -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
+    <!-- include ar.js -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script>
+     var json = 
+      {
+        "geoJson": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  [
+                    14.30474551703212,
+                    50.04799738633627
+                  ],
+                  [
+                    14.304616621984913,
+                    50.047986024200604
+                  ]
+                ],
+                "type": "LineString",
+                "level": "2"
+              },
+              "properties": {}
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  [
+                    14.304616621984913,
+                    50.047986024200604
+                  ],
+                  [
+                    14.304606377436363,
+                    50.0480279337174
+                  ]
+                ],
+                "type": "LineString",
+                "level": "2"
+              },
+              "properties": {}
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  [
+                    14.304606377436363,
+                    50.0480279337174
+                  ],
+                  [
+                    14.304583466900516,
+                    50.04802718865932
+                  ]
+                ],
+                "type": "LineString",
+                "level": "2"
+              },
+              "properties": {}
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  [
+                    14.304583466900516,
+                    50.04802718865932
+                  ],
+                  [
+                    14.304571732235813,
+                    50.0480854894538
+                  ]
+                ],
+                "type": "LineString",
+                "level": "2"
+              },
+              "properties": {}
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  [
+                    14.304571732235813,
+                    50.0480854894538
+                  ],
+                  [
+                    14.304545468938622,
+                    50.04820004213303
+                  ]
+                ],
+                "type": "LineString",
+                "level": ""
+              },
+              "properties": {}
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  14.30474551703212,
+                  50.04799738633627
+                ],
+                "type": "Point",
+                "level": "2.0"
+              },
+              "properties": {}
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "coordinates": [
+                  14.304545468938622,
+                  50.04820004213303
+                ],
+                "type": "Point",
+                "level": "2.0"
+              },
+              "properties": {}
+            }
+          ]
+        }
+      };
+      console.log(json);
+    </script>
+  </head>
+  <!-- 5th decimal place lat 0.001112 km lng 0.0007173 km -->
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-assets>
+        <a-asset-item id="arrow0-obj" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow0.obj"></a-asset-item>
+        <a-asset-item id="arrow0-mtl" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow0.mtl"></a-asset-item>
+        <a-asset-item id="arrow1-obj" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow1.obj"></a-asset-item>
+        <a-asset-item id="arrow1-mtl" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow1.mtl"></a-asset-item>
+      </a-assets>
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+      <a-entity wrapper id="wrapper" position="0 -1.5 0" emitevents="true">
+      </a-entity>
+      <a-camera gps-camera="simulateLatitude: 50.04799738633627; simulateLongitude: 14.30474551703212;" rotation-reader> 
+        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
+      </a-camera>
+    </a-scene>
+        
+    <script>
+      const SCALE = 0.3; // 5
+      const SPACE = 0.5; // 7.5
+      var scene;
+      var arrow;
+      var distance;
+      var arrowId = 0;
+      var listOfArrows = [];
+      var wrapper;
+      var lastPositionX = 0;
+      var lastPositionY = 0;
+      var totalDistance = 0;
+
+      window.onload = () => {
+        scene = document.querySelector('a-scene');
+        wrapper = document.querySelector('[wrapper]');
+        distanceEl = document.querySelector('[distance]');
+        createCompleteWay();
+      };   
+      
+      function getAngle(startLat, startLng, destLat, destLng) {             
+        startLat = toRadians(startLat);
+        startLng = toRadians(startLng);
+        destLat = toRadians(destLat);
+        destLng = toRadians(destLng);
+
+        var y = Math.sin(destLng - startLng) * Math.cos(destLat);
+        var x = Math.cos(startLat) * Math.sin(destLat) -
+              Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+        var angle = Math.atan2(y, x);
+        angle = (toDegrees(angle) + 360) % 360;
+
+        return Math.round(angle * 10) / 10;
+      }
+      
+      
+      function getDistance(startLat, startLng, destLat, destLng) {         
+        var R = 6371; // km
+        var dLat = toRadians(destLat-startLat);
+        var dLon = toRadians(destLng-startLng);
+        var lat1 = toRadians(startLat);
+        var lat2 = toRadians(destLat);
+
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var distance = R * c;
+        // km to meters
+        return Math.round(distance * 10000) / 10;
+      }
+      
+      function toRadians(degrees) {
+        return degrees * Math.PI / 180;
+      };
+
+      function toDegrees(radians) {
+        return radians * 180 / Math.PI;
+      }
+      
+      function createSingleWay(angle, distance){
+        var finalDistance = ((distance-SPACE) / SPACE);
+        for (i = 0; i < finalDistance; i++) {
+          var entityEl = createArrow(angle, lastPositionX + i * -SPACE * Math.cos(toRadians(angle)), lastPositionY + i * SPACE * Math.sin(toRadians(angle)));
+          listOfArrows.push(entityEl);
+          wrapper.appendChild(entityEl);
+        }
+        lastPositionX = lastPositionX + (distance/SPACE) * -SPACE * Math.cos(toRadians(angle));
+        lastPositionY = lastPositionY + (distance/SPACE) * SPACE * Math.sin(toRadians(angle));
+      }
+      
+      function createArrow(angle, positionX, positionY){
+        arrowId = arrowId + 1;
+        var entityEl = document.createElement('a-entity');
+        
+        entityEl.setAttribute('id', "arrow" + arrowId);
+        entityEl.setAttribute('class', "intersectable");
+        
+        if(arrowId % 2 == 0)
+        {
+          entityEl.setAttribute('obj-model', "obj: #arrow0-obj; mtl: #arrow0-mtl");
+        }
+        else
+        {
+          entityEl.setAttribute('obj-model', "obj: #arrow1-obj; mtl: #arrow1-mtl");
+        }
+        
+        entityEl.setAttribute('rotation', {x: 0, y: -angle, z: 0});
+        entityEl.setAttribute('scale', {x: SCALE, y: 1, z: SCALE});
+        entityEl.setAttribute('position', {x: positionY, y: 0, z: positionX});
+        
+        return entityEl;
+      }
+      
+      function createCompleteWay(){     
+        listOfArrows.forEach(function (item, index) {
+          wrapper.removeChild(item);
+        });
+        
+        arrowId = 0;
+        listOfArrows = [];
+        lastPositionX = 0;
+        lastPositionY = 0;
+        totalDistance = 0;      
+        var lineStringCounter = 0;
+        
+        for (var i = 0; i < json.geoJson.features.length; i++) {
+          if(json.geoJson.features[i].geometry.type === "LineString"){ 
+            lineStringCounter++;
+            var startLat =  json.geoJson.features[i].geometry.coordinates[0][1];
+            var startLng =  json.geoJson.features[i].geometry.coordinates[0][0];
+            var endLat =  json.geoJson.features[i].geometry.coordinates[1][1];
+            var endLng =  json.geoJson.features[i].geometry.coordinates[1][0];
+
+            var distance = getDistance(startLat, startLng, endLat, endLng); 
+            var angle = getAngle(startLat, startLng, endLat, endLng);  
+            createSingleWay(angle, distance);
+            totalDistance = totalDistance + distance; 
+            
+            if(lineStringCounter >= 5)
+            {
+              break;
+            }
+          }
+        }
+        
+        distanceEl.setAttribute('value', totalDistance + " m");
+      }
+    </script>    
+  </body>
+</html>
