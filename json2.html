@@ -17,8 +17,14 @@
               "type": "Feature",
               "geometry": {
                 "coordinates": [
-                  [14.304586074603783, 50.04796385872283],
-                  [14.304596132887813, 50.04796497630995]
+                  [
+                    14.30474551703212,
+                    50.04799738633627
+                  ],
+                  [
+                    14.304616621984913,
+                    50.047986024200604
+                  ]
                 ],
                 "type": "LineString",
                 "level": "2"
@@ -29,8 +35,14 @@
               "type": "Feature",
               "geometry": {
                 "coordinates": [
-                  [14.304596132887813, 50.04796497630995],
-                  [14.304593525184547, 50.04797671097465]
+                  [
+                    14.304616621984913,
+                    50.047986024200604
+                  ],
+                  [
+                    14.304606377436363,
+                    50.0480279337174
+                  ]
                 ],
                 "type": "LineString",
                 "level": "2"
@@ -41,8 +53,14 @@
               "type": "Feature",
               "geometry": {
                 "coordinates": [
-                  [14.304593525184547, 50.04797671097465],
-                  [14.304587937248973, 50.04800018030406]
+                  [
+                    14.304606377436363,
+                    50.0480279337174
+                  ],
+                  [
+                    14.304583466900516,
+                    50.04802718865932
+                  ]
                 ],
                 "type": "LineString",
                 "level": "2"
@@ -53,8 +71,14 @@
               "type": "Feature",
               "geometry": {
                 "coordinates": [
-                  [14.304587937248973, 50.04800018030406],
-                  [14.304585702074744, 50.04801079738164]
+                  [
+                    14.304583466900516,
+                    50.04802718865932
+                  ],
+                  [
+                    14.304571732235813,
+                    50.0480854894538
+                  ]
                 ],
                 "type": "LineString",
                 "level": "2"
@@ -65,56 +89,14 @@
               "type": "Feature",
               "geometry": {
                 "coordinates": [
-                  [14.304585702074744, 50.04801079738164],
-                  [14.30451939190595, 50.04800483691703]
-                ],
-                "type": "LineString",
-                "level": "2"
-              },
-              "properties": {}
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "coordinates": [
-                  [14.30451939190595, 50.04800483691703],
-                  [14.304492197286164, 50.048128702822225]
-                ],
-                "type": "LineString",
-                "level": "2"
-              },
-              "properties": {}
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "coordinates": [
-                  [14.304492197286164, 50.048128702822225],
-                  [14.304479345034347, 50.0481860722941]
-                ],
-                "type": "LineString",
-                "level": "2"
-              },
-              "properties": {}
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "coordinates": [
-                  [14.304479345034347, 50.0481860722941],
-                  [14.304463885079262, 50.04825480390164]
-                ],
-                "type": "LineString",
-                "level": "2"
-              },
-              "properties": {}
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "coordinates": [
-                  [14.304463885079262, 50.04825480390164],
-                  [14.304453640530712, 50.04825405884357]
+                  [
+                    14.304571732235813,
+                    50.0480854894538
+                  ],
+                  [
+                    14.304545468938622,
+                    50.04820004213303
+                  ]
                 ],
                 "type": "LineString",
                 "level": ""
@@ -124,7 +106,10 @@
             {
               "type": "Feature",
               "geometry": {
-                "coordinates": [14.304586074603783, 50.04796385872283],
+                "coordinates": [
+                  14.30474551703212,
+                  50.04799738633627
+                ],
                 "type": "Point",
                 "level": "2.0"
               },
@@ -133,7 +118,10 @@
             {
               "type": "Feature",
               "geometry": {
-                "coordinates": [14.304453640530712, 50.04825405884357],
+                "coordinates": [
+                  14.304545468938622,
+                  50.04820004213303
+                ],
                 "type": "Point",
                 "level": "2.0"
               },
@@ -142,8 +130,6 @@
           ]
         }
       };
-
-
       console.log(json);
     </script>
   </head>
@@ -159,7 +145,7 @@
         <a-asset-item id="arrow1-mtl" src="https://adamspanik.github.io/WEB_AR_UNITY/arrow-obj/arrow1.mtl"></a-asset-item>
       </a-assets>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-      <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
+      <a-entity wrapper id="wrapper" position="0 -1.5 0" emitevents="true">
       </a-entity>
       <a-camera gps-camera="simulateLatitude: 50.04799738633627; simulateLongitude: 14.30474551703212;" rotation-reader> 
         <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
@@ -167,8 +153,8 @@
     </a-scene>
         
     <script>
-      const SCALE = 0.3; // 5
-      const SPACE = 0.5; // 7.5
+      const SCALE = 1; // 5
+      const SPACE = 1.5; // 7.5
       var scene;
       var arrow;
       var distance;
@@ -281,7 +267,6 @@
 
             var distance = getDistance(startLat, startLng, endLat, endLng); 
             var angle = getAngle(startLat, startLng, endLat, endLng);  
-            console.log(startLat + "," + startLng + " - " + endLat + "," + endLng + " distance " + distance + " angle " + angle + " totalDistance " + totalDistance);
             createSingleWay(angle, distance);
             totalDistance = totalDistance + distance; 
             
