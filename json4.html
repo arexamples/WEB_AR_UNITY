@@ -162,7 +162,7 @@
       <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
       </a-entity>
       <a-camera gps-camera="simulateLatitude: 50.04799738633627; simulateLongitude: 14.30474551703212;" rotation-reader> 
-        <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text>  
+       <!-- todle <a-text distance id="distance" class="intersectable" value="0 m" color="blue" scale="0.5 0.5 0.5" position="0 -0.3  -1" rotation="0 0 0" align="center"></a-text> --> 
       </a-camera>
     </a-scene>
         
@@ -182,7 +182,7 @@
       window.onload = () => {
         scene = document.querySelector('a-scene');
         wrapper = document.querySelector('[wrapper]');
-        distanceEl = document.querySelector('[distance]');
+       // todle distanceEl = document.querySelector('[distance]');
         createCompleteWay();
       };   
       
@@ -292,7 +292,7 @@
           }
         }
         
-        distanceEl.setAttribute('value', totalDistance + " m");
+       // todle distanceEl.setAttribute('value', totalDistance + " m");
       }
     </script>    
   </body>
