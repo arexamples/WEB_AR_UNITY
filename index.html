@@ -37,6 +37,38 @@ AFRAME.registerComponent('arrow2', {
 
 });
 	
+AFRAME.registerComponent('arrow3', {
+
+  init: function(){
+    console.log(localStorage.getItem('rotation'));
+    var rotation = localStorage.getItem('rotation');
+    this.el.setAttribute('rotation', rotation)
+  }
+
+});
+	
+AFRAME.registerComponent('arrow4', {
+
+  init: function(){
+    console.log(localStorage.getItem('rotation'));
+    var rotation = localStorage.getItem('rotation');
+    this.el.setAttribute('rotation', rotation)
+  }
+
+});
+	
+AFRAME.registerComponent('arrow5', {
+
+  init: function(){
+    console.log(localStorage.getItem('rotation'));
+    var rotation = localStorage.getItem('rotation');
+    this.el.setAttribute('rotation', rotation)
+  }
+
+});
+	
+	
+	
 AFRAME.registerComponent('distance2', {
 
   init: function(){
@@ -88,6 +120,21 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
   <a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
 <!-- END: Add Image Target (marker) -->
 </a-marker>
+	
+<a-marker id="marker3" type='pattern' url='markers/marker01.patt' emitevents="true"> 
+  <a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+<!-- END: Add Image Target (marker) -->
+</a-marker>
+
+<a-marker id="marker4" type='pattern' url='markers/marker02.patt' emitevents="true"> 
+  <a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+<!-- END: Add Image Target (marker) -->
+</a-marker>
+
+<a-marker id="marker5" type='pattern' url='markers/marker03.patt' emitevents="true"> 
+  <a-entity arrow5 id="arrow5" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+<!-- END: Add Image Target (marker) -->
+</a-marker>		
 
 	
 <a-entity camera></a-entity>
