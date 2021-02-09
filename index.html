@@ -1,12 +1,15 @@
 <!-- BEGIN: Top HTML -->
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
 <!-- include aframe -->
 <script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
 <!-- include ar.js -->
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 <!-- END: Top HTML -->
 <script>
+</head>
 AFRAME.registerComponent('arrow', {
 
   init: function(){
@@ -114,14 +117,14 @@ z dolu
 		
 	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180"></a-entity>
 	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="1 0 2.5" ></a-image>
-	<a-text destination3 id="destination3" class="intersectable" value="C201" color="red" rotation="-90 0 0" position="1.5 0 2.5" align="center"></a-text>
+	<a-text destination3 id="destination3" class="intersectable" value="C201" font="roboto" color="red" rotation="-90 0 0" position="1.5 0 2.5" align="center"></a-text>
 	<a-text distance3 id="distance3" class="intersectable" value="12 m" color="red" rotation="-90 0 0" position="1.25 0 3" align="center"></a-text>
 	
 	
 	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270"></a-entity>
 	
-	<a-image src="images/destination_flag.png" rotation="90 0 180" scale="0.4 0.4 0.4" position="-2.5 0 -1.75"></a-image>
-	<a-text destinationFlagText id="destinationFlagText" class="intersectable" value="CIL: Cevni poradna" color="red" rotation="-90 0 0" position="-2 0 -1.75" align="left"></a-text>
+	<a-image src="images/destination_flag.png" rotation="90 180 180" scale="0.4 0.4 0.4" position="-2.5 0 -1.75"></a-image>
+	<a-text destinationFlagText id="destinationFlagText" class="intersectable" value="CIL: Cévní poradna" color="red" rotation="-90 0 0" position="-2.25 0 -1.75" align="left"></a-text>
 	
 	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="-2 0 -0.75" ></a-image>
 	<a-text destination4 id="destination4" class="intersectable" value="D202" color="red" rotation="-90 0 0" position="-2.5 0 -0.75" align="center"></a-text>
