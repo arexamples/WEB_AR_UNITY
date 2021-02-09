@@ -81,8 +81,8 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 	<a-entity id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.15 0.1" rotation="0 90 0"></a-entity>
 	<a-entity id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.15" rotation="0 0 90"></a-entity>
 -->
-<a-marker id="marker" preset="hiro" emitevents="true">
-	<!-- arrow 90 0 X 
+	
+<!-- arrow 90 0 X 
 rotation
 x y z na monitoru
 x prevraceni k uzivateli
@@ -93,13 +93,19 @@ x y z na monitoru
 x doprava
 y smerem k uzivateli
 z dolu
-
 -->
-  <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
+	
+<a-marker id="marker" preset="hiro" emitevents="true">
+  	<a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
 <!--  	<a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 90"></a-entity>-->
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.1 0.1 0.1" position="0 0 0" ></a-image>
+	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 0"></a-entity>
+	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 90"></a-entity>
+	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 180"></a-entity>
+	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 270"></a-entity>
+	
+<!--	<a-image src="#doorIcon" rotation="90 0 0" scale="0.1 0.1 0.1" position="0 0 0" ></a-image>
 	<a-image src="#doorIcon" rotation="90 0 0" scale="0.5 0.5 0.5" position="0 1 0" ></a-image>
-<!--	<a-image src="#doorIcon" rotation="90 90 0" scale="0.5 0.5 0.5" position="0 1 0" ></a-image>
+	<a-image src="#doorIcon" rotation="90 90 0" scale="0.5 0.5 0.5" position="0 1 0" ></a-image>
 	<a-image src="#doorIcon" rotation="90 -45 0" scale="0.5 0.5 0.5" position="0 0 1" ></a-image> -->
 	<!-- <a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.15 0.1" rotation="0 90 0"></a-entity>
 	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.15" rotation="0 0 90"></a-entity>
@@ -111,8 +117,10 @@ z dolu
 	
 <a-marker id="marker3" type='pattern' url='markers/marker03.patt' emitevents="true"> 
   <!--	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 90 0"></a-entity> -->
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.1 0.1 0.1" position="0 0 0" ></a-image>
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.5 0.5 0.5" position="0 0 1" ></a-image>
+	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 0"></a-entity>
+	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 90"></a-entity>
+	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 180"></a-entity>
+	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 270"></a-entity>
 <!-- END: Add Image Target (marker) -->
 </a-marker>	
 	
