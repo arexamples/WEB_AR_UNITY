@@ -52,6 +52,7 @@ AFRAME.registerComponent('distance2', {
 
 <!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<!--
 <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
 <button onclick="turnSharpLeft()"><<<</button>
 <button onclick="turnLeft()"><<</button>
@@ -61,6 +62,7 @@ AFRAME.registerComponent('distance2', {
 <button onclick="turnRight()">>></button>
 <button onclick="turnSharpRight()">>>></button>
 </div>	
+-->
 
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
 arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
@@ -73,9 +75,9 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 <a-assets>
   <a-asset-item id="arrow-obj" src="arrow-obj/arrow.obj"></a-asset-item>
   <a-asset-item id="arrow-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
-  <img id="doorIcon" src="images/doorIcon.png">
-  <img id="destinationIcon" src="images/destination.png">
-  <img id="destinationFlagIcon" src="images/destination_flag.png">
+  <img id="doorIcon" src="images/doorIcon.png"></img>
+  <img id="destinationIcon" src="images/destination.png"></img>
+  <img id="destinationFlagIcon" src="images/destination_flag.png"></img>
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) 
