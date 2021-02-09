@@ -11,8 +11,8 @@ AFRAME.registerComponent('arrow', {
 
   init: function(){
     console.log(localStorage.getItem('rotation'));
-    var rotation = localStorage.getItem('rotation');
-    this.el.setAttribute('rotation', rotation)
+    //var rotation = localStorage.getItem('rotation');
+    //this.el.setAttribute('rotation', rotation)
   }
 
 });
@@ -21,8 +21,8 @@ AFRAME.registerComponent('distance', {
 
   init: function(){
     console.log(localStorage.getItem('distance'));
-    var distance = localStorage.getItem('distance');
-    this.el.setAttribute('value', distance + " m")
+    //var distance = localStorage.getItem('distance');
+    //this.el.setAttribute('value', distance + " m")
   }
 
 });	
@@ -31,8 +31,8 @@ AFRAME.registerComponent('arrow2', {
 
   init: function(){
     console.log(localStorage.getItem('rotation'));
-    var rotation = localStorage.getItem('rotation');
-    this.el.setAttribute('rotation', rotation)
+    //var rotation = localStorage.getItem('rotation');
+    //this.el.setAttribute('rotation', rotation)
   }
 
 });	
@@ -83,8 +83,11 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 -->
 <a-marker id="marker" preset="hiro" emitevents="true">
   <a-text distance id="distance" class="intersectable" value="0 m" color="red" rotation="-90 0 0" position="0 0 -0.5" align="center"></a-text>
-  <a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
-  <a-image src="#doorIcon" rotation="90 0 0" scale="0.1 0.1 0.1" position="0.25 0.75 0.5" ></a-image>
+  <a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 0 0"></a-entity>
+  <a-image src="#doorIcon" rotation="90 0 0" scale="0.5 0.5 0.5" position="0.25 0.75 0.5" ></a-image>
+	<a-image src="#doorIcon" rotation="90 45 0" scale="0.1 0.5 0.5" position="-0.25 0.75 0.5" ></a-image>
+	<a-image src="#doorIcon" rotation="90 90 0" scale="0.5 0.1 0.5" position="0.25 -0.75 0.5" ></a-image>
+	<a-image src="#doorIcon" rotation="90 -45 0" scale="0.5 0.5 0.1" position="0.25 0.75 -0.5" ></a-image>
 </a-marker>
 	
 <!-- <a-marker id="marker" preset="hiro" emitevents="true">  -->
