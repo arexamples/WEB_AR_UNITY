@@ -210,6 +210,14 @@ window.onload = () => {
 	drawDestinations();
 };   	
 	
+function toRadians(degrees) {
+	return degrees * Math.PI / 180;
+};
+
+function toDegrees(radians) {
+	return radians * 180 / Math.PI;
+}	
+	
 function drawDestinations(){ 
 	for (var i = 0; i < 8; i++) {
 		var entityEl = createArrow(i*45);
@@ -228,8 +236,7 @@ function createArrow(angle){
 	entityEl.setAttribute('obj-model', "obj: #arrow-obj; mtl: #arrow-mtl");
         entityEl.setAttribute('rotation', {x: 90, y: 0, z: angle});
         entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
-        entityEl.setAttribute('position', {x: R*Math.sin(angle), y: 0, z: R*Math.cos(angle)});
-	console.log("angle " + angle + " x " + R*Math.sin(angle) + " z " + R*Math.cos(angle));
+        entityEl.setAttribute('position', {x: R*Math.cos(toRadians(angle)), y: 0, z: R*Math.sin(toRadians(angle))});
         
         return entityEl;
 }	
