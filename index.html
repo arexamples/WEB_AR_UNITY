@@ -229,6 +229,7 @@ function createArrow(angle){
         entityEl.setAttribute('rotation', {x: 90, y: 0, z: angle});
         entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
         entityEl.setAttribute('position', {x: R*Math.sin(angle), y: 0, z: R*Math.cos(angle)});
+	console.log("angle " + angle + " x " + R*Math.sin(angle) + " z " + R*Math.cos(angle));
         
         return entityEl;
 }	
