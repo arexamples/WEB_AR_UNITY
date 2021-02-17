@@ -209,21 +209,24 @@ window.onload = () => {
 };   	
 	
 function drawDestinations(){ 
-	var entityEl = createArrow(90, 0, 0);
-	listOfArrows.push(entityEl);
-	wrapper.appendChild(entityEl);
+	for (var i = 0; i < 36; i++) {
+		var entityEl = createArrow(i*10);
+		listOfArrows.push(entityEl);
+		wrapper.appendChild(entityEl);
+	}
+
 }
 	
-function createArrow(angle, positionX, positionY){	
+function createArrow(angle){	
         arrowId = arrowId + 1;
         var entityEl = document.createElement('a-entity');
-        
+	
         entityEl.setAttribute('id', "arrow" + arrowId);
         entityEl.setAttribute('class', "intersectable");
 	entityEl.setAttribute('obj-model', "obj: #arrow-obj; mtl: #arrow-mtl");
         entityEl.setAttribute('rotation', {x: 90, y: 0, z: angle});
         entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
-        entityEl.setAttribute('position', {x: 3, y: 0, z: 0});
+        entityEl.setAttribute('position', {x: 3*Math.sin(angle), y: 0, z: 3*Math.cos(angle)});
         
         return entityEl;
 }	
