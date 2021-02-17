@@ -200,7 +200,7 @@ z dolu
 <script>	
 var listOfArrows = [];
 var wrapper;
-const SCALE = 0.2; // 5
+const SCALE = 0.1; // 5
 var arrowId = 0;
 	
 window.onload = () => {
@@ -209,7 +209,7 @@ window.onload = () => {
 };   	
 	
 function drawDestinations(){ 
-	var entityEl = createArrow(0, 0, 0);
+	var entityEl = createArrow(90, 0, 0);
 	listOfArrows.push(entityEl);
 	wrapper.appendChild(entityEl);
 }
@@ -221,7 +221,7 @@ function createArrow(angle, positionX, positionY){
         entityEl.setAttribute('id', "arrow" + arrowId);
         entityEl.setAttribute('class', "intersectable");
 	entityEl.setAttribute('obj-model', "obj: #arrow-obj; mtl: #arrow-mtl");
-        entityEl.setAttribute('rotation', {x: 90, y: 0, z: 90});
+        entityEl.setAttribute('rotation', {x: 90, y: 0, z: angle});
         entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
         entityEl.setAttribute('position', {x: 3, y: 0, z: 0});
         
