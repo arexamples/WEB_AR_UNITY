@@ -45,8 +45,7 @@ AFRAME.registerComponent('distance2', {
     //this.el.setAttribute('value', distance + " m")
   }
 
-});	
-	
+});		
 </script>
 <!-- END: Unity Compiled Events -->
 
@@ -98,45 +97,8 @@ z dolu
 -->
 	
 <a-marker id="marker" preset="hiro" emitevents="true">
-  	
-<!--  	<a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="90 0 90"></a-entity>-->
-	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="1 0 -2.5" ></a-image>
-	<a-text destination1 id="destination1" class="intersectable" value="A201" color="red" rotation="-90 0 0" position="1.5 0 -2.5" align="center"></a-text>
-	<a-text distance1 id="distance1" class="intersectable" value="5 m" color="red" rotation="-90 0 0" position="1.25 0 -3" align="center"></a-text>
-	
-	
-	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="2 0 -0.75" ></a-image>
-	<a-text destination2 id="destination2" class="intersectable" value="B202" color="red" rotation="-90 0 0" position="2.5 0 -0.75" align="center"></a-text>
-	<a-text distance2 id="distance2" class="intersectable" value="8 m" color="red" rotation="-90 0 0" position="2.25 0 -1.25" align="center"></a-text>
-	
-		
-	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180"></a-entity>
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="1 0 2.5" ></a-image>
-	<a-text destination3 id="destination3" class="intersectable" value="C201" font="roboto" color="red" rotation="-90 0 0" position="1.5 0 2.5" align="center"></a-text>
-	<a-text distance3 id="distance3" class="intersectable" value="12 m" color="red" rotation="-90 0 0" position="1.25 0 3" align="center"></a-text>
-	
-	
-	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270"></a-entity>
-	
-	<a-image src="images/destination_flag.png" rotation="270 0 0" scale="0.4 0.4 0.4" position="-3 0 -1.75"></a-image>
-	<a-text destinationFlagText id="destinationFlagText" class="intersectable" value="CIL: Cevni poradna" color="red" rotation="-90 0 0" position="-2.75 0 -1.75" align="left"></a-text>
-	
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="-2 0 -0.75" ></a-image>
-	<a-text destination4 id="destination4" class="intersectable" value="D202" color="red" rotation="-90 0 0" position="-2.5 0 -0.75" align="center"></a-text>
-	<a-text distance4 id="distance4" class="intersectable" value="17 m" color="red" rotation="-90 0 0" position="-2.25 0 -1.25" align="center"></a-text>
-	
-<!--	<a-image src="#doorIcon" rotation="90 0 0" scale="0.1 0.1 0.1" position="0 0 0" ></a-image>
-	<a-image src="#doorIcon" rotation="90 0 0" scale="0.5 0.5 0.5" position="0 1 0" ></a-image>
-	<a-image src="#doorIcon" rotation="90 90 0" scale="0.5 0.5 0.5" position="0 1 0" ></a-image>
-	<a-image src="#doorIcon" rotation="90 -45 0" scale="0.5 0.5 0.5" position="0 0 1" ></a-image> -->
-	<!-- <a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.15 0.1" rotation="0 90 0"></a-entity>
-	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.15" rotation="0 0 90"></a-entity>
-	<a-image src="#doorIcon" rotation="90 45 0" scale="0.1 0.5 0.5" position="-0.25 0.75 0.5" ></a-image>
-	<a-image src="#doorIcon" rotation="90 90 0" scale="0.5 0.1 0.5" position="0.25 -0.75 0.5" ></a-image>
-	<a-image src="#doorIcon" rotation="90 -45 0" scale="0.5 0.5 0.1" position="0.25 0.75 -0.5" ></a-image>
--->
+  	<a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
+        </a-entity>
 </a-marker>
 
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true"> 
@@ -236,6 +198,36 @@ z dolu
 <a-entity camera></a-entity>
 </a-scene>
 <script>	
+var listOfArrows = [];
+var wrapper;
+const SCALE = 0.2; // 5
+var arrowId = 0;
+	
+window.onload = () => {
+	wrapper = document.querySelector('[wrapper]');
+	drawDestinations();
+};   	
+	
+function drawDestinations(){ 
+	var entityEl = createArrow(0, 0, 0);
+	listOfArrows.push(entityEl);
+	wrapper.appendChild(entityEl);
+}
+	
+function createArrow(angle, positionX, positionY){	
+        arrowId = arrowId + 1;
+        var entityEl = document.createElement('a-entity');
+        
+        entityEl.setAttribute('id', "arrow" + arrowId);
+        entityEl.setAttribute('class', "intersectable");
+	entityEl.setAttribute('obj-model', "obj: #arrow-obj; mtl: #arrow-mtl");
+        entityEl.setAttribute('rotation', {x: 90, y: 0, z: 90});
+        entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
+        entityEl.setAttribute('position', {x: 3, y: 0, z: 0});
+        
+        return entityEl;
+}	
+	
 function turnSlightRight() {
     var x = "0 0 30";
     localStorage.setItem('rotation', x);  
@@ -289,6 +281,12 @@ function turnSlightLeft() {
 
 
 <!--
+
+<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
+	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="2 0 -0.75" ></a-image>
+	<a-text destination2 id="destination2" class="intersectable" value="B202" color="red" rotation="-90 0 0" position="2.5 0 -0.75" align="center"></a-text>
+	<a-text distance2 id="distance2" class="intersectable" value="8 m" color="red" rotation="-90 0 0" position="2.25 0 -1.25" align="center"></a-text>
+
 public static final int TURN_SLIGHT_RIGHT = 1; 30
 public static final int TURN_RIGHT = 2; 60
 public static final int TURN_SHARP_RIGHT = 3; 90
