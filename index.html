@@ -201,7 +201,9 @@ z dolu
 var listOfArrows = [];
 var wrapper;
 const SCALE = 0.1; // 5
+const R = 1;	
 var arrowId = 0;
+
 	
 window.onload = () => {
 	wrapper = document.querySelector('[wrapper]');
@@ -209,8 +211,8 @@ window.onload = () => {
 };   	
 	
 function drawDestinations(){ 
-	for (var i = 0; i < 36; i++) {
-		var entityEl = createArrow(i*10);
+	for (var i = 0; i < 8; i++) {
+		var entityEl = createArrow(i*45);
 		listOfArrows.push(entityEl);
 		wrapper.appendChild(entityEl);
 	}
@@ -226,7 +228,7 @@ function createArrow(angle){
 	entityEl.setAttribute('obj-model', "obj: #arrow-obj; mtl: #arrow-mtl");
         entityEl.setAttribute('rotation', {x: 90, y: 0, z: angle});
         entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
-        entityEl.setAttribute('position', {x: 3*Math.sin(angle), y: 0, z: 3*Math.cos(angle)});
+        entityEl.setAttribute('position', {x: R*Math.sin(angle), y: 0, z: R*Math.cos(angle)});
         
         return entityEl;
 }	
