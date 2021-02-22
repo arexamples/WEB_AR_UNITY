@@ -231,6 +231,8 @@ function createArrow(angle){
         return entityEl;
 }	
 	
+	
+	
 function turnSlightRight() {
     var x = "0 0 30";
     localStorage.setItem('rotation', x);  
@@ -277,7 +279,12 @@ function turnSlightLeft() {
     localStorage.setItem('rotation', x)  
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
     document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
-}  	
+}  
+	
+tick: function() {
+   console.log("TEST")
+}	
+	
 </script>	
 </body>
 </html>
