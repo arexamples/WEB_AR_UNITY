@@ -105,21 +105,21 @@ z dolu
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
   <!--	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 90 0"></a-entity> -->
 	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="0 1 -2" ></a-image>
+	<a-image src="#labelCedule" rotation="0 0 0" scale="2 2 2" position="0 1 -2" ></a-image>
 	
 	
 	
 	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="2 1 0" ></a-image>
+	<a-image src="#labelCedule" rotation="0 0 0" scale="2 2 2" position="2 1 0" ></a-image>
 	
 		
 	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180"></a-entity>
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="0 1 2" ></a-image>
+	<a-image src="#labelCedule" rotation="0 0 0" scale="2 2 2" position="0 1 2" ></a-image>
 
 	
 	
 	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270"></a-entity>
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="-2 1 0" ></a-image>
+	<a-image src="#labelCedule" rotation="0 0 0" scale="2 2 2" position="-2 1 0" ></a-image>
 
 <!-- END: Add Image Target (marker) -->
 </a-marker>		
@@ -127,29 +127,29 @@ z dolu
 <a-marker id="nnf_marker" type='pattern' url='markers/nnf_marker.patt' emitevents="true"> 
   <!--	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 90 0"></a-entity> -->
 	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0">
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="0 1 -2" ></a-image>
+	<a-image cedule1 src="#labelCedule" look-at="[camera]" scale="2 2 2" position="0 1 -2" ></a-image>
 	</a-entity>
 	
 	
 	
 	
 	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90">
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="2 1 0" ></a-image>
+	<a-image cedule2 src="#labelCedule" look-at="[camera]" scale="2 2 2" position="2 1 0" ></a-image>
 	</a-entity>
 	
 	
 	
 		
 	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180">
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="0 1 2" ></a-image>
+	<a-image cedule3 src="#labelCedule" look-at="[camera]" scale="2 2 2" position="0 1 2" ></a-image>
 	</a-entity>
 	
 
 	
 	
 	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270">
-	<a-image src="#labelCedule" look-at="[camera]" scale="2 2 2" position="-2 1 0" >
-	</a-image></a-entity>
+	<a-image cedule4 src="#labelCedule" look-at="[camera]" scale="2 2 2" position="-2 1 0" ></a-image>
+	</a-entity>
 <!-- END: Add Image Target (marker) -->
 </a-marker>	
 	
@@ -281,9 +281,15 @@ function turnSlightLeft() {
     document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }  
 	
-tick: function() {
-   console.log("TEST")
-}	
+var intervalId = window.setInterval(function(){
+  console.log("Error ");
+  var x = "0 0 180";	
+  console.log(document.querySelector('[cedule1]'));
+  document.querySelector('[cedule1]').setAttribute('rotation', x);
+  document.querySelector('[cedule2]').setAttribute('rotation', x);
+  document.querySelector('[cedule3]').setAttribute('rotation', x);
+  document.querySelector('[cedule4]').setAttribute('rotation', x);
+}, 1000);
 	
 </script>	
 </body>
