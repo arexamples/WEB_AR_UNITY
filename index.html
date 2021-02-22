@@ -289,16 +289,12 @@ var intervalId = window.setInterval(function(){
 	var arrow3 = document.querySelector('[arrow3]')
 	var arrow4 = document.querySelector('[arrow4]')
 	var position = camera.object3D.position;
-	var positionCedule1 = cedule1.object3D.position;
-	var positionCedule2 = cedule2.object3D.position;
-	var positionCedule3 = cedule3.object3D.position;
-	var positionCedule4 = cedule4.object3D.position;
 	var positionArrow1 = arrow1.object3D.position;
 	var positionArrow2 = arrow2.object3D.position;
 	var positionArrow3 = arrow3.object3D.position;
 	var positionArrow4 = arrow4.object3D.position;
-	cedule1.object3D.lookAt(new THREE.Vector3(positionCedule1.x, position.y, positionCedule1.z));
-	cedule2.object3D.lookAt(new THREE.Vector3(positionCedule2.x, position.y, positionCedule2.z));
+	cedule1.object3D.lookAt(new THREE.Vector3(positionArrow1.x, position.y, positionArrow1.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(positionArrow2.x, position.y, positionArrow2.z));
 	cedule3.object3D.lookAt(new THREE.Vector3(positionArrow3.x, position.y, positionArrow3.z));
 	cedule4.object3D.lookAt(new THREE.Vector3(positionArrow4.x, position.y, positionArrow4.z));
 	
