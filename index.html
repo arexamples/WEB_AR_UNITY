@@ -280,11 +280,16 @@ function turnSlightLeft() {
     document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
     document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
 }  
+
+var myCCC = 0;
 	
 var intervalId = window.setInterval(function(){
   console.log("Error ");
-  var x = "0 0 180";	
+  myCCC = myCCC + 1
+  myRotation = myCCC * 90 	
+  var x = "0 0 " + myRotation;	
   console.log(document.querySelector('[cedule1]'));
+  console.log(document.querySelector('[camera]'));
   document.querySelector('[cedule1]').setAttribute('rotation', x);
   document.querySelector('[cedule2]').setAttribute('rotation', x);
   document.querySelector('[cedule3]').setAttribute('rotation', x);
