@@ -291,7 +291,8 @@ var intervalId = window.setInterval(function(){
 	var positionCedule4 = cedule4.object3D.position;
 	cedule1.object3D.lookAt(new THREE.Vector3(positionCedule1.x, positionCedule1.y, position.z));
 	cedule2.object3D.lookAt(new THREE.Vector3(positionCedule2.x, positionCedule2.y, position.z));
-	cedule3.object3D.lookAt(new THREE.Vector3(positionCedule3.x, positionCedule3.y, position.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(positionCedule3.x, position.y, positionCedule3.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(positionCedule4.x, position.y, positionCedule4.z));
 	
 }, 1000);
 	
