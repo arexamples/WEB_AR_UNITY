@@ -284,25 +284,29 @@ function turnSlightLeft() {
 var myCCC = 0;
 	
 var intervalId = window.setInterval(function(){
-  console.log("Error ");
-  myCCC = myCCC + 1
-  myRotation = myCCC * 90 	
-  var x = "0 0 " + myRotation;	
-  console.log(document.querySelector('[cedule1]'));
-  console.log(document.querySelector('[cedule1]').getAttribute('rotation'));
-  console.log(document.querySelector('[camera]'));
-  console.log(document.querySelector('[camera]').getAttribute('rotation'));
- 
-	
-  var camera = document.querySelector("[camera]");
-  var cedule = document.querySelector('[cedule1]')
-  var position = camera.object3D.position;
-	var position2 = cedule.object3D.position;
-	console.log("position" + position)
-	console.log("document.querySelector('[cedule1]').getAttribute('position')" + document.querySelector('[cedule1]').getAttribute('position'))
-  cedule.object3D.lookAt(new THREE.Vector3(position2.x, position2.y, position.z));
-	
-	
+	console.log("Error ");
+	myCCC = myCCC + 1
+	myRotation = myCCC * 90 	
+	var x = "0 0 " + myRotation;	
+	console.log(document.querySelector('[cedule1]'));
+	console.log(document.querySelector('[cedule1]').getAttribute('rotation'));
+	console.log(document.querySelector('[camera]'));
+	console.log(document.querySelector('[camera]').getAttribute('rotation'));
+
+	var camera = document.querySelector("[camera]");
+	var cedule1 = document.querySelector('[cedule1]')
+	var cedule2 = document.querySelector('[cedule2]')
+	var cedule3 = document.querySelector('[cedule3]')
+	var cedule4 = document.querySelector('[cedule4]')
+	var position = camera.object3D.position;
+	var positionCedule1 = cedule1.object3D.position;
+	var positionCedule2 = cedule2.object3D.position;
+	var positionCedule3 = cedule3.object3D.position;
+	var positionCedule4 = cedule4.object3D.position;
+	cedule1.object3D.lookAt(new THREE.Vector3(positionCedule1.x, positionCedule1.y, position.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(positionCedule2.x, positionCedule1.y, position.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(positionCedule3.x, positionCedule1.y, position.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(positionCedule4.x, positionCedule1.y, position.z));
 }, 1000);
 	
 </script>	
