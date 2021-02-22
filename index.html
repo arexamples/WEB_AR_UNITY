@@ -49,6 +49,7 @@ AFRAME.registerComponent('distance2', {
 	
 AFRAME.registerComponent('lookAtHandler', {
 tick: function () {
+	console.log("tick")
 	var camera = document.querySelector("[camera]");
 	var cedule1 = document.querySelector('[cedule1]')
 	var cedule2 = document.querySelector('[cedule2]')
