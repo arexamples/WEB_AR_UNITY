@@ -289,7 +289,9 @@ var intervalId = window.setInterval(function(){
   myRotation = myCCC * 90 	
   var x = "0 0 " + myRotation;	
   console.log(document.querySelector('[cedule1]'));
+  console.log(document.querySelector('[cedule1]').getAttribute('rotation'));
   console.log(document.querySelector('[camera]'));
+  console.log(document.querySelector('[camera]').getAttribute('rotation'));
   document.querySelector('[cedule1]').setAttribute('rotation', x);
   document.querySelector('[cedule2]').setAttribute('rotation', x);
   document.querySelector('[cedule3]').setAttribute('rotation', x);
