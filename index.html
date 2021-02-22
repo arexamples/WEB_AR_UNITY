@@ -284,15 +284,6 @@ function turnSlightLeft() {
 var myCCC = 0;
 	
 var intervalId = window.setInterval(function(){
-	console.log("Error ");
-	myCCC = myCCC + 1
-	myRotation = myCCC * 90 	
-	var x = "0 0 " + myRotation;	
-	console.log(document.querySelector('[cedule1]'));
-	console.log(document.querySelector('[cedule1]').getAttribute('rotation'));
-	console.log(document.querySelector('[camera]'));
-	console.log(document.querySelector('[camera]').getAttribute('rotation'));
-
 	var camera = document.querySelector("[camera]");
 	var cedule1 = document.querySelector('[cedule1]')
 	var cedule2 = document.querySelector('[cedule2]')
