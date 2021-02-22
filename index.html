@@ -300,7 +300,7 @@ var intervalId = window.setInterval(function(){
 	var position2 = cedule.object3D.position;
 	console.log("position" + position)
 	console.log("document.querySelector('[cedule1]').getAttribute('position')" + document.querySelector('[cedule1]').getAttribute('position'))
-  cedule.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
+  cedule.object3D.lookAt(new THREE.Vector3(position2.x, position2.y, position.z));
 	
 	
 }, 1000);
