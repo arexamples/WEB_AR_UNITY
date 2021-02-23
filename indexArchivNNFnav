@@ -1,0 +1,351 @@
+<!-- BEGIN: Top HTML -->
+<!DOCTYPE html>
+<html>
+<!-- include aframe -->
+<script src="https://aframe.io/releases/1.2.0/aframe.js"></script>
+<!-- include ar.js -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<!-- END: Top HTML -->
+<!-- END: Unity Compiled Events -->
+
+<!-- BEGIN: Middle HTML -->
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<!--
+<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+<button onclick="turnSharpLeft()"><<<</button>
+<button onclick="turnLeft()"><<</button>
+<button onclick="turnSlightLeft()"><</button>
+<button onclick="continueOnStreet()">^</button>
+<button onclick="turnSlightRight()">></button>
+<button onclick="turnRight()">>></button>
+<button onclick="turnSharpRight()">>>></button>
+</div>	
+-->
+
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
+arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
+-->
+<a-scene embedded arjs=’sourceType: webcam; trackingMethod:best;’ vr-mode-ui='enabled: false'>
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+<!-- END: Middle HTML -->
+
+<!-- BEGIN: Unity Compiled Assets -->
+<a-assets>
+  <a-asset-item id="arrow-obj" src="arrow-obj/arrow.obj"></a-asset-item>
+  <a-asset-item id="arrow-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
+  <img id="doorIcon" src="images/doorIcon.png"></img>
+  <img id="labelCedule" src="images/labelCedule.png"></img>
+</a-assets>
+<!-- END: Unity Compiled Assets -->
+<!-- BEGIN: Add Image Target (marker) 
+<a-entity arrow id="arrow" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.15 0.1 0.1" rotation="0 0 0"></a-entity>
+	<a-entity id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.15 0.1" rotation="0 90 0"></a-entity>
+	<a-entity id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.15" rotation="0 0 90"></a-entity>
+-->
+	
+<!-- arrow 90 0 X 
+rotation
+x y z na monitoru
+x prevraceni k uzivateli
+y prevraceni doleva
+z otaceni doprava
+position
+x y z na monitoru
+x doprava
+y smerem k uzivateli
+z dolu
+-->
+	
+<a-marker id="marker" preset="hiro" emitevents="true" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
+  	<a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">
+        </a-entity>
+</a-marker>
+
+<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
+  <!--	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 90 0"></a-entity> -->
+	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
+	<a-image cedule1 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 -2" ></a-image>
+		
+	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
+	<a-image cedule2 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="2 0.4 0" ></a-image>
+			
+	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180"></a-entity>
+	<a-image cedule3 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 2" ></a-image>	
+	
+	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270"></a-entity>
+	<a-image cedule4 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="-2 0.4 0" ></a-image>
+
+<!-- END: Add Image Target (marker) -->
+</a-marker>		
+
+<a-marker id="nnf_marker" type='pattern' url='markers/nnf_marker.patt' emitevents="true"> 
+  <!--	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 90 0"></a-entity> -->
+<!-- END: Add Image Target (marker) -->
+</a-marker>	
+		
+		
+<a-entity lookathandler></a-entity>		
+<a-entity camera></a-entity>
+</a-scene>
+<script>	
+var listOfArrows = [];
+var wrapper;
+const SCALE = 0.1; // 5
+const R = 1;	
+var arrowId = 0;
+
+	
+window.onload = () => {
+	wrapper = document.querySelector('[wrapper]');
+	camera = document.querySelector("[camera]");
+	cedule1 = document.querySelector('[cedule1]')
+	cedule2 = document.querySelector('[cedule2]')
+	cedule3 = document.querySelector('[cedule3]')
+	cedule4 = document.querySelector('[cedule4]')
+	arrow1 = document.querySelector('[arrow1]')
+	arrow2 = document.querySelector('[arrow2]')
+	arrow3 = document.querySelector('[arrow3]')
+	arrow4 = document.querySelector('[arrow4]')
+	drawDestinations();
+};  
+	
+AFRAME.registerComponent('arrow', {
+
+  init: function(){
+    console.log(localStorage.getItem('rotation'));
+    //var rotation = localStorage.getItem('rotation');
+    //this.el.setAttribute('rotation', rotation)
+  }
+
+});
+	
+AFRAME.registerComponent('distance', {
+
+  init: function(){
+    console.log(localStorage.getItem('distance'));
+    //var distance = localStorage.getItem('distance');
+    //this.el.setAttribute('value', distance + " m")
+  }
+
+});	
+	
+AFRAME.registerComponent('arrow2', {
+
+  init: function(){
+    console.log(localStorage.getItem('rotation'));
+    //var rotation = localStorage.getItem('rotation');
+    //this.el.setAttribute('rotation', rotation)
+  }
+
+});	
+	
+AFRAME.registerComponent('distance2', {
+
+  init: function(){
+    console.log(localStorage.getItem('distance'));
+    //var distance = localStorage.getItem('distance');
+    //this.el.setAttribute('value', distance + " m")
+  }
+
+});	
+	
+AFRAME.registerComponent('lookathandler', {
+tick: function () {
+	
+	var position = camera.object3D.position;
+	var position1 = arrow1.object3D.position;
+	var position2 = arrow2.object3D.position;
+	var position3 = arrow3.object3D.position;
+	var position4 = arrow4.object3D.position;
+	cedule1.object3D.lookAt(new THREE.Vector3(position1.x, position.y, position1.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(position3.x, position.y, position3.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(position4.x, position.y, position4.z));
+}
+});	
+		
+function toRadians(degrees) {
+	return degrees * Math.PI / 180;
+};
+
+function toDegrees(radians) {
+	return radians * 180 / Math.PI;
+}	
+	
+function drawDestinations(){ 
+	for (var i = 0; i < 8; i++) {
+		var entityEl = createArrow(i*45);
+		listOfArrows.push(entityEl);
+		wrapper.appendChild(entityEl);
+	}
+
+}
+	
+function createArrow(angle){	
+        arrowId = arrowId + 1;
+        var entityEl = document.createElement('a-entity');
+	
+        entityEl.setAttribute('id', "arrow" + arrowId);
+        entityEl.setAttribute('class', "intersectable");
+	entityEl.setAttribute('obj-model', "obj: #arrow-obj; mtl: #arrow-mtl");
+        entityEl.setAttribute('rotation', {x: 90, y: 0, z: angle});
+        entityEl.setAttribute('scale', {x: SCALE, y: SCALE, z: SCALE});
+        entityEl.setAttribute('position', {x: R*Math.cos(toRadians(angle-90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+        
+        return entityEl;
+}	
+	
+	
+	
+function turnSlightRight() {
+    var x = "0 0 30";
+    localStorage.setItem('rotation', x);  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
+}
+
+function turnRight() {
+    var x = "0 0 60";
+    localStorage.setItem('rotation', x)  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+}
+
+function turnSharpRight() {
+    var x = "0 0 90";
+    localStorage.setItem('rotation', x)  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
+}
+
+function continueOnStreet() {
+    var x = "0 0 0";
+    localStorage.setItem('rotation', x)  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
+}
+    
+function turnSharpLeft() {
+    var x = "0 0 -90";
+    localStorage.setItem('rotation', x);  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
+}
+
+function turnLeft() {
+    var x = "0 0 -60";
+    localStorage.setItem('rotation', x)  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
+}
+
+function turnSlightLeft() {
+    var x = "0 0 -30";
+    localStorage.setItem('rotation', x)  
+    document.querySelector('[arrow]').components.arrow.el.setAttribute('rotation', x);
+    document.querySelector('[arrow2]').components.arrow2.el.setAttribute('rotation', x);
+}  
+
+
+	
+
+	
+</script>	
+</body>
+</html>
+
+
+<!--
+
+<a-marker id="marker3" type='pattern' url='markers/marker03.patt' emitevents="true"> 
+	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
+	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="1 0 -2.5" ></a-image>
+	<a-text destination1 id="destination1" class="intersectable" value="A201" color="red" rotation="-90 0 0" position="1.5 0 -2.5" align="center"></a-text>
+	<a-text distance1 id="distance1" class="intersectable" value="5 m" color="red" rotation="-90 0 0" position="1.25 0 -3" align="center"></a-text>
+	
+	
+	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
+	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="2 0 -0.75" ></a-image>
+	<a-text destination2 id="destination2" class="intersectable" value="B202" color="red" rotation="-90 0 0" position="2.5 0 -0.75" align="center"></a-text>
+	<a-text distance2 id="distance2" class="intersectable" value="8 m" color="red" rotation="-90 0 0" position="2.25 0 -1.25" align="center"></a-text>
+	
+		
+	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180"></a-entity>
+	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="1 0 2.5" ></a-image>
+	<a-text destination3 id="destination3" class="intersectable" value="C201" font="roboto" color="red" rotation="-90 0 0" position="1.5 0 2.5" align="center"></a-text>
+	<a-text distance3 id="distance3" class="intersectable" value="12 m" color="red" rotation="-90 0 0" position="1.25 0 3" align="center"></a-text>
+	
+	
+	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270"></a-entity>
+	
+	<a-image src="images/destination_flag.png" rotation="270 0 0" scale="0.4 0.4 0.4" position="-3 0 -1.75"></a-image>
+	<a-text destinationFlagText id="destinationFlagText" class="intersectable" value="CIL: Cevni poradna" color="red" rotation="-90 0 0" position="-2.75 0 -1.75" align="left"></a-text>
+	
+	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="-2 0 -0.75" ></a-image>
+	<a-text destination4 id="destination4" class="intersectable" value="D202" color="red" rotation="-90 0 0" position="-2.5 0 -0.75" align="center"></a-text>
+	<a-text distance4 id="distance4" class="intersectable" value="17 m" color="red" rotation="-90 0 0" position="-2.25 0 -1.25" align="center"></a-text>
+
+</a-marker>
+
+var intervalId = window.setInterval(function(){
+	var camera = document.querySelector("[camera]");
+	var cedule1 = document.querySelector('[cedule1]')
+	var cedule2 = document.querySelector('[cedule2]')
+	var cedule3 = document.querySelector('[cedule3]')
+	var cedule4 = document.querySelector('[cedule4]')
+	var arrow1 = document.querySelector('[arrow1]')
+	var arrow2 = document.querySelector('[arrow2]')
+	var arrow3 = document.querySelector('[arrow3]')
+	var arrow4 = document.querySelector('[arrow4]')
+	var position = camera.object3D.position;
+	var positionArrow1 = arrow1.object3D.position;
+	var positionArrow2 = arrow2.object3D.position;
+	var positionArrow3 = arrow3.object3D.position;
+	var positionArrow4 = arrow4.object3D.position;
+	cedule1.object3D.lookAt(new THREE.Vector3(positionArrow1.x, position.y, positionArrow1.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(positionArrow2.x, position.y, positionArrow2.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(positionArrow3.x, position.y, positionArrow3.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(positionArrow4.x, position.y, positionArrow4.z));
+	
+}, 100);
+
+ document.querySelector('[cedule1]').setAttribute('rotation', x);
+  document.querySelector('[cedule2]').setAttribute('rotation', x);
+  document.querySelector('[cedule3]').setAttribute('rotation', x);
+  document.querySelector('[cedule4]').setAttribute('rotation', x);
+
+<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
+	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="2 0 -0.75" ></a-image>
+	<a-text destination2 id="destination2" class="intersectable" value="B202" color="red" rotation="-90 0 0" position="2.5 0 -0.75" align="center"></a-text>
+	<a-text distance2 id="distance2" class="intersectable" value="8 m" color="red" rotation="-90 0 0" position="2.25 0 -1.25" align="center"></a-text>
+
+public static final int TURN_SLIGHT_RIGHT = 1; 30
+public static final int TURN_RIGHT = 2; 60
+public static final int TURN_SHARP_RIGHT = 3; 90
+public static final int CONTINUE_ON_STREET = 0; 0
+public static final int TURN_SHARP_LEFT = -3; -90
+public static final int TURN_LEFT = -2; -60
+public static final int TURN_SLIGHT_LEFT = -1; -30
+
+
+public static final int UNKNOWN = -99;
+public static final int U_TURN_UNKNOWN = -98;
+public static final int U_TURN_LEFT = -8;
+public static final int KEEP_LEFT = -7;
+public static final int LEAVE_ROUNDABOUT = -6; // for future use
+public static final int TURN_SHARP_LEFT = -3;
+public static final int TURN_LEFT = -2;
+public static final int TURN_SLIGHT_LEFT = -1;
+public static final int CONTINUE_ON_STREET = 0;
+public static final int TURN_SLIGHT_RIGHT = 1;
+public static final int TURN_RIGHT = 2;
+public static final int TURN_SHARP_RIGHT = 3;
+public static final int FINISH = 4;
+public static final int REACHED_VIA = 5;
+public static final int USE_ROUNDABOUT = 6;
+public static final int IGNORE = Integer.MIN_VALUE;
+public static final int KEEP_RIGHT = 7;
+public static final int U_TURN_RIGHT = 8;
+public static final int PT_START_TRIP = 101;
+public static final int PT_TRANSFER = 102;
+public static final int PT_END_TRIP = 103;
+-->
