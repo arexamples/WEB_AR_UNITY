@@ -1,6 +1,9 @@
 <!-- BEGIN: Top HTML -->
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Navigation AR.js</title>	
 <!-- include aframe -->
 <script src="https://aframe.io/releases/1.2.0/aframe.js"></script>
 <!-- include ar.js -->
@@ -61,23 +64,10 @@ z dolu
         </a-entity>
 </a-marker>
 
-<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
- 
-	<a-entity text="value:roboto Q123 ěščřžýáíé; font:roboto" rotation="-90 0 0" position="1 0 0" scale="3 3 3"></a-entity>
-	<a-entity text="value:aileronsemibold Q123 ěščřžýáíé; font:https://cdn.aframe.io/fonts/Aileron-Semibold.fnt" rotation="-90 0 0" position="0 1 0" scale="3 3 3"></a-entity>
-	<a-entity text="value:dejavu Q123 ěščřžýáíé; font:dejavu" rotation="-90 0 0" position="0 0 1" scale="3 3 3"></a-entity>
-	<a-entity text="value:exo2bold Q123 ěščřžýáíé; font:exo2bold" rotation="-90 0 0" position="0 0 0" scale="3 3 3"></a-entity>
-	
-	<a-entity text="value:HelloX; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json;" rotation="-90 0 0"></a-entity>     
-	<a-text value="roboto Q123 ěščřžýáíé" font="roboto" color="black" rotation="-90 0 0" position="0 -0.5 -4" align="center"></a-text>
-	<a-text value="aileronsemibold Q123 ěščřžýáíé" font="aileronsemibold" color="black" rotation="-90 0 0" position="0 -0.5 -3" align="center"></a-text>
-	<a-text value="dejavu Q123 ěščřžýáíé" font="dejavu" color="black" rotation="-90 0 0" position="0 -0.5 -2" align="center"></a-text>
-	<a-text value="exo2bold Q123 ěščřžýáíé" font="exo2bold" color="black" rotation="-90 0 0" position="0 -0.5 -1" align="center"></a-text>
-	<a-text class="intersectable" value="exo2semibold Q123 ěščřžýáíé" font="exo2semibold" color="black" rotation="-90 0 0" position="0 -0.5 0" align="center"></a-text>
-	<a-text class="intersectable" value="kelsonsans Q123 ěščřžýáíé" font="kelsonsans" color="black" rotation="-90 0 0" position="0 -0.5 1" align="center"></a-text>
-	<a-text class="intersectable" value="monoid Q123 ěščřžýáíé" font="monoid" color="black" rotation="-90 0 0" position="0 -0.5 2" align="center"></a-text>
-	<a-text class="intersectable" value="mozillavr Q123 ěščřžýáíé" font="mozillavr" color="black" rotation="-90 0 0" position="0 -0.5 3" align="center"></a-text>
-	<a-text class="intersectable" value="sourcecodepro Q123 ěščřžýáíé" font="sourcecodepro" color="black" rotation="-90 0 0" position="0 -0.5 4" align="center"></a-text>																	  
+<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 	
+	<a-entity text="value:Creepster +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json;" rotation="-90 0 0"></a-entity>     
+	<a-entity text="value:Roboto +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/roboto/Roboto-Bold.json;" rotation="-90 0 0"></a-entity>  
+																	  
 
 <!-- END: Add Image Target (marker) -->
 </a-marker>		
