@@ -256,6 +256,10 @@ function turnSlightLeft() {
 
 <!--
 
+<a-entity text="value:Creepster +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json;" scale="2 2 2" position="0 0 0" rotation="-90 0 0"></a-entity>     
+	<a-entity text="value:Roboto4:     +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false" scale="2 2 2" position="0 0 4" rotation="-90 0 0"></a-entity>  	
+	<a-entity text="value:Roboto5      +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json;" negate="false" scale="2 2 2.5" position="0 0 5" rotation="-90 0 0"></a-entity>  		
+
 <a-marker id="marker3" type='pattern' url='markers/marker03.patt' emitevents="true"> 
 	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
 	<a-image src="#doorIcon" rotation="90 0 0" scale="0.4 0.4 0.4" position="1 0 -2.5" ></a-image>
