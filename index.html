@@ -64,13 +64,20 @@ z dolu
         </a-entity>
 </a-marker>
 
-<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 	
-	<a-entity text="value:Creepster +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json;" scale="2 2 2" position="0 0 0" rotation="-90 0 0"></a-entity>     
-	<a-entity text="value:Roboto       +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/roboto/Roboto-Bold.json;" scale="2 2 2" position="0 0 0.5" rotation="-90 0 0"></a-entity>  
-	<a-entity text="value:Roboto2      +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false" negate="false" scale="2 2 2" position="0 0 1" rotation="-90 0 0"></a-entity>  
-	<a-entity text="value:Roboto3      +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json;" scale="2 2 2" position="0 0 1.5" rotation="-90 0 0"></a-entity>
-	<a-entity text="value:Roboto4:     +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false" scale="2 2 2" position="0 0 4" rotation="-90 0 0"></a-entity>  	
-	<a-entity text="value:Roboto5      +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json;" negate="false" scale="2 2 2.5" position="0 0 5" rotation="-90 0 0"></a-entity>  		
+<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
+  <!--	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" scale="0.1 0.1 0.1" rotation="0 90 0"></a-entity> -->
+	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
+	<a-image cedule1 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 -2" ></a-image>
+		
+	<a-entity arrow2 id="arrow2" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="3 0 0" scale="0.2 0.2 0.2" rotation="90 0 90"></a-entity>
+	<a-image cedule2 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="2 0.4 0" ></a-image>
+			
+	<a-entity arrow3 id="arrow3" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 3" scale="0.2 0.2 0.2" rotation="90 0 180"></a-entity>
+	<a-image cedule3 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 2" ></a-image>	
+	
+	<a-entity arrow4 id="arrow4" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="-3 0 0" scale="0.2 0.2 0.2" rotation="90 0 270"></a-entity>
+	<a-image cedule4 src="#labelCedule" rotation="-90 0 0" scale="1.024 0.508 0.1" position="-2 0.4 0" ></a-image>
+
 <!-- END: Add Image Target (marker) -->
 </a-marker>		
 
@@ -80,7 +87,7 @@ z dolu
 </a-marker>	
 		
 		
-	
+<a-entity lookathandler></a-entity>		
 <a-entity camera></a-entity>
 </a-scene>
 <script>	
@@ -93,7 +100,16 @@ var arrowId = 0;
 	
 window.onload = () => {
 	wrapper = document.querySelector('[wrapper]');
-
+	camera = document.querySelector("[camera]");
+	cedule1 = document.querySelector('[cedule1]')
+	cedule2 = document.querySelector('[cedule2]')
+	cedule3 = document.querySelector('[cedule3]')
+	cedule4 = document.querySelector('[cedule4]')
+	arrow1 = document.querySelector('[arrow1]')
+	arrow2 = document.querySelector('[arrow2]')
+	arrow3 = document.querySelector('[arrow3]')
+	arrow4 = document.querySelector('[arrow4]')
+	drawDestinations();
 };  
 	
 AFRAME.registerComponent('arrow', {
@@ -136,6 +152,20 @@ AFRAME.registerComponent('distance2', {
 
 });	
 	
+AFRAME.registerComponent('lookathandler', {
+tick: function () {
+	
+	var position = camera.object3D.position;
+	var position1 = arrow1.object3D.position;
+	var position2 = arrow2.object3D.position;
+	var position3 = arrow3.object3D.position;
+	var position4 = arrow4.object3D.position;
+	cedule1.object3D.lookAt(new THREE.Vector3(position1.x, position.y, position1.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(position3.x, position.y, position3.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(position4.x, position.y, position4.z));
+}
+});	
 		
 function toRadians(degrees) {
 	return degrees * Math.PI / 180;
@@ -228,6 +258,10 @@ function turnSlightLeft() {
 
 
 <!--
+
+<a-entity text="value:Creepster +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json;" scale="2 2 2" position="0 0 0" rotation="-90 0 0"></a-entity>     
+	<a-entity text="value:Roboto4:     +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false" scale="2 2 2" position="0 0 4" rotation="-90 0 0"></a-entity>  	
+	<a-entity text="value:Roboto5      +ěščřžýáíé; color:#FFFFFF; shader: msdf; font:fonts/Roboto-Bold-msdf.json;" negate="false" scale="2 2 2.5" position="0 0 5" rotation="-90 0 0"></a-entity>  		
 
 <a-marker id="marker3" type='pattern' url='markers/marker03.patt' emitevents="true"> 
 	<a-entity arrow1 id="arrow1" class="intersectable" obj-model="obj: #arrow-obj; mtl: #arrow-mtl" position="0 0 -3" scale="0.2 0.2 0.2" rotation="90 0 0"></a-entity>
