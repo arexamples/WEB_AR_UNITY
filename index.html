@@ -63,7 +63,9 @@ z dolu
 
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
   <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="20" material="transparent: true; opacity: 0.90" geometry=""></a-plane>
-	<a-text value="Hello, world!"  color="black" rotation="-90 0 0" align="center" scale="2 2 2" text=""></a-text>
+  <a-text value="Q123 ěščřžýáíé" position="0 -0.25 0" color="black" rotation="-90 0 0" align="center" scale="2 2 2" text=""></a-text>
+  <a-text value="Q123 ěščřžýáíé" position="0 -0.25 1" color="black" rotation="-90 0 0" align="center" scale="2 2 2" text=""></a-text>
+  <a-text value="Q123 ěščřžýáíé" position="0 -0.25 2" color="black" rotation="-90 0 0" align="center" scale="2 2 2" text=""></a-text>	
 
 <!-- END: Add Image Target (marker) -->
 </a-marker>		
@@ -74,7 +76,7 @@ z dolu
 </a-marker>	
 		
 		
-<a-entity lookathandler></a-entity>		
+	
 <a-entity camera></a-entity>
 </a-scene>
 <script>	
@@ -87,16 +89,7 @@ var arrowId = 0;
 	
 window.onload = () => {
 	wrapper = document.querySelector('[wrapper]');
-	camera = document.querySelector("[camera]");
-	cedule1 = document.querySelector('[cedule1]')
-	cedule2 = document.querySelector('[cedule2]')
-	cedule3 = document.querySelector('[cedule3]')
-	cedule4 = document.querySelector('[cedule4]')
-	arrow1 = document.querySelector('[arrow1]')
-	arrow2 = document.querySelector('[arrow2]')
-	arrow3 = document.querySelector('[arrow3]')
-	arrow4 = document.querySelector('[arrow4]')
-	drawDestinations();
+
 };  
 	
 AFRAME.registerComponent('arrow', {
@@ -139,20 +132,6 @@ AFRAME.registerComponent('distance2', {
 
 });	
 	
-AFRAME.registerComponent('lookathandler', {
-tick: function () {
-	
-	var position = camera.object3D.position;
-	var position1 = arrow1.object3D.position;
-	var position2 = arrow2.object3D.position;
-	var position3 = arrow3.object3D.position;
-	var position4 = arrow4.object3D.position;
-	cedule1.object3D.lookAt(new THREE.Vector3(position1.x, position.y, position1.z));
-	cedule2.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
-	cedule3.object3D.lookAt(new THREE.Vector3(position3.x, position.y, position3.z));
-	cedule4.object3D.lookAt(new THREE.Vector3(position4.x, position.y, position4.z));
-}
-});	
 		
 function toRadians(degrees) {
 	return degrees * Math.PI / 180;
