@@ -184,14 +184,14 @@ AFRAME.registerComponent('lookathandler', {
 tick: function () {
 	
 	var position = camera.object3D.position;
-	var position1 = cedule1.object3D.position;
-	var position2 = cedule2.object3D.position;
-	var position3 = cedule3.object3D.position;
-	var position4 = cedule4.object3D.position;
-	cedule1.object3D.lookAt(new THREE.Vector3(position1.x, position.y, position1.z));
-	cedule2.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
-	cedule3.object3D.lookAt(new THREE.Vector3(position3.x, position.y, position3.z));
-	cedule4.object3D.lookAt(new THREE.Vector3(position4.x, position.y, position4.z));
+	//var position1 = cedule1.object3D.position;
+	//var position2 = cedule2.object3D.position;
+	//var position3 = cedule3.object3D.position;
+	//var position4 = cedule4.object3D.position;
+	cedule1.object3D.lookAt(new THREE.Vector3(0, 0, position.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(0, 0, position.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(0, 0, position.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(0, 0, position.z));
 }
 });	
 		
