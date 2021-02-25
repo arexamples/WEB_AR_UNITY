@@ -169,7 +169,7 @@ AFRAME.registerComponent('distance2', {
 
 });	
 	
-AFRAME.registerComponent('lookathandler', {
+AFRAME.registerComponent('lookAtHandler', {
 tick: function () {
 	var camPosition = camera.object3D.position;						   					   
 	lookAtHandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));   		
