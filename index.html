@@ -71,7 +71,6 @@ z dolu
 380 684
 -->
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
-	<a-entity lookAtHandler id="lookAtHandler" position="0 0 0" rotation="-90 0 0" emitevents="true"></a-entity>
         <a-entity picovina id="picovina" position="0 0 0" rotation="-90 0 0" emitevents="true"></a-entity>
 	<a-image arrow1 id="arrow1" src="#darkArrow" position="0 0 -2.15" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
 	<a-entity cedule1 id="cedule1" position="0 0 -2.15" rotation="-90 0 0" emitevents="true">
@@ -105,7 +104,7 @@ z dolu
 
 		
 
-
+<a-entity lookAtHandler></a-entity>
 <a-entity camera></a-entity>
 </a-scene>
 <script>	
@@ -119,8 +118,7 @@ var arrowId = 0;
 window.onload = () => {
 	wrapper = document.querySelector('[wrapper]');
 	camera = document.querySelector("[camera]");
-	lookAtHandler = document.querySelector("[lookAtHandler]");
-								picovina = document.querySelector("[picovina]");
+	picovina = document.querySelector("[picovina]");
 	cedule1 = document.querySelector('[cedule1]')
 	cedule2 = document.querySelector('[cedule2]')
 	cedule3 = document.querySelector('[cedule3]')
@@ -174,10 +172,9 @@ AFRAME.registerComponent('distance2', {
 AFRAME.registerComponent('lookAtHandler', {
 tick: function () {
 	var camPosition = camera.object3D.position;						   					   
-	lookAtHandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));   
-						   picovina.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));   
-						   cedule3.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));   
-	cedule1.object3D.rotation = new THREE.Vector3(cedule1.object3D.rotation.x, lookAtHandler.object3D.rotation.y, lookAtHandler.object3D.rotation.z);					   
+	picovina.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));   
+	cedule3.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));   
+	cedule1.object3D.rotation = new THREE.Vector3(cedule1.object3D.rotation.x, picovina.object3D.rotation.y, picovina.object3D.rotation.z);					   
 	cedule2.object3D.rotation = new THREE.Vector3(picovina.object3D.rotation.x, picovina.object3D.rotation.y, picovina.object3D.rotation.z);
 	cedule4.object3D.rotation = new THREE.Vector3(cedule4.object3D.rotation.x, cedule3.object3D.rotation.y, cedule3.object3D.rotation.z);
 }
