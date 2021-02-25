@@ -78,15 +78,15 @@ z dolu
 
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
 	
-<a-image arrow1 src="#darkArrow" position="0 0 -2.1" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
+	<a-image arrow1 id="arrow1" src="#darkArrow" position="0 0 -2.15" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
 	<a-entity cedule1 id="cedule1" position="0 0 0" rotation="-90 0 0" emitevents="true">
-		<a-image src="#bigGoalCircle" rotation="0 0 0" scale="1.52 1.111 0.1" position="0 0.4 -2.5" ></a-image>
-		<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#343A3E" scale="6 6 6" position="0.2 0.5 -2.6" rotation="0 0 0"></a-entity> 
-		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:left; color:#B3B3B3" scale="5 5 5" position="2.7 0.5 -2.55" rotation="0 0 0"></a-entity>
-		<a-entity text="value:3 min; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:right; color:#B3B3B3" scale="5 5 5" position="-2.7 0.5 -2.55" rotation="0 0 0"></a-entity>
+		<a-image src="#bigGoalCircle" rotation="0 0 0" scale="1.52 1.111 0.1" position="-0.025 1.75 0.1" ></a-image>
+		<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#343A3E" scale="5 5 5" position="0.2 1.825 0.2" rotation="0 0 0"></a-entity> 
+		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:left; color:#B3B3B3" scale="4 4 4" position="1.4 1.4 0.2" rotation="0 0 0"></a-entity>
+		<a-entity text="value:3 min; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:right; color:#B3B3B3" scale="4 4 4" position="-1.4 1.4 0.2" rotation="0 0 0"></a-entity>
 	</a-entity>	
-
-	<a-image arrow2 src="#lightArrow" position="-2.1 0 0" scale="1.52 2.736 1" rotation="-90 0 90"></a-image>
+	
+	<a-image arrow2 id="arrow2" src="#lightArrow" position="-2.1 0 0" scale="1.52 2.736 1" rotation="-90 0 90"></a-image>
 	<a-entity cedule2 id="cedule2" position="0 0 0" rotation="-90 0 90" emitevents="true">
 		<a-image src="#smallGoalDoor" rotation="0 0 0" scale="1.52 0.976 0.1" position="-2 0.4 0" ></a-image>
 		<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="6 6 6" position="2.2 0.5 0.1" rotation="0 0 0"></a-entity> 
@@ -94,14 +94,14 @@ z dolu
 	</a-entity>
 
 
-	<a-image arrow3 src="#lightArrow" position="0 0 2.1" scale="1.52 2.736 1" rotation="-90 0 180"></a-image>	
+	<a-image arrow3 id="arrow3" src="#lightArrow" position="0 0 2.1" scale="1.52 2.736 1" rotation="-90 0 180"></a-image>	
 	<a-entity cedule3 id="cedule3" position="0 0 0" rotation="-90 0 180" emitevents="true">	
 		<a-image src="#smallGoalDoor" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0.4 3" ></a-image>
 		<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="6 6 6" position="0.2 0.5 3.1" rotation="0 0 0"></a-entity> 
 		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#B3B3B3" scale="5 5 5" position="0.2 0.5 3.05" rotation="0 0 0"></a-entity>
 	</a-entity>
-
-	<a-image arrow4 src="#lightArrow" position="2.1 0 0" scale="1.52 2.736 1" rotation="-90 0 270"></a-image>
+	
+	<a-image arrow4 id="arrow4" src="#lightArrow" position="2.1 0 0" scale="1.52 2.736 1" rotation="-90 0 270"></a-image>
 	<a-entity cedule4 id="cedule4" position="0 0 0" rotation="-90 0 270" emitevents="true">	
 		<a-image src="#smallGoalDoor" rotation="0 0 0" scale="1.52 0.976 0.1" position="2 0.4 0" ></a-image>
 		<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="6 6 6" position="-2.2 0.5 0.1" rotation="0 0 0"></a-entity> 
@@ -133,14 +133,14 @@ window.onload = () => {
 	wrapper = document.querySelector('[wrapper]');
 	camera = document.querySelector("[camera]");
 	cedule1 = document.querySelector('[cedule1]')
-	//cedule2 = document.querySelector('[cedule2]')
-	//cedule3 = document.querySelector('[cedule3]')
-	//cedule4 = document.querySelector('[cedule4]')
+	cedule2 = document.querySelector('[cedule2]')
+	cedule3 = document.querySelector('[cedule3]')
+	cedule4 = document.querySelector('[cedule4]')
 	arrow1 = document.querySelector('[arrow1]')
-	//arrow2 = document.querySelector('[arrow2]')
-	//arrow3 = document.querySelector('[arrow3]')
-	//arrow4 = document.querySelector('[arrow4]')
-	//drawDestinations();
+	arrow2 = document.querySelector('[arrow2]')
+	arrow3 = document.querySelector('[arrow3]')
+	arrow4 = document.querySelector('[arrow4]')
+	drawDestinations();
 };  
 	
 AFRAME.registerComponent('arrow', {
@@ -187,14 +187,14 @@ AFRAME.registerComponent('lookathandler', {
 tick: function () {
 	
 	var position = camera.object3D.position;
-	var position1 = arrow1.object3D.position;
-	//var position2 = arrow2.object3D.position;
-	//var position3 = arrow3.object3D.position;
-	//var position4 = arrow4.object3D.position;
+	var position1 = cedule1.object3D.position;
+	var position2 = cedule2.object3D.position;
+	var position3 = cedule3.object3D.position;
+	var position4 = cedule4.object3D.position;
 	cedule1.object3D.lookAt(new THREE.Vector3(position1.x, position.y, position1.z));
-	//cedule2.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
-	//cedule3.object3D.lookAt(new THREE.Vector3(position3.x, position.y, position3.z));
-	//cedule4.object3D.lookAt(new THREE.Vector3(position4.x, position.y, position4.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(position2.x, position.y, position2.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(position3.x, position.y, position3.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(position4.x, position.y, position4.z));
 }
 });	
 		
