@@ -173,7 +173,10 @@ AFRAME.registerComponent('lookathandler', {
 tick: function () {
 	
 	var camPosition = camera.object3D.position;
-	cedule1.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));				   
+	cedule1.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));
+	cedule1.object3D.rotation.x = -90
+	cedule1.object3D.rotation.y = 0
+						   
 						   
 	cedule2.object3D.rotation.z = cedule1.object3D.rotation.z
 	cedule3.object3D.rotation.z = cedule1.object3D.rotation.z
