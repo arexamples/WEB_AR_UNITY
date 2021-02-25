@@ -171,23 +171,19 @@ AFRAME.registerComponent('distance2', {
 	
 AFRAME.registerComponent('lookathandler', {
 tick: function () {
-	
 	var camPosition = camera.object3D.position;						   					   
-	//cedule1.object3D.lookAt(new THREE.Vector3(cedule1.x, camPosition.y, camPosition.z));
-	var vector = camera.getWorldDirection();
-        var theta = Math.atan2(vector.x,vector.z);					   
+	cedule1.object3D.lookAt(new THREE.Vector3(camPosition.x, cedule1.object3D.position.y, cedule1.object3D.position.z));
+		   
 						   
 		
-	cedule1.object3D.rotation.z = theta					   
-	cedule2.object3D.rotation.z = theta
-	cedule3.object3D.rotation.z = theta
-	cedule4.object3D.rotation.z = theta	
-	/*
+	cedule1.object3D.rotation.z = cedule1.object3D.rotation.z					   
+	cedule2.object3D.rotation.z = cedule1.object3D.rotation.z
+	cedule3.object3D.rotation.z = cedule1.object3D.rotation.z
+	cedule4.object3D.rotation.z = cedule1.object3D.rotation.z	
 	cedule1.object3D.rotation.y = cedule1.object3D.rotation.y					   
 	cedule2.object3D.rotation.y = cedule1.object3D.rotation.y
 	cedule3.object3D.rotation.y = cedule1.object3D.rotation.y
-	cedule4.object3D.rotation.y = cedule1.object3D.rotation.y					   
-	*/					   
+	cedule4.object3D.rotation.y = cedule1.object3D.rotation.y					   				   
 }
 });	
 		
