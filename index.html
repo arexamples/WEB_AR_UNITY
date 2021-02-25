@@ -104,7 +104,7 @@ z dolu
 
 		
 
-<a-entity lookathandler id="lookathandler" rotation="-90 0 0" position="0 0 0"></a-entity>
+<a-entity lookathandler id="lookathandler"></a-entity>
 <a-entity camera></a-entity>
 </a-scene>
 <script>	
@@ -173,14 +173,7 @@ AFRAME.registerComponent('lookathandler', {
 tick: function () {
 	
 	var camPosition = camera.object3D.position;
-	lookathandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));
-	var oldRotation = []
-	oldRotation.x = cedule1.object3D.rotation.x	
-	oldRotation.y = cedule1.object3D.rotation.y
-	oldRotation.z = cedule1.object3D.rotation.z
 	cedule1.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));				   
-	cedule1.object3D.rotation.x = oldRotation.x
-	cedule1.object3D.rotation.y = oldRotation.y
 						   
 	cedule2.object3D.rotation.z = cedule1.object3D.rotation.z
 	cedule3.object3D.rotation.z = cedule1.object3D.rotation.z
