@@ -71,7 +71,7 @@ z dolu
 380 684
 -->
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
-	
+	<a-entity lookathandler id="lookathandler" position="0 0 0" rotation="-90 0 0"></a-entity>
 	<a-image arrow1 id="arrow1" src="#darkArrow" position="0 0 -2.15" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
 	<a-entity cedule1 id="cedule1" position="0 0 -2.15" rotation="-90 0 0" emitevents="true">
 		<a-image src="#bigGoalCircle" rotation="0 0 0" scale="1.52 1.111 0.1" position="0 0 0.1" ></a-image>
@@ -104,7 +104,7 @@ z dolu
 
 		
 
-<a-entity lookathandler id="lookathandler"></a-entity>
+
 <a-entity camera></a-entity>
 </a-scene>
 <script>	
@@ -172,18 +172,16 @@ AFRAME.registerComponent('distance2', {
 AFRAME.registerComponent('lookathandler', {
 tick: function () {
 	var camPosition = camera.object3D.position;						   					   
-	cedule1.object3D.lookAt(new THREE.Vector3(camPosition.x, cedule1.object3D.position.y, cedule1.object3D.position.z));
-		   
-						   
-		
-	cedule1.object3D.rotation.z = cedule1.object3D.rotation.z					   
-	cedule2.object3D.rotation.z = cedule1.object3D.rotation.z
-	cedule3.object3D.rotation.z = cedule1.object3D.rotation.z
-	cedule4.object3D.rotation.z = cedule1.object3D.rotation.z	
-	cedule1.object3D.rotation.y = cedule1.object3D.rotation.y					   
-	cedule2.object3D.rotation.y = cedule1.object3D.rotation.y
-	cedule3.object3D.rotation.y = cedule1.object3D.rotation.y
-	cedule4.object3D.rotation.y = cedule1.object3D.rotation.y					   				   
+	lookathandler.object3D.lookAt(new THREE.Vector3(camPosition.x, cedule1.object3D.position.y, cedule1.object3D.position.z));
+		  	   		
+	cedule1.object3D.rotation.z = lookathandler.object3D.rotation.z					   
+	cedule2.object3D.rotation.z = lookathandler.object3D.rotation.z
+	cedule3.object3D.rotation.z = lookathandler.object3D.rotation.z
+	cedule4.object3D.rotation.z = lookathandler.object3D.rotation.z	
+	cedule1.object3D.rotation.y = lookathandler.object3D.rotation.y					   
+	cedule2.object3D.rotation.y = lookathandler.object3D.rotation.y
+	cedule3.object3D.rotation.y = lookathandler.object3D.rotation.y
+	cedule4.object3D.rotation.y = lookathandler.object3D.rotation.y					   				   
 }
 });	
 		
