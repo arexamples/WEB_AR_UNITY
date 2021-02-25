@@ -176,8 +176,9 @@ tick: function () {
 	lookathandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));
 	
 	cedule1.object3D.rotation.z = lookathandler.object3D.rotation.z
-	cedule2.object3D.rotation.z = lookathandler.object3D.rotation.z
+	cedule2.object3D.rotation.y = lookathandler.object3D.rotation.y
 	cedule3.object3D.rotation.z = lookathandler.object3D.rotation.z
+						   cedule3.object3D.rotation.y = lookathandler.object3D.rotation.y
 	cedule4.object3D.rotation.z = lookathandler.object3D.rotation.z					   
 						   
 }
