@@ -77,18 +77,26 @@ z dolu
 </a-marker>
 
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5""> 
-	<a-image arrow1 src="#darkArrow" position="0 0 -1" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
-	<a-image cedule1 src="#bigGoalCircle" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 -2" ></a-image>
-	<a-image cedule2 src="#bigGoalCircle" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 -2" ></a-image>
-	<a-image cedule3 src="#bigGoalCircle" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 -2" ></a-image>
-	<a-image cedule4 src="#bigGoalCircle" rotation="-90 0 0" scale="1.024 0.508 0.1" position="0 0.4 -2" ></a-image>
-	<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#343A3E" scale="3 3 3" position="0.2 0.1 -0.1" rotation="-90 0 0"></a-entity> 
-	<a-entity text="value:Váš cíl; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#B3B3B3" scale="3 3 3" position="0.2 0.1 0.05" rotation="-90 0 0"></a-entity>
+	<a-image arrow1 src="#darkArrow" position="0 0 -2" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
+	<a-image cedule1 src="#bigGoalCircle" rotation="-90 0 0" scale="1.52 0.754 0.1" position="0 0.4 -2" ></a-image>
+	<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#343A3E" scale="3 3 3" position="0.2 0.5 -2.1" rotation="-90 0 0"></a-entity> 
+	<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:left; color:#B3B3B3" scale="3 3 3" position="0.2 0.1 -2.05" rotation="-90 0 0"></a-entity>
+	<a-entity text="value:3 min; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:left; color:#B3B3B3" scale="3 3 3" position="0.2 0.1 -2.05" rotation="-90 0 0"></a-entity>
 	
-	<a-image arrow2 src="#lightArrow" position="1 0 0" scale="1.52 2.736 1" rotation="-90 0 90"></a-image>
-	<a-image arrow3 src="#lightArrow" position="0 0 1" scale="1.52 2.736 1" rotation="-90 0 180"></a-image>
-	<a-image arrow4 src="#lightArrow" position="-1 0 0" scale="1.52 2.736 1" rotation="-90 0 270"></a-image>
-
+	
+	<a-image arrow2 src="#lightArrow" position="-2 0 0" scale="1.52 2.736 1" rotation="-90 0 90"></a-image>
+	<a-image cedule2 src="#smallGoalDoor" rotation="-90 0 0" scale="1.52 0.754 0.1" position="2 0.4 0" ></a-image>
+	<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="3 3 3" position="0.2 0.1 -0.1" rotation="-90 0 0"></a-entity> 
+	
+	
+	<a-image arrow3 src="#lightArrow" position="0 0 2" scale="1.52 2.736 1" rotation="-90 0 180"></a-image>
+	<a-image cedule3 src="#smallGoalDoor" rotation="-90 0 0" scale="1.52 0.754 0.1" position="0 0.4 2" ></a-image>
+	<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="3 3 3" position="0.2 0.1 -0.1" rotation="-90 0 0"></a-entity> 
+	
+	
+	<a-image arrow4 src="#lightArrow" position="2 0 0" scale="1.52 2.736 1" rotation="-90 0 270"></a-image>
+	<a-image cedule4 src="#smallGoalDoor" rotation="-90 0 0" scale="1.52 0.754 0.1" position="-2 0.4 0" ></a-image>
+	<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="3 3 3" position="0.2 0.1 -0.1" rotation="-90 0 0"></a-entity> 
 
 </a-marker>		
 
