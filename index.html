@@ -175,11 +175,11 @@ tick: function () {
 	var camPosition = camera.object3D.position;
 	lookathandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));
 	
-	cedule1.object3D.rotation.z = lookathandler.object3D.rotation.z
-	cedule2.object3D.rotation.y = lookathandler.object3D.rotation.y
-	cedule3.object3D.rotation.z = lookathandler.object3D.rotation.z
-						   cedule3.object3D.rotation.y = lookathandler.object3D.rotation.y
-	cedule4.object3D.rotation.z = lookathandler.object3D.rotation.z					   
+	cedule1.object3D.rotation.z = 10
+	cedule2.object3D.rotation.y = 90
+	cedule3.object3D.rotation.z = 180
+	cedule3.object3D.rotation.y = 180
+	cedule4.object3D.rotation.z = 270				   
 						   
 }
 });	
