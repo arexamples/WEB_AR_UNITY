@@ -173,10 +173,10 @@ tick: function () {
 	
 	var position = camera.object3D.position;
 
-	cedule1.object3D.lookAt(new THREE.Vector3(0, position.y, 0));
-	cedule2.object3D.lookAt(new THREE.Vector3(0, position.y, 0));
-	cedule3.object3D.lookAt(new THREE.Vector3(0, position.y, 0));
-	cedule4.object3D.lookAt(new THREE.Vector3(0, position.y, 0));
+	cedule1.object3D.lookAt(new THREE.Vector3(position.x, position.y, position.z));
+	cedule2.object3D.lookAt(new THREE.Vector3(position.x, position.y, position.z));
+	cedule3.object3D.lookAt(new THREE.Vector3(position.x, position.y, position.z));
+	cedule4.object3D.lookAt(new THREE.Vector3(position.x, position.y, position.z));
 }
 });	
 		
