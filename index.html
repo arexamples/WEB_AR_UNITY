@@ -34,20 +34,13 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 
 <!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
-	<a-asset-item id="arrow-obj" src="arrow-obj/arrow.obj"></a-asset-item>
-	<a-asset-item id="arrow-mtl" src="arrow-obj/arrow.mtl"></a-asset-item>
-	<img id="doorIcon" src="images/doorIcon.png"></img>
-	<img id="labelCedule" src="images/labelCedule.png"></img>
-	<img id="labelCeduleEmpty" src="images/labelCeduleEmpty.png"></img>
-	<img id="labelCeduleEmpty" src="images/labelCeduleEmpty.png"></img>
-	<img id="darkArrow" src="images/darkArrow.png"></img>
-	<img id="lightArrow" src="images/lightArrow.png"></img>
-	<img id="bigIcon" src="images/bigIcon.png"></img>
-	<img id="smallIcon" src="images/smallIcon.png"></img>
-	<img id="bigGoal0" src="images/bigGoal0.png"></img>
-	<img id="smallGoal0" src="images/smallGoal0.png"></img>
-	<img id="bigGoalCircle" src="images/bigGoalCircle.png"></img>
-	<img id="smallGoalDoor" src="images/smallGoalDoor.png"></img>
+	<img id="blue_arrow" src="images/blue_arrow.png"></img>
+	<img id="white_arrow" src="images/white_arrow.png"></img>
+	<img id="label" src="images/label.png"></img>
+	<img id="label_stack2" src="images/label_stack2.png"></img>
+	<img id="label_stack3" src="images/label_stack3.png"></img>
+	<img id="door_icon" src="images/door_icon.png"></img>
+	<img id="exit_icon" src="images/exit_icon.png"></img>
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) 
@@ -72,31 +65,35 @@ z dolu
 -->
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
         <a-entity lookathandler id="lookathandler" position="0 0 0" rotation="-90 0 0"></a-entity>
-	<a-image arrow1 id="arrow1" src="#darkArrow" position="0 0 -2.15" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
+	<a-image arrow1 id="arrow1" src="#blue_arrow" position="0 0 -2.15" scale="1.52 2.736 1" rotation="-90 0 0"></a-image>
 	<a-entity cedule1 id="cedule1" position="0 0 -2.15" rotation="-90 0 0" emitevents="true">
-		<a-image src="#bigGoalCircle" rotation="0 0 0" scale="1.52 1.111 0.1" position="0 0 0.1" ></a-image>
+		<a-image src="#label" rotation="0 0 0" scale="1.52 1.111 0.1" position="0 0 0.1" ></a-image>
+                <a-image src="#door_icon" rotation="0 0 0" scale="1.52 1.111 0.1" position="0 0 0.1" ></a-image>
 		<a-entity text="value:Q1234; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#343A3E" scale="5 5 5" position="0.2 0.2 0.2" rotation="0 0 0"></a-entity> 
 		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:left; color:#B3B3B3" scale="4 4 4" position="1.4 -0.25 0.2" rotation="0 0 0"></a-entity>
 		<a-entity text="value:3 min; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:right; color:#B3B3B3" scale="4 4 4" position="-1.4 -0.25 0.2" rotation="0 0 0"></a-entity>
 	</a-entity>
 	
-	<a-image arrow2 id="arrow2" src="#lightArrow" position="2.15 0 0" scale="1.52 2.736 1" rotation="-90 0 270"></a-image>
+	<a-image arrow2 id="arrow2" src="#white_arrow" position="2.15 0 0" scale="1.52 2.736 1" rotation="-90 0 270"></a-image>
 	<a-entity cedule2 id="cedule2" position="2.15 0 0" rotation="-90 0 0" emitevents="true">	
-		<a-image src="#smallGoalDoor" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
+		<a-image src="#label_stack2" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
+                <a-image src="#exit_icon" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
 		<a-entity text="value:Q2234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="5 5 5" position="0.2 0.13 0.2" rotation="0 0 0"></a-entity> 
 		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#B3B3B3" scale="4 4 4" position="0.2 -0.2 0.2" rotation="0 0 0"></a-entity>
 	</a-entity>
 		
-	<a-image arrow3 id="arrow3" src="#lightArrow" position="0 0 2.15" scale="1.52 2.736 1" rotation="-90 0 180"></a-image>	
+	<a-image arrow3 id="arrow3" src="#white_arrow" position="0 0 2.15" scale="1.52 2.736 1" rotation="-90 0 180"></a-image>	
 	<a-entity cedule3 id="cedule3" position="0 0 2.15" rotation="-90 0 0" emitevents="true">	
-		<a-image src="#smallGoalDoor" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
+		<a-image src="#label_stack3" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
+		<a-image src="#door_icon" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>										       
 		<a-entity text="value:Q3234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="5 5 5" position="0.2 0.13 0.2" rotation="0 0 0"></a-entity> 
 		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#B3B3B3" scale="4 4 4" position="0.2 -0.2 0.2" rotation="0 0 0"></a-entity>
 	</a-entity>
 	
-	<a-image arrow4 id="arrow4" src="#lightArrow" position="-2.15 0 0" scale="1.52 2.736 1" rotation="-90 0 90"></a-image>
+	<a-image arrow4 id="arrow4" src="#white_arrow" position="-2.15 0 0" scale="1.52 2.736 1" rotation="-90 0 90"></a-image>
 	<a-entity cedule4 id="cedule4" position="-2.15 0 0" rotation="-90 0 0" emitevents="true">
-		<a-image src="#smallGoalDoor" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
+		<a-image src="#label_stack2" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>
+		<a-image src="#exit_icon" rotation="0 0 0" scale="1.52 0.976 0.1" position="0 0 0.1" ></a-image>										       
 		<a-entity text="value:Q4234; shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center; color:#343A3E" scale="5 5 5" position="0.2 0.13 0.2" rotation="0 0 0"></a-entity> 
 		<a-entity text="value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#B3B3B3" scale="4 4 4" position="0.2 -0.22 0.2" rotation="0 0 0"></a-entity>
 	</a-entity>
