@@ -48,8 +48,22 @@ var arrowId = 0;
   
 window.onload = () => {
   wrapper = document.querySelector('[wrapper]');
+  camera = document.querySelector("[camera]");
+  lookathandler = document.querySelector("[lookathandler]");
   drawDestinations();
 };    
+							  
+AFRAME.registerComponent('lookathandler', {
+tick: function () {
+	var camPosition = camera.object3D.position;	
+	lookathandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));
+	for (var i = 0; i < listOfSigns.length; i++) 
+	{
+		listOfSigns[i].object3D.rotation.z = lookathandler.object3D.rotation.z
+		listOfSigns[i].object3D.rotation.y = lookathandler.object3D.rotation.y
+	}
+}
+});							  
   
 function toRadians(degrees) {
 	return degrees * Math.PI / 180;
