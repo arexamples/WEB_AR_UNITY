@@ -207,7 +207,7 @@ function createSignEntity(angle){
   var signEntity = document.createElement('a-entity');
   signEntity.setAttribute('id', "sign" + arrowId);
   signEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
-  signEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0.1, z: R*Math.sin(toRadians(angle-90))});
+  signEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0.1, z: R*Math.sin(toRadians(angle-90))+0.2});
   
   return signEntity;
 }  
@@ -219,7 +219,7 @@ function createArrowEntity(imageSrc, angle){
   arrowEntity.setAttribute('src', imageSrc);
   arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
   arrowEntity.setAttribute('scale', {x: 1.355, y: 3.92, z: 0.01});
-  arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: 0});
   
   return arrowEntity;
 }  
