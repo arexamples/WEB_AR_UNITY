@@ -76,7 +76,7 @@ function toDegrees(radians) {
 function drawDestinations(){ 
   var arrow = createArrowEntity("#blue_arrow", 0);
   listOfArrows.push(arrow);
-  //wrapper.appendChild(arrow); 
+  wrapper.appendChild(arrow); 
   var sign = createSignDestination(0);
   listOfSigns.push(sign);
   wrapper.appendChild(sign);
@@ -84,7 +84,7 @@ function drawDestinations(){
   for (var i = 1; i < 4; i++) {
     var arrow = createArrowEntity("#white_arrow", i*75);
     listOfArrows.push(arrow);
-    //wrapper.appendChild(arrow);  
+    wrapper.appendChild(arrow);  
     if(i==1){
     var sign = createSign(i*75);
     listOfSigns.push(sign);
