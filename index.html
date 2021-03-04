@@ -42,10 +42,24 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 </a-scene>
 <script>
 var listOfArrows = [];
+var listOfSigns = [];
 var wrapper;
 const SCALE = 0.1; // 5
 const R = 2.5;	
 var arrowId = 0;
+								   
+AFRAME.registerComponent('lookathandler', {
+tick: function () {
+	var camPosition = camera.object3D.position;	
+	lookathandler.object3D.lookAt(new THREE.Vector3(camPosition.x, camPosition.y, camPosition.z));
+	for (var i = 0; i < listOfSigns.length; i++) 
+	{
+		console.log(i)
+		listOfSigns[i].object3D.rotation.z = = lookathandler.object3D.rotation.z
+		listOfSigns[i].object3D.rotation.y = = lookathandler.object3D.rotation.y
+	}
+}
+});									   
   
 window.onload = () => {
   wrapper = document.querySelector('[wrapper]');
@@ -63,12 +77,12 @@ function toDegrees(radians) {
 function drawDestinations(){ 
   console.log("test")
   for (var i = 0; i < 4; i++) {
-  	var entityEl = createArrow(i*75);
-    var entityEl2 = createCedule(i*75);
-   
-  	listOfArrows.push(entityEl);
-  	wrapper.appendChild(entityEl);
-    wrapper.appendChild(entityEl2);
+  	var arrowEntity = createArrow(i*75);
+    	var signEntity = createCedule(i*75);
+  	listOfArrows.push(arrowEntity);
+	listOfSigns.push(signEntity);
+  	wrapper.appendChild(arrowEntity);
+        wrapper.appendChild(signEntity);
     
   }  
 }
@@ -89,7 +103,7 @@ function createArrow(angle){
 function createCedule(angle){
   var cedule = document.createElement('a-entity');
   cedule.setAttribute('id', "cedule" + arrowId);
-  cedule.setAttribute('rotation', {x: -90, y: 0, z: 0});
+  cedule.setAttribute('rotation', {x: -90, y: 0, z: angle});
   cedule.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
   
   var label = document.createElement('a-image');
