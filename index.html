@@ -64,11 +64,13 @@ function drawDestinations(){
   console.log("test")
   for (var i = 0; i < 4; i++) {
   	var entityEl = createArrow(i*90);
-    	var entityEl2 = createCedule(i*90);
+   
   	listOfArrows.push(entityEl);
   	wrapper.appendChild(entityEl);
     
   }
+  var entityEl2 = createCedule(90);
+  wrapper.appendChild(entityEl2);
 }
 	
 function createArrow(angle){	
@@ -85,12 +87,45 @@ function createArrow(angle){
 
   
 function createCedule(angle){
-  var entityEl = document.createElement('a-entity');
-  entityEl.setAttribute('id', "cedule" + arrowId);
-  entityEl.setAttribute('rotation', {x: -90, y: 0, z: 0});
-  entityEl.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  var cedule = document.createElement('a-entity');
+  cedule.setAttribute('id', "cedule" + arrowId);
+  cedule.setAttribute('rotation', {x: -90, y: 0, z: 0});
+  cedule.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
   
-  return entityEl;
+  var label = document.createElement('a-image');
+  label.setAttribute('id', "label" + arrowId);
+  label.setAttribute('src', "#label");
+  label.setAttribute('rotation', {x: 0, y: 0, z: angle});
+  label.setAttribute('scale', {x: 1.52, y: 1.08, z: 0.1});
+  label.setAttribute('position', {x: 0, y: 0, z: 0.1});
+  
+  var exit_icon = document.createElement('a-image');
+  exit_icon.setAttribute('id', "exit_icon" + arrowId);
+  exit_icon.setAttribute('src', "#exit_icon");
+  exit_icon.setAttribute('rotation', {x: 0, y: 0, z: angle});
+  exit_icon.setAttribute('scale', {x: 0.225, y: 0.225, z: 0.1});
+  exit_icon.setAttribute('position', {x: -0.4, y: 0.2, z: 0.2});
+  
+  var text_q = document.createElement('a-image');
+  text_q.setAttribute('text', "value:Q4234; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#343A3E");
+  text_q.setAttribute('rotation', {x: 0, y: 0, z: angle});
+  text_q.setAttribute('scale', {x: 1.52, y: 1.08, z: 0.1});
+  text_q.setAttribute('position', {x: 0, y: 0, z: 0.1});
+  
+  var text_m = document.createElement('a-image');
+  text_m.setAttribute('text', "value:150 m; shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center; color:#B3B3B3");
+  text_m.setAttribute('rotation', {x: 0, y: 0, z: angle});
+  text_m.setAttribute('scale', {x: 4, y: 4, z: 4});
+  text_m.setAttribute('position', {x: 0.2, y: -0.2, z: 0.2});
+
+
+
+  cedule.appendChild(exit_icon);
+  cedule.appendChild(label);
+  cedule.appendChild(text_q);
+  cedule.appendChild(text_m);
+  
+  return cedule;
 }
 
 </script>
