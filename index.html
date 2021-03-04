@@ -1,0 +1,98 @@
+<!-- BEGIN: Top HTML -->
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Navigation AR.js</title>	
+<!-- include aframe -->
+<script src="https://aframe.io/releases/1.2.0/aframe.js"></script>
+<!-- include ar.js -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<!-- END: Top HTML -->
+<!-- END: Unity Compiled Events -->
+
+<!-- BEGIN: Middle HTML -->
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
+arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
+-->
+<a-scene embedded arjs=’sourceType: webcam; trackingMethod:best;’ vr-mode-ui='enabled: false'>
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+<!-- END: Middle HTML -->
+
+<!-- BEGIN: Unity Compiled Assets -->
+<a-assets>
+	<img id="blue_arrow" src="images/blue_arrow.png"></img>
+	<img id="white_arrow" src="images/white_arrow.png"></img>
+	<img id="label" src="images/label.png"></img>
+	<img id="label_stack2" src="images/label_stack2.png"></img>
+	<img id="label_stack3" src="images/label_stack3.png"></img>
+	<img id="door_icon" src="images/door_icon.png"></img>
+	<img id="exit_icon" src="images/exit_icon.png"></img>
+</a-assets>
+<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
+  <a-entity lookathandler id="lookathandler" position="0 0 0" rotation="-90 0 0"></a-entity>
+  <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">                                                                              
+
+</a-marker>		
+
+		
+<a-entity camera></a-entity>
+</a-scene>
+<script>
+var listOfArrows = [];
+var wrapper;
+const SCALE = 0.1; // 5
+const R = 2.5;	
+var arrowId = 0;
+  
+window.onload = () => {
+  wrapper = document.querySelector('[wrapper]');
+  drawDestinations();
+};  
+  
+function toRadians(degrees) {
+	return degrees * Math.PI / 180;
+};
+
+function toDegrees(radians) {
+	return radians * 180 / Math.PI;
+}
+  
+function drawDestinations(){ 
+  console.log("test")
+  for (var i = 0; i < 4; i++) {
+  	var entityEl = createArrow(i*90);
+    var entityEl2 = createCedule(i*90);
+  	listOfArrows.push(entityEl);
+  	wrapper.appendChild(entityEl);
+    
+  }
+}
+	
+function createArrow(angle){	
+  arrowId = arrowId + 1;
+  var entityEl = document.createElement('a-image');
+  entityEl.setAttribute('id', "arrow" + arrowId);
+  entityEl.setAttribute('src', "#blue_arrow");
+  entityEl.setAttribute('rotation', {x: -90, y: 0, z: angle});
+  entityEl.setAttribute('scale', {x: 1.355, y: 3.92, z: 1});
+  entityEl.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  
+  return entityEl;
+}
+
+  
+function createCedule(angle){
+  var entityEl = document.createElement('a-entity');
+  entityEl.setAttribute('id', "cedule" + arrowId);
+  entityEl.setAttribute('rotation', {x: -90, y: 0, z: 0});
+  entityEl.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  
+  return entityEl;
+}
+
+</script>
+</body>
+</html>
