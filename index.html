@@ -226,7 +226,7 @@ function createArrowEntity(imageSrc, angle){
 
 function createTextEntity(textValue, textColor, size, position){
   var textEntity = document.createElement('a-entity');
-  var textParamas = "value:" + textValue + "; color:" + textColor + ";shader: msdf; negate:false; align:center" 
+  var textParamas = "value:" + textValue + "; color:" + textColor + ";shader: msdf; font:fonts/Roboto-Regular-msdf.json; negate:false; align:center" 
   
   textEntity.setAttribute('text', textParamas);
   textEntity.setAttribute('scale', {x: size, y: size, z: size});
