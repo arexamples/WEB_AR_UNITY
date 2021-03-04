@@ -144,7 +144,7 @@ function createSignStack2(angle){
   
 function createSignStack3(angle){
   var sign = createSignEntity(angle);  
-  var label = createImageEntity("#label_stack2", new THREE.Vector3(1.52, 2.736, 0.1), new THREE.Vector3(0, 0, 0.1));
+  var label = createImageEntity("#label_stack3", new THREE.Vector3(1.52, 2.736, 0.1), new THREE.Vector3(0, 0, 0.1));
   
   var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.1), new THREE.Vector3(-0.4, 0.85, 0.2));
   var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.85, 0.2)); 
@@ -218,8 +218,8 @@ function createArrowEntity(imageSrc, angle){
   arrowEntity.setAttribute('id', arrowId);
   arrowEntity.setAttribute('src', imageSrc);
   arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
-  arrowEntity.setAttribute('scale', {x: 1.355, y: 3.92, z: 0.1});
-  arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  arrowEntity.setAttribute('scale', {x: 1.355, y: 3.92, z: 0.01});
+  arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: R*Math.sin(toRadians(angle-90)), z: 0});
   
   return arrowEntity;
 }  
