@@ -19,7 +19,9 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 -->
 <a-scene embedded arjs=’sourceType: webcam; trackingMethod:best;’ vr-mode-ui='enabled: false'>
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-<!-- END: Middle HTML -->
+<!-- END: Middle HTML 
+type='pattern' url='markers/arrow_marker.patt'
+-->
 
 <!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
@@ -31,7 +33,7 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
 	<img id="door_icon" src="images/door_icon.png"></img>
 	<img id="exit_icon" src="images/exit_icon.png"></img>
 </a-assets>
-<a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
+<a-marker id="arrow_marker" preset='hiro' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
   <a-entity lookathandler id="lookathandler" position="0 0 0" rotation="-90 0 0"></a-entity>
   <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">                                                                              
 </a-marker>								   
