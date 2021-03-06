@@ -218,7 +218,7 @@ function createArrowEntity(imageSrc, angle){
   arrowEntity.setAttribute('id', arrowId);
   arrowEntity.setAttribute('src', imageSrc);
   arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
-  arrowEntity.setAttribute('scale', {x: 1.355, y: 3.92, z: 0.01});
+  arrowEntity.setAttribute('scale', {x: 1.63, y: 3.28, z: 0.01});
   arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
   
   return arrowEntity;
