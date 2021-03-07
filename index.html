@@ -265,8 +265,16 @@ function getAngle(startLat, startLng, destLat, destLng) {
         return Math.round(angle * 10) / 10;
 }
 
-function addValueToKey(map, key, value) {
-    map.set(key || [], value)                    
+
+function addValueToKey(map, key, keyValue) {     
+  if(map.has(key))
+  {
+     map.get(key).push(keyValue)
+  }
+  else
+  {
+      map.set(key, [keyValue])
+  }
 }
 
 function stackAngles(listOfDestinations) {
