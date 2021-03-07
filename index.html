@@ -198,7 +198,7 @@ function createSignDestination(destination){
   var text_d = createTextEntity("MUJ CÍL", mTextColor, 6, new THREE.Vector3(0, 0.35, 0.25));  
   var text_m = createTextEntity(parseInt(destination.distance) + " m", mTextColor, 4, new THREE.Vector3(0.5, -0.4, 0.25));
   var text_q = createTextEntity(destination.name, qTextColor, 5, new THREE.Vector3(0.2, -0.05, 0.25));
-  var text_t = createTextEntity(new Date(destination.time) + " s", mTextColor, 4, new THREE.Vector3(-0.5, -0.4, 0.25));
+  var text_t = createTextEntity(msToTime(destination.time), mTextColor, 4, new THREE.Vector3(-0.5, -0.4, 0.25));
   
   sign.appendChild(label);
   sign.appendChild(text_d);
