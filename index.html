@@ -65,6 +65,7 @@ function toDegrees(radians) {
 }
 
 function createCompleteMainDestination(mainDestination){
+console.log(mainDestination)
   var arrow = createArrowEntity("#blue_arrow", mainDestination.angle);
   listOfArrows.push(arrow);
   wrapper.appendChild(arrow); 
@@ -74,6 +75,7 @@ function createCompleteMainDestination(mainDestination){
 }
 
 function createCompleteOtherDestinations(otherDestinations){
+  console.log(otherDestinations)
   for (var [key, value] of otherDestinations) {
     var arrow = createArrowEntity("#white_arrow", key);
     listOfArrows.push(arrow);
@@ -325,7 +327,7 @@ function getMainDestination(originDestination, targetDestination){
              targetDestination.distance = distance
              targetDestination.time = time
              targetDestination.angle = angle    
-                
+             console.log("DONE getMainDestination")   
              return targetDestination
           }).catch(function(err) {
             console.log("Error " + err);
@@ -342,13 +344,13 @@ function getOtherDestinations(originDestination) {
       var originLevel = 2
                                     
       var destinations = new Map()   
-      var navigationSingOrientation; 
+      var navigationSignOrientation; 
       fetch("https://api01-b.hekate.club/devTools/navigationSign?signId=" + originDestination).then(function(response) {
         return response.json();
       }).then(function(data) {
         originLat = data.lat
         originLon = data.lon
-        navigationSingOrientation = data.orientation
+        navigationSignOrientation = data.orientation
         for (var i = 0; i < data.navItems.length; i++) {
          for (var j = 0; j < data.navItems[i].POI.length; j++) {
            if(data.navItems[i].POI[j] !== undefined)
@@ -370,12 +372,10 @@ function getOtherDestinations(originDestination) {
         }
         var listOfDestinations = [];
          for (var [key, value] of destinations) {
-          var angle = (getAngle(originLat, originLon, value.lat, value.lon) + 180 - navigationSingOrientation) % 360; 
+          var angle = (getAngle(originLat, originLon, value.lat, value.lon) + 180 - navigationSignOrientation) % 360; 
           value.angle = angle   
           listOfDestinations.push(value)
         }
-
-        paragraph.innerHTML = x
         
         listOfDestinations = stackAngles(listOfDestinations)
         var mapOfDestinations = {};
@@ -383,7 +383,7 @@ function getOtherDestinations(originDestination) {
         {
           addValueToKey(mapOfDestinations, listOfDestinations[i].angle, listOfDestinations[i])
         }
-        
+        console.log("DONE getOtherDestinations")   
         return mapOfDestinations;
         
       }).catch(function(err) {
@@ -394,9 +394,3 @@ function getOtherDestinations(originDestination) {
 </script>
 </body>
 </html>
-
-
-
-      
-
-
