@@ -175,6 +175,20 @@ function createSignStack3(destinations){
   
   return sign;
 }    
+
+function msToTime(ms){
+
+  var seconds = (ms / 1000).toFixed(1);
+  var minutes = (ms / (1000 * 60)).toFixed(1);
+  
+  if (seconds < 60) {
+      return seconds + "s";
+  } 
+  else  {
+      return minutes + "min " + seconds + "s";
+  }
+        
+}
   
 function createSignDestination(destination){
   var sign = createSignEntity(destination.angle);
