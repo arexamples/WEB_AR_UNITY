@@ -1,4 +1,3 @@
-<!-- BEGIN: Top HTML -->
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8" />
@@ -8,28 +7,17 @@
 <script src="https://aframe.io/releases/1.2.0/aframe.js"></script>
 <!-- include ar.js -->
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<!-- END: Top HTML -->
-<!-- END: Unity Compiled Events -->
-
-<!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-
-<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'>
-arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
--->
 <a-scene embedded arjs=’sourceType: webcam; trackingMethod:best;’ vr-mode-ui='enabled: false'>
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-<!-- END: Middle HTML -->
-
-<!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
-	<img id="blue_arrow" src="images/Modra.png"></img>
-	<img id="white_arrow" src="images/Bila.png"></img>
-	<img id="label" src="images/label.png"></img>
-	<img id="label_stack2" src="images/label_stack2.png"></img>
-	<img id="label_stack3" src="images/label_stack3.png"></img>
-	<img id="door_icon" src="images/door_icon.png"></img>
-	<img id="exit_icon" src="images/exit_icon.png"></img>
+	<img id="blue_arrow" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/Modra.png"></img>
+	<img id="white_arrow" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/Bila.png"></img>
+	<img id="label" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/label.png"></img>
+	<img id="label_stack2" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/label_stack2.png"></img>
+	<img id="label_stack3" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/label_stack3.png"></img>
+	<img id="door_icon" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/door_icon.png"></img>
+	<img id="exit_icon" src="https://raw.githubusercontent.com/adamspanik/WEB_AR_UNITY/master/images/exit_icon.png"></img>
 </a-assets>
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
   <a-entity lookathandler id="lookathandler" position="0 0 0" rotation="-90 0 0"></a-entity>
@@ -43,8 +31,11 @@ var listOfArrows = [];
 var listOfSigns = [];
 var wrapper;
 const SCALE = 0.1; // 5
-const R = 3;	
+const R = 3;
+const qTextColor = "#343A3E"
+const mTextColor = "#0055B4"
 var arrowId = 0;
+
   
 window.onload = () => {
   wrapper = document.querySelector('[wrapper]');
@@ -72,43 +63,55 @@ function toRadians(degrees) {
 function toDegrees(radians) {
 	return radians * 180 / Math.PI;
 }
-  
-function drawDestinations(){ 
-  var arrow = createArrowEntity("#blue_arrow", 0);
+
+function createCompleteMainDestination(mainDestination){
+  var arrow = createArrowEntity("#blue_arrow", mainDestination.angle);
   listOfArrows.push(arrow);
   wrapper.appendChild(arrow); 
-  var sign = createSignDestination(0);
+  var sign = createSignDestination(mainDestination);
   listOfSigns.push(sign);
   wrapper.appendChild(sign);
-  
-  for (var i = 1; i < 4; i++) {
-    var arrow = createArrowEntity("#white_arrow", i*75);
+}
+
+function createCompleteOtherDestinations(otherDestinations){
+  for (var [key, value] of otherDestinations) {
+    var arrow = createArrowEntity("#white_arrow", key);
     listOfArrows.push(arrow);
     wrapper.appendChild(arrow);  
-    if(i==1){
-    var sign = createSign(i*75);
-    listOfSigns.push(sign);
-    wrapper.appendChild(sign);
+    if(value.length == 1){
+      var sign = createSign(value[0]);
+      listOfSigns.push(sign);
+      wrapper.appendChild(sign);    
     }
-    if(i==2){
-    var sign = createSignStack2(i*75);
-    listOfSigns.push(sign);
-    wrapper.appendChild(sign);
+    if(value.length == 2){
+      var sign = createSign(value);
+      listOfSigns.push(sign);
+      wrapper.appendChild(sign);  
     }
-    if(i==3){
-    var sign = createSignStack3(i*75);
-    listOfSigns.push(sign);
-    wrapper.appendChild(sign);
+    if(value.length == 3){
+      var sign = createSign(value);
+      listOfSigns.push(sign);
+      wrapper.appendChild(sign);  
     }
-  }   
+  }
+}
+  
+function drawDestinations(){ 
+var targetDestination = "Q160"  
+var originDestination = "Q407"  
+var mainDestination = getMainDestination(originDestination, targetDestination);
+var otherDestinations = getOtherDestinations(originDestination);
+createCompleteMainDestination(mainDestination);
+createCompleteOtherDestinations(otherDestinations);
+
 }
 	  
-function createSign(angle){
-  var sign = createSignEntity(angle); 
+function createSign(destination){
+  var sign = createSignEntity(destination.angle); 
   var label = createImageEntity("#label", new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0.1));
   var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.2, 0.25));
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.2, 0.25));
+  var text_q = createTextEntity(destination.name, qTextColor, 5, new THREE.Vector3(0.2, 0.2, 0.25));
+  var text_m = createTextEntity(destination.distance, mTextColor, 4, new THREE.Vector3(0.2, -0.2, 0.25));
   
   sign.appendChild(label);
   sign.appendChild(dest_icon);
@@ -118,18 +121,18 @@ function createSign(angle){
   return sign;
 }
   
-function createSignStack2(angle){
-  var sign = createSignEntity(angle); 
+function createSignStack2(destinations){
+  var sign = createSignEntity(destinations[0].angle); 
   
   var label = createImageEntity("#label_stack2", new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0.1));
   
   var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.6, 0.25));
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, 0.25, 0.25));
+  var text_q = createTextEntity(destinations[0].name, qTextColor, 5, new THREE.Vector3(0.2, 0.6, 0.25));
+  var text_m = createTextEntity(destinations[0].distance, mTextColor, 4, new THREE.Vector3(0.2, 0.25, 0.25));
   
   var dest_icon2 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, 0.25));
-  var text_q2 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.25, 0.25));
-  var text_m2 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.6, 0.25));
+  var text_q2 = createTextEntity(destinations[1].name, qTextColor, 5, new THREE.Vector3(0.2, -0.25, 0.25));
+  var text_m2 = createTextEntity(destinations[1].distance, mTextColor, 4, new THREE.Vector3(0.2, -0.6, 0.25));
   
   sign.appendChild(label);
   sign.appendChild(dest_icon);
@@ -142,21 +145,21 @@ function createSignStack2(angle){
   return sign;
 }  
   
-function createSignStack3(angle){
-  var sign = createSignEntity(angle);  
+function createSignStack3(destinations){
+  var sign = createSignEntity(destinations[0].angle);  
   var label = createImageEntity("#label_stack3", new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0.1));
   
   var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 1, 0.25)); 
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, 0.65, 0.25));
+  var text_q = createTextEntity(destinations[0].name, qTextColor, 5, new THREE.Vector3(0.2, 1, 0.25)); 
+  var text_m = createTextEntity(destinations[0].distance, mTextColor, 4, new THREE.Vector3(0.2, 0.65, 0.25));
   
   var dest_icon2 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.14, 0.25));
-  var text_q2 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.15, 0.25));
-  var text_m2 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.2, 0.25));
+  var text_q2 = createTextEntity(destinations[1].name, qTextColor, 5, new THREE.Vector3(0.2, 0.15, 0.25));
+  var text_m2 = createTextEntity(destinations[1].distance, mTextColor, 4, new THREE.Vector3(0.2, -0.2, 0.25));
   
   var dest_icon3 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.66, 0.25));
-  var text_q3 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.65, 0.25));
-  var text_m3 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -1, 0.25));
+  var text_q3 = createTextEntity(destinations[2].name, qTextColor, 5, new THREE.Vector3(0.2, -0.65, 0.25));
+  var text_m3 = createTextEntity(destinations[2].distance, mTextColor, 4, new THREE.Vector3(0.2, -1, 0.25));
   
   sign.appendChild(label);
   sign.appendChild(dest_icon);
@@ -172,15 +175,15 @@ function createSignStack3(angle){
   return sign;
 }    
   
-function createSignDestination(angle){
-  var sign = createSignEntity(angle);
+function createSignDestination(destination){
+  var sign = createSignEntity(destination,angle);
   
   var label = createImageEntity("#label", new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0.1));
   var dest_icon = createImageEntity("#door_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0.25));
-  var text_d = createTextEntity("MŮJ CÍL", "#0055B4", 6, new THREE.Vector3(0, 0.35, 0.25));  
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.5, -0.4, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.05, 0.25));
-  var text_t = createTextEntity("3 min", "#0055B4", 4, new THREE.Vector3(-0.5, -0.4, 0.25));
+  var text_d = createTextEntity("MUJ CÍL", mTextColor, 6, new THREE.Vector3(0, 0.35, 0.25));  
+  var text_m = createTextEntity(destination.distance, mTextColor, 4, new THREE.Vector3(0.5, -0.4, 0.25));
+  var text_q = createTextEntity(destination.name, qTextColor, 5, new THREE.Vector3(0.2, -0.05, 0.25));
+  var text_t = createTextEntity(destination.time, mTextColor, 4, new THREE.Vector3(-0.5, -0.4, 0.25));
   
   sign.appendChild(label);
   sign.appendChild(text_d);
@@ -234,6 +237,166 @@ function createTextEntity(textValue, textColor, size, position){
   
   return textEntity;
 } 
+
+class Destination {
+  constructor(name, lat, lon, level, distance) {
+     this.name = name;  
+     this.lat = lat; 
+     this.lon = lon; 
+     this.level = level; 
+     this.distance = distance; 
+  }
+}
+
+function getAngle(startLat, startLng, destLat, destLng) {             
+        startLat = toRadians(startLat);
+        startLng = toRadians(startLng);
+        destLat = toRadians(destLat);
+        destLng = toRadians(destLng);
+
+        var y = Math.sin(destLng - startLng) * Math.cos(destLat);
+        var x = Math.cos(startLat) * Math.sin(destLat) -
+              Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+        var angle = Math.atan2(y, x);
+        angle = (toDegrees(angle) + 360) % 360;
+
+        return Math.round(angle * 10) / 10;
+}
+
+function addValueToKey(map, key, value) {
+    map[key] = map[key] || [];
+    map[key].push(value);
+}
+
+function stackAngles(listOfDestinations) {
+for (var i = 0; i < listOfDestinations.length-1; i++) {
+  var sameAngle =  []
+  for (var j = i+1; j < listOfDestinations.length; j++) {
+    if(i != j){
+      var dif = Math.abs(listOfDestinations[i].angle - listOfDestinations[j].angle) % 360;       // This is either the distance or 360 - distance
+      var angleDiff = dif > 180 ? 360 - dif : dif;
+      if(angleDiff < 45)
+      {
+        sameAngle.push(listOfDestinations[j])
+      }
+    }
+  }
+  if(sameAngle.length > 0)
+  {
+    sameAngle.push(listOfDestinations[i])
+    var angleSum = 0;
+    for (var k = 0; k < sameAngle.length; k++) {
+       angleSum = angleSum + sameAngle[k].angle
+    }
+    var finalAngle = angleSum / sameAngle.length
+    for (var l = 0; l < sameAngle.length; l++) {
+       sameAngle[l].angle = finalAngle
+    }
+  }
+}
+return listOfDestinations;
+}
+
+function getMainDestination(originDestination, targetDestination){
+          fetch("https://api01-b.hekate.club/devTools/path?destination=" + targetDestination + "&encoder=FOOT&origin=" + originDestination).then(function(response) {
+            return response.json();
+          }).then(function(data) { 
+            var time = 0;
+            var distance = 0;
+            var gotFirstPoi = false;
+            var targetDestination;
+            for (var i = 0; i < data.instructions.length; i++) {
+                time = time + data.instructions[i].time
+                distance = distance + data.instructions[i].distance
+                if(!gotFirstPoi && data.instructions[i].poiList.length > 0){
+                    gotFirstPoi = true
+                    var startLat = data.geoJson.features[i].geometry.coordinates[0][1];
+                    var startLng = data.geoJson.features[i].geometry.coordinates[0][0];
+                    var endLat = data.instructions[i].poiList[0].lat;
+                    var endLng = data.instructions[i].poiList[0].lon;
+                    var angle = (getAngle(startLat, startLng, endLat, endLng) + 180 - navigationSingOrientation) % 360; 
+                    targetDestination = new Destination(data.instructions[i].poiList[0].name,
+                                        data.instructions[i].poiList[0].lat,
+                                        data.instructions[i].poiList[0].lon,
+                                        null);            
+                }
+            }
+
+             targetDestination.distance = distance
+             targetDestination.time = time
+             targetDestination.angle = angle    
+                
+             return targetDestination
+          }).catch(function(err) {
+            console.log("Error " + err);
+          });
+}
+
+function getOtherDestinations(originDestination) {         
+      <!--
+      var originLat = 50.04796385872283
+      var originLon = 14.304586074603783
+      -->
+      var originLat;
+      var originLon;
+      var originLevel = 2
+                                    
+      var destinations = new Map()   
+      var navigationSingOrientation; 
+      fetch("https://api01-b.hekate.club/devTools/navigationSign?signId=" + originDestination).then(function(response) {
+        return response.json();
+      }).then(function(data) {
+        originLat = data.lat
+        originLon = data.lon
+        navigationSingOrientation = data.orientation
+        for (var i = 0; i < data.navItems.length; i++) {
+         for (var j = 0; j < data.navItems[i].POI.length; j++) {
+           if(data.navItems[i].POI[j] !== undefined)
+           {
+             if(data.navItems[i].POI[j].name !== undefined && !data.navItems[i].POI[j].name.includes("D"))
+             {
+                var level =  data.navItems[i].POI[j].level
+                <!-- .split(";")[0] --->
+                destinations.set(data.navItems[i].POI[j].name,
+                 new Destination(data.navItems[i].POI[j].name,
+                   data.navItems[i].POI[j].lat,
+                   data.navItems[i].POI[j].lon,
+                   level,
+                   data.navItems[i].POI[j].distance          
+                   ))
+             }
+           }
+         }
+        }
+        var listOfDestinations = [];
+         for (var [key, value] of destinations) {
+          var angle = (getAngle(originLat, originLon, value.lat, value.lon) + 180 - navigationSingOrientation) % 360; 
+          value.angle = angle   
+          listOfDestinations.push(value)
+        }
+
+        paragraph.innerHTML = x
+        
+        listOfDestinations = stackAngles(listOfDestinations)
+        var mapOfDestinations = {};
+        for(var i = 0; i < listOfDestinations.length; i++)
+        {
+          addValueToKey(mapOfDestinations, listOfDestinations[i].angle, listOfDestinations[i])
+        }
+        
+        return mapOfDestinations;
+        
+      }).catch(function(err) {
+        console.log("Error " + err);
+      }); 
+}  
+
 </script>
 </body>
 </html>
+
+
+
+      
+
+
