@@ -104,10 +104,10 @@ function drawDestinations(){
 	  
 function createSign(angle){
   var sign = createSignEntity(angle); 
-  var label = createImageEntity("#label", new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0.1));
-  var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.2, 0.25));
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.2, 0.25));
+  var label = createImageEntity("#label", new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, -0.6));
+  var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, -0.3));
+  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.2, -0.3));
+  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.2, -0.3));
   
   sign.appendChild(label);
   sign.appendChild(dest_icon);
@@ -120,15 +120,15 @@ function createSign(angle){
 function createSignStack2(angle){
   var sign = createSignEntity(angle); 
   
-  var label = createImageEntity("#label_stack2", new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0.1));
+  var label = createImageEntity("#label_stack2", new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, -0.6));
   
-  var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.6, 0.25));
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, 0.25, 0.25));
+  var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, -0.3));
+  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.6, -0.3));
+  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, 0.25, -0.3));
   
-  var dest_icon2 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, 0.25));
-  var text_q2 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.25, 0.25));
-  var text_m2 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.6, 0.25));
+  var dest_icon2 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, -0.3));
+  var text_q2 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.25, -0.3));
+  var text_m2 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.6, -0.3));
   
   sign.appendChild(label);
   sign.appendChild(dest_icon);
@@ -143,19 +143,19 @@ function createSignStack2(angle){
   
 function createSignStack3(angle){
   var sign = createSignEntity(angle);  
-  var label = createImageEntity("#label_stack3", new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0.1));
+  var label = createImageEntity("#label_stack3", new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, -0.6));
   
-  var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, 0.25));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 1, 0.25)); 
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, 0.65, 0.25));
+  var dest_icon = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, -0.3));
+  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 1, -0.3)); 
+  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, 0.65, -0.3));
   
-  var dest_icon2 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.14, 0.25));
-  var text_q2 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.15, 0.25));
-  var text_m2 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.2, 0.25));
+  var dest_icon2 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.14, -0.3));
+  var text_q2 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, 0.15, -0.3));
+  var text_m2 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -0.2, -0.3));
   
-  var dest_icon3 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.66, 0.25));
-  var text_q3 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.65, 0.25));
-  var text_m3 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -1, 0.25));
+  var dest_icon3 = createImageEntity("#exit_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.66, -0.3));
+  var text_q3 = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.65, -0.3));
+  var text_m3 = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.2, -1, -0.3));
   
   sign.appendChild(label);
   sign.appendChild(dest_icon);
@@ -175,11 +175,11 @@ function createSignDestination(angle){
   var sign = createSignEntity(angle);
   
   var label = createImageEntity("#label", new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0.3));
-  var dest_icon = createImageEntity("#door_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0.55));
-  var text_d = createTextEntity("MŮJ CÍL", "#0055B4", 6, new THREE.Vector3(0, 0.35, 0.55));  
-  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.5, -0.4, 0.55));
-  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.05, 0.55));
-  var text_t = createTextEntity("3 min", "#0055B4", 4, new THREE.Vector3(-0.5, -0.4, 0.55));
+  var dest_icon = createImageEntity("#door_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0.6));
+  var text_d = createTextEntity("MŮJ CÍL", "#0055B4", 6, new THREE.Vector3(0, 0.35, 0.6));  
+  var text_m = createTextEntity("150 m", "#0055B4", 4, new THREE.Vector3(0.5, -0.4, 0.6));
+  var text_q = createTextEntity("Q4234", "#343A3E", 5, new THREE.Vector3(0.2, -0.05, 0.6));
+  var text_t = createTextEntity("3 min", "#0055B4", 4, new THREE.Vector3(-0.5, -0.4, 0.6));
   
   sign.appendChild(label);
   sign.appendChild(text_d);
@@ -206,7 +206,7 @@ function createSignEntity(angle){
   var signEntity = document.createElement('a-entity');
   signEntity.setAttribute('id', "sign" + arrowId);
   signEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
-  signEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0.2, z: R*Math.sin(toRadians(angle-90))});
+  signEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
   
   return signEntity;
 }  
@@ -218,7 +218,13 @@ function createArrowEntity(imageSrc, angle){
   arrowEntity.setAttribute('src', imageSrc);
   arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
   arrowEntity.setAttribute('scale', {x: 1.63, y: 3.28, z: 0.01});
-  arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+	if(imageSrc == "#blue_arrow"){
+		arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+	}
+	else{
+		arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: -0.9, z: R*Math.sin(toRadians(angle-90))});
+	}				      
+  
   
   return arrowEntity;
 }  
