@@ -234,7 +234,12 @@ function createArrowEntity(imageSrc, angle){
   arrowEntity.setAttribute('src', imageSrc);
   arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
   arrowEntity.setAttribute('scale', {x: 1.63, y: 3.28, z: 0.01});
-  arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  if(imageSrc == "#blue_arrow"){
+    arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
+  }
+  else{
+		arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90)) - 0.1});
+  }				      
   
   return arrowEntity;
 }  
