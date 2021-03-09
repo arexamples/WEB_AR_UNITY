@@ -71,7 +71,7 @@ function createCompleteMainDestination(mainDestination){
   wrapper.appendChild(arrow); 
   var sign = createSignDestination(mainDestination);
   listOfSigns.push(sign);
-  //wrapper.appendChild(sign);
+  wrapper.appendChild(sign);
 }
 
 function createCompleteOtherDestinations(otherDestinations){
@@ -83,17 +83,17 @@ function createCompleteOtherDestinations(otherDestinations){
     if(value.length == 1){
       var sign = createSign(value[0]);
       listOfSigns.push(sign);
-      //wrapper.appendChild(sign);    
+      wrapper.appendChild(sign);    
     }
     if(value.length == 2){
       var sign = createSignStack2(value);
       listOfSigns.push(sign);
-      //wrapper.appendChild(sign);  
+      wrapper.appendChild(sign);  
     }
     if(value.length == 3){
       var sign = createSignStack3(value);
       listOfSigns.push(sign);
-      //wrapper.appendChild(sign);  
+      wrapper.appendChild(sign);  
     }
   }
 }
