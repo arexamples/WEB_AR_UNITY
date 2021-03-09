@@ -13,8 +13,12 @@
 </a-assets>
 <a-marker id="arrow_marker" type='pattern' url='markers/arrow_marker.patt' emitevents="true" smooth="true smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"> 
     <a-entity gltf-model="#drone" scale="0.01 0.01 0.01" rotation="-90 0 0" position="0 0 0" animation-mixer="loop: pingpong" shadow="cast:true; receive:true"></a-entity>        
-    <a-entity light="type: ambient; color: #BBB; intensity: 1.0;"></a-entity>
-    <a-entity light="color: white; intensity: 3.0; castShadow: true;" position="0 6 -2"></a-entity>         
+    <a-entity light="color: white; intensity: 1; type: ambient;"></a-entity>
+    <a-entity light="color: white; intensity: 1.5" position="5 5 5"></a-entity>
+    <a-entity light="color: white; intensity: 1.5" position="-5 5 5"></a-entity>
+    <a-entity light="color: white; intensity: 1.5" position="5 -5 5"></a-entity>
+    <a-entity light="color: white; intensity: 1.5" position="-5 -5 5"></a-entity>
+    <a-entity light="color: white; type: ambient;"></a-entity>        
 </a-marker>	
         
 <!-- position="0 2 -2.5 -->                                                                                             
