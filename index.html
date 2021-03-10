@@ -50,6 +50,7 @@ window.onload = () => {
   camera = document.querySelector("[camera]");
   lookathandler = document.querySelector("[lookathandler]");
   drawDestinations();
+	startTimer();
 };    
 							  
 AFRAME.registerComponent('lookathandler', {
@@ -255,13 +256,13 @@ function callMyLocal(){
 var timer; 																
           
 function startTimer() { 
-		timer = setInterval(function() {  
-				 callMyLocal();
-		}, 5000); 
+	timer = setInterval(function() {  
+			 callMyLocal();
+	}, 5000); 
 } 
 
 function stopTimer() { 
-		clearInterval(timer);  
+	clearInterval(timer);  
 }								 
 </script>
 </body>
