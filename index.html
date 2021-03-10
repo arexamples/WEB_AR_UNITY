@@ -50,6 +50,7 @@ window.onload = () => {
   camera = document.querySelector("[camera]");
   lookathandler = document.querySelector("[lookathandler]");
   drawDestinations();
+  document.querySelector('a-scene').components.screenshot.capture('perspective')
 };    
 							  
 AFRAME.registerComponent('lookathandler', {
