@@ -16,7 +16,7 @@
 arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetectionRate:30;' antialias="true"
 -->
 <a-scene embedded arjs=’sourceType: webcam; trackingMethod:best;’ vr-mode-ui='enabled: false'>
-<canvas></canvas>	
+<canvas visibility="hidden"></canvas>	
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
@@ -298,7 +298,6 @@ function stopTimer() {
 
     function takeSnapshot(video){
     // Here we're using a trick that involves a hidden canvas element.  
-
     var hidden_canvas = document.querySelector('canvas'),
         context = hidden_canvas.getContext('2d');
 
