@@ -296,33 +296,6 @@ function stopTimer() {
 	clearInterval(timer);  
 }	
 
-
-												
-take_photo_btn.addEventListener("click", function(e){
-
-
-    var video = document.querySelector('video')
-    var snap = takeSnapshot(video);
-    console.log(snap)
-
-    // Show image. 
-    //image.setAttribute('src', snap);
-    //image.classList.add("visible");
-
-    // Enable delete and save buttons
-    //delete_photo_btn.classList.remove("disabled");
-    //download_photo_btn.classList.remove("disabled");
-
-    // Set the href attribute of the download button to the snap url.
-    //download_photo_btn.href = snap;
-
-    // Pause video playback of stream.
-    //video.pause();
-
-});
-
-
-
     function takeSnapshot(video){
     // Here we're using a trick that involves a hidden canvas element.  
 
