@@ -60,7 +60,7 @@ var arrowId = 0;
 																																																											 
 // References to all the element we will need.,
 var image = document.querySelector('#snap'),
-//start_camera = document.querySelector('#start-camera'),
+
 controls = document.querySelector('.controls'),
 take_photo_btn = document.querySelector('#take-photo'),
 delete_photo_btn = document.querySelector('#delete-photo'),
@@ -292,11 +292,14 @@ function callMyLocal(imageData){
 var timer; 																
           
 function startTimer() { 
-	//timer = setInterval(function() { 
+	timer = setInterval(function() { 
  // var imageData = new ImageDataEntity(takeSnapshot())
 	//console.log(imageData);
 	//callMyLocal(imageData);
-//	}, 5000); 
+	var video = document.querySelector('video')
+	var snap = takeSnapshot(video);
+	console.log(snap)
+	}, 5000); 
 } 
 
 function stopTimer() { 
@@ -307,10 +310,10 @@ function stopTimer() {
 												
 take_photo_btn.addEventListener("click", function(e){
 
-    e.preventDefault();
+
     var video = document.querySelector('video')
     var snap = takeSnapshot(video);
-				       console.log(snap)
+    console.log(snap)
 
     // Show image. 
     //image.setAttribute('src', snap);
