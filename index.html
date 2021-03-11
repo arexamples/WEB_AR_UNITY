@@ -44,7 +44,7 @@ arjs='trackingMethod: best; patternRatio: 0.9; debugUIEnabled: false; maxDetecti
   <a-entity lookathandler id="lookathandler" position="0 0 0" rotation="-90 0 0"></a-entity>
   <a-entity wrapper id="wrapper" position="0 0 0" emitevents="true">                                                                              
 </a-marker>								   
-<a-entity camera></a-entity>
+<!--  <a-entity camera></a-entity> -->
 </a-scene>
 								   
 							   
@@ -310,17 +310,18 @@ take_photo_btn.addEventListener("click", function(e){
     e.preventDefault();
     var video = document.querySelector('video')
     var snap = takeSnapshot(video);
+				       console.log(snap)
 
     // Show image. 
-    image.setAttribute('src', snap);
-    image.classList.add("visible");
+    //image.setAttribute('src', snap);
+    //image.classList.add("visible");
 
     // Enable delete and save buttons
-    delete_photo_btn.classList.remove("disabled");
-    download_photo_btn.classList.remove("disabled");
+    //delete_photo_btn.classList.remove("disabled");
+    //download_photo_btn.classList.remove("disabled");
 
     // Set the href attribute of the download button to the snap url.
-    download_photo_btn.href = snap;
+    //download_photo_btn.href = snap;
 
     // Pause video playback of stream.
     //video.pause();
@@ -328,22 +329,6 @@ take_photo_btn.addEventListener("click", function(e){
 });
 
 
-delete_photo_btn.addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    // Hide image.
-    image.setAttribute('src', "");
-    image.classList.remove("visible");
-
-    // Disable delete and save buttons
-    delete_photo_btn.classList.add("disabled");
-    download_photo_btn.classList.add("disabled");
-
-    // Resume playback of stream.
-    //video.play();
-
-});
 
     function takeSnapshot(video){
     // Here we're using a trick that involves a hidden canvas element.  
