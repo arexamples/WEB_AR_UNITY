@@ -313,7 +313,6 @@ navigator.getMedia = ( navigator.getUserMedia ||
 
 
 if(!navigator.getMedia){
-  displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
 }
 else{
 
@@ -332,13 +331,13 @@ else{
       // Play the video element to start the stream.
       video.play();
       video.onplay = function() {
-        showVideo();
+      showVideo();
       };
 
     },
     // Error Callback
     function(err){
-      displayErrorMessage("There was an error with accessing the camera stream: " + err.name, err);
+      
     }
   );
 
