@@ -46,10 +46,10 @@ var wrapper;
 const SCALE = 0.1; // 5
 const R = 3;	
 var arrowId = 0;
+var video;
   
 window.onload = () => {
-	var video = document.querySelector('#camera-stream'),
-			 
+	video = document.querySelector('#camera-stream');
   wrapper = document.querySelector('[wrapper]');
   camera = document.querySelector("[camera]");
   lookathandler = document.querySelector("[lookathandler]");
