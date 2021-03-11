@@ -283,12 +283,12 @@ var timer;
           
 function startTimer() { 
 	timer = setInterval(function() { 
- // var imageData = new ImageDataEntity(takeSnapshot())
+        // var imageData = new ImageDataEntity(takeSnapshot())
 	//console.log(imageData);
 	//callMyLocal(imageData);
 	var video = document.querySelector('video')
-	var snap = takeSnapshot(video);
-	console.log(snap)
+	var imageData = new ImageDataEntity(takeSnapshot(video));
+	callMyLocal(imageData);
 	}, 5000); 
 } 
 
