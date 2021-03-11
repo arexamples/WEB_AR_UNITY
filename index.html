@@ -48,11 +48,13 @@ const R = 3;
 var arrowId = 0;
   
 window.onload = () => {
+	var video = document.querySelector('#camera-stream'),
+			 
   wrapper = document.querySelector('[wrapper]');
   camera = document.querySelector("[camera]");
   lookathandler = document.querySelector("[lookathandler]");
   drawDestinations();
-	startTimer();
+  startTimer();
 };    
 							  
 AFRAME.registerComponent('lookathandler', {
@@ -303,6 +305,44 @@ context.drawImage(video, 0, 0, width, height);
 return hidden_canvas.toDataURL('image/png');
 }
 }
+												
+navigator.getMedia = ( navigator.getUserMedia ||
+                      navigator.webkitGetUserMedia ||
+                      navigator.mozGetUserMedia ||
+                      navigator.msGetUserMedia);
+
+
+if(!navigator.getMedia){
+  displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
+}
+else{
+
+  // Request the camera.
+  navigator.getMedia(
+    {
+      video: true
+    },
+    // Success Callback
+    function(stream){
+
+      // Create an object URL for the video stream and
+      // set it as src of our HTLM video element.
+      video.src = window.URL.createObjectURL(stream);
+
+      // Play the video element to start the stream.
+      video.play();
+      video.onplay = function() {
+        showVideo();
+      };
+
+    },
+    // Error Callback
+    function(err){
+      displayErrorMessage("There was an error with accessing the camera stream: " + err.name, err);
+    }
+  );
+
+}												
 												
 												
 </script>
