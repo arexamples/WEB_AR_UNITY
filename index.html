@@ -309,6 +309,7 @@ function stopTimer() {
         // Setup a canvas with the same dimensions as the video.
         hidden_canvas.width = width;
         hidden_canvas.height = height;
+	hidden_canvas.style.visibility = "hidden";
 
         // Make a copy of the current frame in the video on the canvas.
         context.drawImage(video, 0, 0, width, height);
