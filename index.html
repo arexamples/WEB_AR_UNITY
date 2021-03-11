@@ -243,27 +243,42 @@ function createTextEntity(textValue, textColor, size, position){
 																		 
 
 																																																																								 
-function callMyLocal(){
-	fetch("https://192.168.0.103:8443/qr").then(function(response) {
-					return response.json();
-				}).then(function(data) { 
-					 return data;
-				}).catch(function(err) {
-					console.log("Error " + err);
-				});																																																																						 
+class ImageDataEntity {
+  constructor(qData) {
+     this.qData = qData;  
+  }
+}																		 
+
+																																																																								 
+function callMyLocal(imageData){
+  fetch("https://192.168.0.103:8443/qr2", {
+  method: 'POST', // or 'PUT'
+  headers: {
+      'Content-Type': 'application/json'
+  },  
+  body: JSON.stringify(imageData)
+  }).then(function(response) {
+  	return response.json();
+  }).then(function(data) { 
+  	 return data;
+  }).catch(function(err) {
+  	console.log("Error " + err);
+  });																																																																						 
 }			
 																
 var timer; 																
           
 function startTimer() { 
-	timer = setInterval(function() {  
-			 callMyLocal();
+	timer = setInterval(function() { 
+    var screenX = document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
+    var imageData = new ImageDataEntity(screenX.toDataURL())
+	callMyLocal(imageData);
 	}, 5000); 
 } 
 
 function stopTimer() { 
 	clearInterval(timer);  
-}								 
+}							 
 </script>
 </body>
 </html>
