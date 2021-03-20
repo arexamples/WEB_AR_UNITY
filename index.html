@@ -177,10 +177,13 @@ function initialize()
 	sprite2.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
 	markerRoot1.add( sprite2 );*/
 	
+
+	
 	const map = new THREE.TextureLoader().load( 'images/images/redball.png' );
-	const material = new THREE.SpriteMaterial( { map: map } );
+	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
 
 	const sprite = new THREE.Sprite( material );
+	sprite.scale.set(5, 5, 1)
 	scene.add( sprite );
 	
 	
