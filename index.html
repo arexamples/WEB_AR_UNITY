@@ -177,15 +177,16 @@ function initialize()
 	sprite2.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
 	markerRoot1.add( sprite2 );*/
 	
+loadSprite('/images/Modra.png', new THREE.Vector3(0, 0, 0))
+loadSprite('/images/Bila.png', new THREE.Vector3(1, 0, 0))
+loadSprite('/images/label.png', new THREE.Vector3(-1, 0, 0))
+loadSprite('/images/label_stack2.png', new THREE.Vector3(0, 1, 0))
+loadSprite('/images/label_stack3.png', new THREE.Vector3(0, -1, 0))
+loadSprite('/images/door_icon.png', new THREE.Vector3(1, 1, 0))
+loadSprite('/images/exit_icon.png', new THREE.Vector3(1, -1, 0))
 
 	
-	const map = new THREE.TextureLoader().load( 'images/images/redball.png' );
-	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
-
-	const sprite = new THREE.Sprite( material );
-	sprite.scale.set(5, 5, 1)
-	scene.add( sprite );
-	markerRoot1.add( sprite );
+	
 	
 	
 
@@ -224,6 +225,17 @@ function initialize()
 }
 	
 
+function loadSprite(url, position)
+{
+	//const map = new THREE.TextureLoader().load( 'images/images/redball.png' );
+	const map = new THREE.TextureLoader().load( url );
+	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
+
+	const sprite = new THREE.Sprite( material );
+	sprite.scale.set(1, 1, 1)
+	sprite.position.copy(position)
+	markerRoot1.add( sprite );
+}
 	
 	
 function loadModel(url, markerRoot, rotation, scale, position){
