@@ -155,23 +155,23 @@ function initialize()
 	
 	showUsb()
 	
-	var ballTexture = THREE.ImageUtils.loadTexture( 'images/images/redball.png' );
-	var crateTexture = THREE.ImageUtils.loadTexture( 'images/images/crate.png' );
+	var ballTexture = THREE.TextureLoader( 'images/images/redball.png' );
+	var crateTexture = THREE.TextureLoader( 'images/images/crate.png' );
 	
-	var ballMaterial = new THREE.SpriteMaterial( { map: ballTexture, useScreenCoordinates: true  } );
+	var ballMaterial = new THREE.SpriteMaterial( { map: ballTexture  } );
 	var sprite = new THREE.Sprite( ballMaterial );
-	sprite.position.set( 50, 50, 0 );
+	sprite.position.set( 0, 0, 0 );
 	sprite.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
 	markerRoot1.add( sprite );
 
 	
-	var ballMaterial = new THREE.SpriteMaterial( { map: ballTexture, useScreenCoordinates: true } );
+	var ballMaterial = new THREE.SpriteMaterial( { map: ballTexture } );
 	var sprite = new THREE.Sprite( ballMaterial );
 	sprite.position.set( window.innerWidth - 50, window.innerHeight - 50, 0 );
-	sprite.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
+	sprite.scale.set( 1, 1, 1.0 ); // imageWidth, imageHeight
 	markerRoot1.add( sprite );
 	
-    	var crateMaterial = new THREE.SpriteMaterial( { map: crateTexture, useScreenCoordinates: false, color: 0xff0000 } );
+    	var crateMaterial = new THREE.SpriteMaterial( { map: crateTexture, color: 0xff0000 } );
 	var sprite2 = new THREE.Sprite( crateMaterial );
 	sprite2.position.set( -100, 50, 0 );
 	sprite2.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
