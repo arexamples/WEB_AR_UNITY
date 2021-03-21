@@ -65,6 +65,43 @@ var mixer;
 
 initialize();
 animate();
+	
+function makeTextSprite( message, parameters )
+{
+	if ( parameters === undefined ) parameters = {};
+	
+	var fontface = parameters.hasOwnProperty("fontface") ? 
+		parameters["fontface"] : "Arial";
+	
+	var fontsize = parameters.hasOwnProperty("fontsize") ? 
+		parameters["fontsize"] : 18;	
+
+	var spriteAlignment = THREE.SpriteAlignment.topLeft;
+		
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	context.font = "Bold " + fontsize + "px " + fontface;
+    
+	// get size data (height depends only on font size)
+	var metrics = context.measureText( message );
+	var textWidth = metrics.width;
+	
+	
+	// text color
+	context.fillStyle = "rgba(0, 0, 0, 1.0)";
+
+	context.fillText( message, borderThickness, fontsize + borderThickness);
+	
+	// canvas contents will be used for a texture
+	var texture = new THREE.Texture(canvas) 
+	texture.needsUpdate = true;
+
+	var spriteMaterial = new THREE.SpriteMaterial( 
+		{ map: texture, useScreenCoordinates: false, alignment: spriteAlignment } );
+	var sprite = new THREE.Sprite( spriteMaterial );
+	sprite.scale.set(100,50,1.0);
+	return sprite;	
+}	
 
 function initialize()
 {
@@ -207,6 +244,12 @@ function initialize()
 	mesh1.scale.set(1,1,1);
 	mesh1.rotation.set(-90, 0, 0);
 	markerRoot1.add( mesh1 );
+	
+	var spritey = makeTextSprite( " World! ", 
+		{ fontsize: 32, fontface: "Georgia", borderColor: {r:0, g:0, b:255, a:1.0} } );
+	spritey.position.set(0,0,0);
+	markerRoot1.add( spritey );
+	
 	
 /*
 loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/Modra.png', new THREE.Vector3(0, 0, 0))
