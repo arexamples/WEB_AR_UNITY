@@ -72,8 +72,9 @@ var labelStack3Image = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/maste
 var doorImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/door_icon.png'; 
 var exitImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/exit_icon.png'; 	
 	
-var textColor1 = "#343A3E";
-var textColor2 = "#0055B4";	
+
+var textColor1 = "#0055B4";
+var textColor2 = "#343A3E";
 
 
 /*
@@ -137,10 +138,10 @@ function createSignDestination(angle){
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadSprite(labelImage, 0, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadSprite(doorImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
-	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 32, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 32, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.5, -0.4, 0), renderOrder:1}));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.05, 0), renderOrder:1}));
-	group.add(makeTextSprite( "3 min", { fontsize: 32, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(-0.5, -0.4, 0), renderOrder:1}));
+	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 64, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 40, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.5, -0.4, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 52, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.05, 0), renderOrder:1}));
+	group.add(makeTextSprite( "3 min", { fontsize: 40, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(-0.5, -0.4, 0), renderOrder:1}));
 
 	
 	markerRoot1.add(group)
