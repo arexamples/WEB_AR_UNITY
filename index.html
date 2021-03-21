@@ -143,7 +143,7 @@ function createSignDestination(angle){
   sign.appendChild(text_m);
   sign.appendChild(text_t);*/
   
-  return sign;
+  //return sign;
 } 
 	
 function createSign(angle){
@@ -158,7 +158,7 @@ function createSign(angle){
   sign.appendChild(text_q);
   sign.appendChild(text_m);*/
      
-  return sign;
+  //return sign;
 }
   
 function createSignStack2(angle){
@@ -182,7 +182,7 @@ function createSignStack2(angle){
   sign.appendChild(text_q2);
   sign.appendChild(text_m2);*/
   
-  return sign;
+  //return sign;
 }  
   
 function createSignStack3(angle){
@@ -212,17 +212,17 @@ function createSignStack3(angle){
   sign.appendChild(text_q3);
   sign.appendChild(text_m3);*/
   
-  return sign;
+  //return sign;
 }   
 	
-function createSignEntity(angle){
+/*function createSignEntity(angle){
   var signEntity = document.createElement('a-entity');
   signEntity.setAttribute('id', "sign" + arrowId);
   signEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
   signEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
   
   return signEntity;
-}  
+} */ 
 	
 function createArrowEntity(image, angle){
 	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
