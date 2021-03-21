@@ -373,9 +373,10 @@ function loadSprite(url, rotation, scale, position)
 	//const map = new THREE.TextureLoader().load( 'images/images/redball.png' );
 	const map = new THREE.TextureLoader().load(url);
 	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
+	material.rotation.set(rotation.x, rotation.y, rotation.z);
 
 	const sprite = new THREE.Sprite( material );
-	sprite.rotation.set(rotation.x, rotation.y, rotation.z);
+	
 	sprite.scale.copy(scale);
 	sprite.position.copy(position)
 	markerRoot1.add( sprite );
