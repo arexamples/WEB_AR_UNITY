@@ -525,7 +525,9 @@ function makeTextSprite( message, parameters )
 	var spriteMaterial = new THREE.SpriteMaterial( { map: texture} );
 	var sprite = new THREE.Sprite( spriteMaterial );
 	sprite.renderOrder = renderOrder
-	//sprite.scale.set(1,1,1);
+	console.log(canvas.width)
+	console.log(canvas.height)
+	sprite.scale.set(canvas.width / canvas.height, 1, 1);
 	sprite.position.copy(position);
 	
 	return sprite;	
