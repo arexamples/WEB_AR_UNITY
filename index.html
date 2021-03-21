@@ -373,11 +373,16 @@ function loadImage(url, rotation, scale, position)
 {
 	const texture = new THREE.TextureLoader().load(url);
 
-	const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+	const geometry = new THREE.PlaneGeometry();
 	const material = new THREE.MeshBasicMaterial( { map: texture } );
 
 	mesh = new THREE.Mesh( geometry, material );
+	mesh.scale.copy(scale);
+	mesh.position.copy(position);
+	mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+	
 	markerRoot1.add( mesh );
+	
 	
 	
 	/*var canvas = document.createElement('canvas');
