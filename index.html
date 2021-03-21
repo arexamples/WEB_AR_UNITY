@@ -62,9 +62,80 @@ var mesh1;
 	
 var mixer;	
 	
+var blueArrowImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/Modra.png'; 	
+var whiteArrowImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/Bila.png'; 	
+var labelImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label.png'; 	
+var labelStack2Image = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label_stack2.png'; 
+var labelStack3Image = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label_stack3.png'; 	
+var doorImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/door_icon.png'; 
+var exitImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/exit_icon.png'; 	
+
+/*
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/Modra.png', new THREE.Vector3(0, 0, 0))
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/Bila.png', new THREE.Vector3(1, 0, 0))
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label.png', new THREE.Vector3(-1, 0, 0))
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label_stack2.png', new THREE.Vector3(0, 1, 0))
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label_stack3.png', new THREE.Vector3(0, -1, 0))
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/door_icon.png', new THREE.Vector3(1, 1, 0))
+loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/exit_icon.png', new THREE.Vector3(1, -1, 0))*/
 
 initialize();
 animate();
+	
+	/*var spritey = makeTextSprite( " World! ", 
+		{ fontsize: 32, fontface: "Georgia", borderColor: {r:0, g:0, b:255, a:1.0} } );
+	spritey.position.set(0,0,0);
+	markerRoot1.add( spritey );
+	*/
+	
+function drawDestinations(){ 
+  var arrow = createArrowEntity("blue", 0);
+  //listOfArrows.push(arrow);
+  //wrapper.appendChild(arrow); 
+//  var sign = createSignDestination(0);
+  //listOfSigns.push(sign);
+  //wrapper.appendChild(sign);
+  
+  for (var i = 1; i < 4; i++) {
+    var arrow = createArrowEntity("white", i*75);
+    //listOfArrows.push(arrow);
+    //wrapper.appendChild(arrow);  
+    if(i==1){
+//    var sign = createSign(i*75);
+    //listOfSigns.push(sign);
+    //wrapper.appendChild(sign);
+    }
+    if(i==2){
+ //   var sign = createSignStack2(i*75);
+    //listOfSigns.push(sign);
+    //wrapper.appendChild(sign);
+    }
+    if(i==3){
+ //   var sign = createSignStack3(i*75);
+    //listOfSigns.push(sign);
+    //wrapper.appendChild(sign);
+    }
+  }   
+}
+	
+function createArrowEntity(image, angle){
+
+  arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
+  arrowEntity.setAttribute('scale', {x: 1.63, y: 3.28, z: 0.01});
+	var scale = new THREE.Vector3(0, 0, 0);
+	var rotation = new THREE.Vector3(-90, y: 0, z: angle);															
+	if(image == "blue"){
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90)))
+		loadSprite(blueArrowImage, rotation, scale, position)
+	}
+	else{
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), y: -0.9, z: R*Math.sin(toRadians(angle-90)))
+		loadSprite(blueArrowImage, rotation, scale, position)
+	}				      
+  
+  
+  return arrowEntity;
+}  
 	
 function makeTextSprite( message, parameters )
 {
@@ -220,7 +291,7 @@ function initialize()
 	sprite.position.copy(position)
 	markerRoot1.add( sprite );*/
 	
-	
+	/*
 	var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
 	context1.font = "Bold 40px Roboto";
@@ -246,7 +317,9 @@ function initialize()
 	var spritey = makeTextSprite( " World! ", 
 		{ fontsize: 32, fontface: "Georgia", borderColor: {r:0, g:0, b:255, a:1.0} } );
 	spritey.position.set(0,0,0);
-	markerRoot1.add( spritey );
+	markerRoot1.add( spritey );*/
+	
+	drawDestinations()
 	
 	
 /*
@@ -298,14 +371,15 @@ loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/exi
 }
 	
 
-function loadSprite(url, position)
+function loadSprite(url, rotation, scale, position)
 {
 	//const map = new THREE.TextureLoader().load( 'images/images/redball.png' );
 	const map = new THREE.TextureLoader().load(url);
 	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
 
 	const sprite = new THREE.Sprite( material );
-	sprite.scale.set(1, 1, 1)
+	sprite.rotation.set(rotation.x, rotation.y, rotation.z);
+	sprite.scale.copy(scale);
 	sprite.position.copy(position)
 	markerRoot1.add( sprite );
 }
