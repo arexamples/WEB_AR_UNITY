@@ -133,7 +133,7 @@ function createSignDestination(angle){
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	
 	group.add( loadSprite(labelImage, 0, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadSprite(doorImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.3, -0.06), 1));
+	group.add( loadSprite(doorImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.3, -0.06), 1));
 	markerRoot1.add(group)
 	
 	
@@ -240,11 +240,11 @@ function createArrowEntity(image, angle){
 	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
 	var rotation = new THREE.Vector3(-90, 0, angle);															
 	if(image == "blue"){
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.3, R*Math.sin(toRadians(angle-90)))
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90)))
 		loadImage(blueArrowImage, rotation, scale, position)
 	}
 	else{
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90)))
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90)))
 		loadImage(whiteArrowImage, rotation, scale, position)
 	}				      
 }  
@@ -507,7 +507,7 @@ function loadSprite(url, angle, scale, position, offset)
 	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle), polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset} );
 	const sprite = new THREE.Sprite( material );
 	
-	sprite.renderOrder = offset
+	//sprite.renderOrder = offset
 	sprite.scale.copy(scale);
 	sprite.position.copy(position)
 	return sprite;
