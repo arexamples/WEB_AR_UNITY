@@ -72,8 +72,8 @@ function createSignDestination(angle){
 	group = new THREE.Group();
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
-	group.add( loadSprite(labelImage, 0, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadSprite(doorImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
+	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	group.add( loadImage(doorImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
 	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 52, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
 	group.add(makeTextSprite( "150 m", { fontsize: 40, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.5, -0.4, 0), renderOrder:1}));
 	group.add(makeTextSprite( "Q4234", { fontsize: 46, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.05, 0), renderOrder:1}));
@@ -86,8 +86,8 @@ function createSign(angle){
 	group = new THREE.Group();
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
-	group.add( loadSprite(labelImage, 0, new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0), 1));
+	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0), 1));
 	
 	markerRoot1.add(group)
 }
@@ -96,9 +96,9 @@ function createSignStack2(angle){
 	group = new THREE.Group();
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
-	group.add( loadSprite(labelStack2Image, 0, new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0), 1));
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, 0), 1));
+	group.add( loadImage(labelStack2Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0), 1));
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, 0), 1));
 	
 	markerRoot1.add(group)
 }  
@@ -107,25 +107,27 @@ function createSignStack3(angle){
 	group = new THREE.Group();
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
-	group.add( loadSprite(labelStack3Image, 0, new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, 0), 1));
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.14, 0), 1));
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.66, 0), 1));
+	group.add( loadImage(labelStack3Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, 0), 1));
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.14, 0), 1));
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.66, 0), 1));
 	
 	markerRoot1.add(group)
 }   
 	
 function createArrowEntity(image, angle){
 	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
-	var rotation = new THREE.Vector3(-90, 0, angle);															
+	var rotation = new THREE.Vector3(-90, 0, angle);	
+	var arrow;
 	if(image == "blue"){
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90)))
-		loadImage(blueArrowImage, rotation, scale, position)
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90), -1))
+		arrow = loadImage(blueArrowImage, rotation, scale, position)
 	}
 	else{
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90)))
-		loadImage(whiteArrowImage, rotation, scale, position)
-	}				      
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90), -2))
+		arrow =  loadImage(whiteArrowImage, rotation, scale, position)
+	}	
+	markerRoot1.add(arrow);
 }  
 	
 
@@ -361,19 +363,28 @@ function makeTextSprite( message, parameters )
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
 
-	var spriteMaterial = new THREE.SpriteMaterial( { map: texture} );
+	/*var spriteMaterial = new THREE.SpriteMaterial( { map: texture} );
 	var sprite = new THREE.Sprite( spriteMaterial );
 	sprite.renderOrder = renderOrder
 	console.log(canvas.width)
 	console.log(canvas.height)
 	sprite.scale.set(canvas.width / canvas.height, 1, 1);
-	sprite.position.copy(position);
+	sprite.position.copy(position);*/
 	
-	return sprite;	
+	const geometry = new THREE.PlaneGeometry(1,1);
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
+	
+	mesh = new THREE.Mesh( geometry, material );
+	mesh.renderOrder = renderOrder
+	mesh.scale.copy(canvas.width / canvas.height, 1, 1);
+	mesh.position.copy(position);
+
+	
+	return mesh;	
 }	
 
 	
-function loadImage(url, rotation, scale, position)
+function loadImage(url, rotation, scale, position, renderOrder)
 {
 	const texture = new THREE.TextureLoader().load(url);
 
@@ -381,11 +392,13 @@ function loadImage(url, rotation, scale, position)
 	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
 	
 	mesh = new THREE.Mesh( geometry, material );
+	mesh.renderOrder = renderOrder
 	mesh.scale.copy(scale);
 	mesh.position.copy(position);
 	mesh.rotation.set(toRadians(rotation.x), toRadians(rotation.y), toRadians(rotation.z));
 	
-	markerRoot1.add( mesh );
+	//markerRoot1.add( mesh );
+	return mesh;
 }
 	
 
