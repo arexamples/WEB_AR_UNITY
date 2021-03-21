@@ -372,7 +372,8 @@ function makeTextSprite( message, parameters )
 	sprite.position.copy(position);*/
 	
 	const geometry = new THREE.PlaneGeometry(1,1);
-	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, transparent : true } );
+
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
