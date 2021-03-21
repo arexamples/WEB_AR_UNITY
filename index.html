@@ -200,11 +200,11 @@ function initialize()
     material1.transparent = true;
 
     var mesh1 = new THREE.Mesh(
-        new THREE.PlaneGeometry(canvas1.width, canvas1.height),
+        new THREE.PlaneGeometry(5, 5),
         material1
       );
 	mesh1.position.set(0,0,0);
-	mesh1.scale.set(5,5,5);
+	mesh1.scale.set(2,2,2);
 	markerRoot1.add( mesh1 );
 	
 /*
