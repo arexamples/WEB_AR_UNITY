@@ -498,8 +498,11 @@ function makeTextSprite( message, parameters )
 	var textColor = parameters.hasOwnProperty("textColor") ? 
 		parameters["textColor"] : textColor1;	
 	
-	var renderOrder = parameters.hasOwnProperty("textColor") ? 
+	var renderOrder = parameters.hasOwnProperty("renderOrder") ? 
 		parameters["renderOrder"] : 1;	
+	
+	var position = parameters.hasOwnProperty("position") ? 
+		parameters["position"] : new THREE.Vector3(0, 0, 0);	
 		
 	var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
