@@ -377,6 +377,7 @@ function loadImage(url, rotation, scale, position)
 	// load an image
 	var imageObj = new Image();
 	imageObj.src = url;
+	console.log(imageObj)
 	// after the image is loaded, this function executes
 	imageObj.onload = function()
 	{  
@@ -389,7 +390,7 @@ function loadImage(url, rotation, scale, position)
 	material.transparent = true;
 
 	var mesh = new THREE.Mesh(
-	new THREE.PlaneGeometry(1, 1),
+	new THREE.PlaneGeometry(5, 5),
 	material
 	);
 	mesh.scale.copy(scale);
