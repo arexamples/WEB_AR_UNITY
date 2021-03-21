@@ -227,7 +227,7 @@ function initialize()
 	
 function makeTextSprite( message, parameters )
 {
-	/*if ( parameters === undefined ) parameters = {};
+	if ( parameters === undefined ) parameters = {};
 	
 	var fontface = parameters.hasOwnProperty("fontface") ? 
 		parameters["fontface"] : "Roboto";
@@ -244,7 +244,7 @@ function makeTextSprite( message, parameters )
 	var position = parameters.hasOwnProperty("position") ? 
 		parameters["position"] : new THREE.Vector3(0, 0, 0);	
 		
-	var canvas = document.createElement('canvas');
+	/*var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
 	context.font = "Bold " + fontsize + "px " + fontface;
     
@@ -283,17 +283,16 @@ function makeTextSprite( message, parameters )
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
 
-	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide } );
-	material.transparent = true;
+	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide, transparent: true, depthTest: false } );
 
 	var mesh = new THREE.Mesh(
 	new THREE.PlaneGeometry(1, 1),
 	material
 	);
 	mesh.position.set(0,0,0);
+	mesh.renderOrder = renderOrder
 
 
-	
 	return mesh;	
 	
 	/*var spriteMaterial = new THREE.SpriteMaterial( { map: texture} );
