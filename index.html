@@ -71,6 +71,10 @@ var labelStack2Image = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/maste
 var labelStack3Image = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/label_stack3.png'; 	
 var doorImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/door_icon.png'; 
 var exitImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/exit_icon.png'; 	
+	
+var textColor1 = "#343A3E";
+var textColor2 = "#0055B4";	
+
 
 /*
 loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/Modra.png', new THREE.Vector3(0, 0, 0))
@@ -133,6 +137,12 @@ function createSignDestination(angle){
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadSprite(labelImage, 0, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadSprite(doorImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
+	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 32, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 32, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.5, -0.4, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.05, 0), renderOrder:1}));
+	group.add(makeTextSprite( "3 min", { fontsize: 32, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(-0.5, -0.4, 0), renderOrder:1}));
+
+	
 	markerRoot1.add(group)
 	
 	
@@ -480,10 +490,16 @@ function makeTextSprite( message, parameters )
 	if ( parameters === undefined ) parameters = {};
 	
 	var fontface = parameters.hasOwnProperty("fontface") ? 
-		parameters["fontface"] : "Arial";
+		parameters["fontface"] : "Roboto";
 	
 	var fontsize = parameters.hasOwnProperty("fontsize") ? 
 		parameters["fontsize"] : 18;	
+	
+	var textColor = parameters.hasOwnProperty("textColor") ? 
+		parameters["textColor"] : textColor1;	
+	
+	var renderOrder = parameters.hasOwnProperty("textColor") ? 
+		parameters["renderOrder"] : 1;	
 		
 	var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
@@ -493,9 +509,8 @@ function makeTextSprite( message, parameters )
 	var metrics = context.measureText( message );
 	var textWidth = metrics.width;
 	
-	
 	// text color
-	context.fillStyle = "rgba(0, 0, 0, 1.0)";
+	context.fillStyle = textColor;
 
 	context.fillText(message, 0, fontsize);
 	
@@ -503,10 +518,13 @@ function makeTextSprite( message, parameters )
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
 
-	var spriteMaterial = new THREE.SpriteMaterial( 
-		{ map: texture} );
+	var spriteMaterial = new THREE.SpriteMaterial( { map: texture} );
 	var sprite = new THREE.Sprite( spriteMaterial );
-	sprite.scale.set(1,1,10);
+	sprite.renderOrder = renderOrder
+	sprite.scale.set(1,1,1);
+	sprite.position.copy(position);
+	
+	markerRoot1.add( sprite );
 	return sprite;	
 }	
 
