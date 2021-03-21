@@ -275,9 +275,9 @@ function makeTextSprite( message, parameters )
 	
 	var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
-	context.font = "Bold 40px Arial";
-	context.fillStyle = "rgba(255,0,0,0.95)";
-	context.fillText('Hello, world!', 0, 50);
+	context.font = "Bold " + fontsize + "px " + fontface;
+	context.fillStyle = textColor;
+	context.fillText(message, 0, fontsize);
 
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
@@ -289,7 +289,7 @@ function makeTextSprite( message, parameters )
 	new THREE.PlaneGeometry(1, 1),
 	material
 	);
-	mesh.position.set(0,0,0);
+	mesh.position.copy(position);
 	mesh.renderOrder = renderOrder
 
 
