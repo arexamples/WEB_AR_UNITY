@@ -122,7 +122,7 @@ function drawDestinations(){
 }
 	
 function createArrowEntity(image, angle){
-	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
+	var scale = new THREE.Vector3(1.63, 3.28, 1);
 	var rotation = new THREE.Vector3(90, 0, angle);															
 	if(image == "blue"){
 		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)))
