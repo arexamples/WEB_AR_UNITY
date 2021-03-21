@@ -240,11 +240,11 @@ function createArrowEntity(image, angle){
 	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
 	var rotation = new THREE.Vector3(-90, 0, angle);															
 	if(image == "blue"){
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)))
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.3, R*Math.sin(toRadians(angle-90)))
 		loadImage(blueArrowImage, rotation, scale, position)
 	}
 	else{
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90)))
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90)))
 		loadImage(whiteArrowImage, rotation, scale, position)
 	}				      
 }  
