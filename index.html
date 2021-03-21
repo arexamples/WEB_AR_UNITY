@@ -126,8 +126,8 @@ function createSignDestination(angle){
   signEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
   */
 	
-  loadSprite(labelImage, -90, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0.3))
-  loadSprite(doorImage, -90, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0.6))	
+  loadSprite(labelImage, -90, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0)
+  loadSprite(doorImage, -90, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), -1)	
 	
  // var label = createImageEntity("#label", new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0.3));
  // var dest_icon = createImageEntity("#door_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0.6));
@@ -472,13 +472,12 @@ function makeTextSprite( message, parameters )
 }	
 
 	
-function loadImage(url, rotation, scale, position)
+function loadImage(url, rotation, scale, position, offset)
 {
 	const texture = new THREE.TextureLoader().load(url);
 
 	const geometry = new THREE.PlaneGeometry(1,1);
-	const material = new THREE.MeshBasicMaterial( { map: texture } );
-	material.side = THREE.DoubleSide;
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset } );
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.scale.copy(scale);
