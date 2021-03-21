@@ -389,7 +389,7 @@ function loadImage(url, rotation, scale, position, renderOrder)
 	const texture = new THREE.TextureLoader().load(url);
 
 	const geometry = new THREE.PlaneGeometry(1,1);
-	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, depthTest: false, color: 0xffffff } );
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
