@@ -219,9 +219,9 @@ function createSignStack3(angle){
 	group.rotation.set(-90, 0, angle);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadSprite(labelStack3Image, 0, new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0, 0.99), 1));
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0, 0.14), 1));
-	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0, -0.66), 1));
+	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4,  0.99,0), 1));
+	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4,  0.14,0), 1));
+	group.add( loadSprite(exitImage, 0, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4,  -0.66,0), 1));
 	markerRoot1.add(group)
 	
 //  var sign = createSignEntity(angle);  
