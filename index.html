@@ -477,7 +477,7 @@ function loadImage(url, rotation, scale, position, offset)
 	const texture = new THREE.TextureLoader().load(url);
 
 	const geometry = new THREE.PlaneGeometry(1,1);
-	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset } );
+	const material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset } );
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.scale.copy(scale);
