@@ -286,7 +286,7 @@ function makeTextSprite( message, parameters )
 	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide, transparent: true, depthTest: false } );
 
 	var mesh = new THREE.Mesh(
-	new THREE.PlaneGeometry(1, 1),
+	new THREE.PlaneGeometry(3, 1),
 	material
 	);
 	mesh.position.copy(position);
