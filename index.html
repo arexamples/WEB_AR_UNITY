@@ -472,12 +472,12 @@ function makeTextSprite( message, parameters )
 }	
 
 	
-function loadImage(url, rotation, scale, position, offset)
+function loadImage(url, rotation, scale, position)
 {
 	const texture = new THREE.TextureLoader().load(url);
 
 	const geometry = new THREE.PlaneGeometry(1,1);
-	const material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset } );
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.scale.copy(scale);
@@ -488,11 +488,10 @@ function loadImage(url, rotation, scale, position, offset)
 }
 	
 
-function loadSprite(url, angle, scale, position)
+function loadSprite(url, angle, scale, position, offset)
 {
 	const map = new THREE.TextureLoader().load(url);
-	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle)} );
-
+	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle), polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset } );
 	const sprite = new THREE.Sprite( material );
 	
 	sprite.scale.copy(scale);
