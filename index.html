@@ -178,6 +178,14 @@ function initialize()
 	markerRoot1.add( sprite2 );*/
 	
 	
+	/*const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
+
+	const sprite = new THREE.Sprite( material );
+	sprite.scale.set(1, 1, 1)
+	sprite.position.copy(position)
+	markerRoot1.add( sprite );*/
+	
+	
 	var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
 	context1.font = "Bold 40px Roboto";
@@ -195,8 +203,8 @@ function initialize()
         new THREE.PlaneGeometry(canvas1.width, canvas1.height),
         material1
       );
-	mesh1.position.set(0,50,0);
-	mesh1.scale.set(1,1,1);
+	mesh1.position.set(0,0,0);
+	mesh1.scale.set(5,5,5);
 	markerRoot1.add( mesh1 );
 	
 /*
