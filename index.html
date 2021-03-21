@@ -126,11 +126,11 @@ function createArrowEntity(image, angle){
 	var rotation = new THREE.Vector3(-90, 0, angle);															
 	if(image == "blue"){
 		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)))
-		loadSprite(blueArrowImage, rotation, scale, position)
+		loadImage(blueArrowImage, rotation, scale, position)
 	}
 	else{
 		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90)))
-		loadSprite(whiteArrowImage, rotation, scale, position)
+		loadImage(whiteArrowImage, rotation, scale, position)
 	}				      
 }  
 	
@@ -365,6 +365,37 @@ loadSprite('https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/images/exi
 	
 	
 	
+}
+	
+function loadImage(url, rotation, scale, position)
+{
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	// canvas contents will be used for a texture
+	var texture = new THREE.Texture(canvas);
+	
+	// load an image
+	var imageObj = new Image();
+	imageObj.src = url;
+	// after the image is loaded, this function executes
+	imageObj.onload = function()
+	{  
+		context.drawImage(imageObj, 0, 0);
+		if ( texture ) // checks if texture exists
+			texture.needsUpdate = true;
+	};  
+      
+	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide} );
+	material.transparent = true;
+
+	var mesh = new THREE.Mesh(
+	new THREE.PlaneGeometry(1, 1),
+	material
+	);
+	sprite.scale.copy(scale);
+	mesh.position.copy(position);
+	mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+	markerRoot1.add( mesh );	
 }
 	
 
