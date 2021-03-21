@@ -504,7 +504,7 @@ function loadImage(url, rotation, scale, position)
 function loadSprite(url, angle, scale, position, offset)
 {
 	const map = new THREE.TextureLoader().load(url);
-	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle), polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset} );
+	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle), depthTest: false} );
 	const sprite = new THREE.Sprite( material );
 	
 	//sprite.renderOrder = offset
