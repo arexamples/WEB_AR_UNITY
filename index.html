@@ -278,6 +278,7 @@ function makeTextSprite( message, parameters )
 	context.font = "Bold " + fontsize + "px " + fontface;
 	context.fillStyle = textColor;
 	context.fillText(message, 0, fontsize);
+	context.textAlign = "center";
 
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
