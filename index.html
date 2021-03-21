@@ -75,8 +75,6 @@ function makeTextSprite( message, parameters )
 	
 	var fontsize = parameters.hasOwnProperty("fontsize") ? 
 		parameters["fontsize"] : 18;	
-
-	var spriteAlignment = THREE.SpriteAlignment.topLeft;
 		
 	var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
@@ -90,16 +88,16 @@ function makeTextSprite( message, parameters )
 	// text color
 	context.fillStyle = "rgba(0, 0, 0, 1.0)";
 
-	context.fillText( message, borderThickness, fontsize + borderThickness);
+	context.fillText(message, 0, fontsize);
 	
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
 
 	var spriteMaterial = new THREE.SpriteMaterial( 
-		{ map: texture, useScreenCoordinates: false, alignment: spriteAlignment } );
+		{ map: texture} );
 	var sprite = new THREE.Sprite( spriteMaterial );
-	sprite.scale.set(100,50,1.0);
+	sprite.scale.set(1,1,10);
 	return sprite;	
 }	
 
