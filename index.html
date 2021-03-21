@@ -127,7 +127,7 @@ function createSignDestination(angle){
   */
 	
   loadSprite(labelImage, -90, new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0)
-  loadSprite(doorImage, -90, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), -1)	
+  loadSprite(doorImage, -90, new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1)	
 	
  // var label = createImageEntity("#label", new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0.3));
  // var dest_icon = createImageEntity("#door_icon", new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0.6));
@@ -491,9 +491,9 @@ function loadImage(url, rotation, scale, position)
 function loadSprite(url, angle, scale, position, offset)
 {
 	const map = new THREE.TextureLoader().load(url);
-	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle), polygonOffset: true, polygonOffsetUnits: 1, polygonOffsetFactor: offset } );
+	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle)} );
 	const sprite = new THREE.Sprite( material );
-	
+	sprite.renderOrder = offset;
 	sprite.scale.copy(scale);
 	sprite.position.copy(position)
 	markerRoot1.add( sprite );
