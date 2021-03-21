@@ -392,7 +392,7 @@ function loadImage(url, rotation, scale, position)
 	new THREE.PlaneGeometry(1, 1),
 	material
 	);
-	sprite.scale.copy(scale);
+	mesh.scale.copy(scale);
 	mesh.position.copy(position);
 	mesh.rotation.set(rotation.x, rotation.y, rotation.z);
 	markerRoot1.add( mesh );	
