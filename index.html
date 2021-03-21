@@ -388,12 +388,13 @@ function loadImage(url, rotation, scale, position, renderOrder)
 {
 	const texture = new THREE.TextureLoader().load(url);
 
-	const geometry = new THREE.PlaneGeometry(1,1);
-	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, depthTest: false, color: 0xffffff } );
+	//const geometry = new THREE.PlaneGeometry(1,1);
+	const geometry = new THREE.PlaneGeometry(scale.x, scale.y);
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
-	mesh.scale.copy(scale);
+	//mesh.scale.copy(scale);
 	mesh.position.copy(position);
 	mesh.rotation.set(toRadians(rotation.x), toRadians(rotation.y), toRadians(rotation.z));
 	
