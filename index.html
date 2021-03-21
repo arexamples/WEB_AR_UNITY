@@ -397,7 +397,7 @@ function loadImage(url, rotation, scale, position, renderOrder)
 	mesh.renderOrder = renderOrder
 	//mesh.scale.copy(scale);
 	//mesh.position.copy(position);
-	mesh.position.set(position.x, 0, position.z);
+	mesh.position.set(position.x, position.y, position.z);
 	mesh.rotation.set(toRadians(rotation.x), toRadians(rotation.y), toRadians(rotation.z));
 	
 	//markerRoot1.add( mesh );
