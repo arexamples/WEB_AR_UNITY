@@ -74,7 +74,7 @@ function createSignDestination(angle){
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	//group.add( loadImage(doorImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
-	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 52, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
+	//group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 52, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
 	/*group.add(makeTextSprite( "150 m", { fontsize: 40, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.5, -0.4, 0), renderOrder:1}));
 	group.add(makeTextSprite( "Q4234", { fontsize: 46, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.05, 0), renderOrder:1}));
 	group.add(makeTextSprite( "3 min", { fontsize: 40, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(-0.5, -0.4, 0), renderOrder:1}));*/
@@ -391,12 +391,13 @@ function loadImage(url, rotation, scale, position, renderOrder)
 
 	//const geometry = new THREE.PlaneGeometry(1,1);
 	const geometry = new THREE.PlaneGeometry(scale.x, scale.y);
-	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, transparent: true } );
+	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, transparent: true, depthTest: false } );
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
 	//mesh.scale.copy(scale);
-	mesh.position.copy(position);
+	//mesh.position.copy(position);
+	mesh.position.set(position.x, 0, position.z);
 	mesh.rotation.set(toRadians(rotation.x), toRadians(rotation.y), toRadians(rotation.z));
 	
 	//markerRoot1.add( mesh );
