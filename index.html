@@ -507,7 +507,7 @@ function loadSprite(url, angle, scale, position, offset)
 	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle), depthTest: false} );
 	const sprite = new THREE.Sprite( material );
 	
-	//sprite.renderOrder = offset
+	sprite.renderOrder = offset
 	sprite.scale.copy(scale);
 	sprite.position.copy(position)
 	return sprite;
