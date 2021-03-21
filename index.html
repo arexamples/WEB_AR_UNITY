@@ -73,7 +73,7 @@ function createSignDestination(angle){
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	//group.add( loadImage(doorImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
+	group.add( loadImage(doorImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
 	//group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 52, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0, 0.35, 0), renderOrder:1}));
 	/*group.add(makeTextSprite( "150 m", { fontsize: 40, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.5, -0.4, 0), renderOrder:1}));
 	group.add(makeTextSprite( "Q4234", { fontsize: 46, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.05, 0), renderOrder:1}));
@@ -87,7 +87,7 @@ function createSign(angle){
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	//group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0), 1));
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0), 1));
 	
 	markerRoot1.add(group)
 }
@@ -96,8 +96,8 @@ function createSignStack2(angle){
 	group = new THREE.Group();
 	group.rotation.set(-90, 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
-	/*group.add( loadImage(labelStack2Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0), 0) );
-	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0), 1));*/
+	group.add( loadImage(labelStack2Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0), 1));
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, 0), 1));
 	
 	markerRoot1.add(group)
@@ -120,12 +120,12 @@ function createArrowEntity(image, angle){
 	var rotation = new THREE.Vector3(-90, 0, angle);	
 	var arrow;
 	if(image == "blue"){
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90), -1))
-		arrow = loadImage(blueArrowImage, rotation, scale, position)
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.6, R*Math.sin(toRadians(angle-90)))
+		arrow = loadImage(blueArrowImage, rotation, scale, position, -1)
 	}
 	else{
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90), -2))
-		arrow =  loadImage(whiteArrowImage, rotation, scale, position)
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90)))
+		arrow =  loadImage(whiteArrowImage, rotation, scale, position, -2)
 	}	
 	markerRoot1.add(arrow);
 }  
