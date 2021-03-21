@@ -119,22 +119,16 @@ function drawDestinations(){
 }
 	
 function createArrowEntity(image, angle){
-
-  arrowEntity.setAttribute('rotation', {x: -90, y: 0, z: angle});
-  arrowEntity.setAttribute('scale', {x: 1.63, y: 3.28, z: 0.01});
-	var scale = new THREE.Vector3(0, 0, 0);
-	var rotation = new THREE.Vector3(-90, y: 0, z: angle);															
+	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
+	var rotation = new THREE.Vector3(-90, 0, angle);															
 	if(image == "blue"){
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90)))
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)))
 		loadSprite(blueArrowImage, rotation, scale, position)
 	}
 	else{
-		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), y: -0.9, z: R*Math.sin(toRadians(angle-90)))
-		loadSprite(blueArrowImage, rotation, scale, position)
+		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), -0.9, R*Math.sin(toRadians(angle-90)))
+		loadSprite(whiteArrowImage, rotation, scale, position)
 	}				      
-  
-  
-  return arrowEntity;
 }  
 	
 function makeTextSprite( message, parameters )
