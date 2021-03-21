@@ -38,11 +38,7 @@ https://rawcdn.githack.com/AR-js-org/AR.js/master/three.js/src/threex/threex-ars
 </head>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-<div style='position: absolute; top: 0px;width: 100%; padding: 10px; box-sizing: border-box; text-align: center; z-index: 1;'>
-	<button onclick="showUsb()" type="button" class="btn btn-primary">Prize</button> 
-	<a href="https://rawcdn.githack.com/arexamples/ar/master/images/map.png" target="_blank" ret="noopener noreferrer"><button type="button" class="btn btn-danger">Map</button></a> 
-	<button onclick="showArrow()" type="button" class="btn btn-success">Direction</button>
-</div>	
+
 <!-- 
 -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;user-select: none;pointer-events: none;
 
@@ -100,7 +96,7 @@ function drawDestinations(){
   //wrapper.appendChild(sign);
   
   for (var i = 1; i < 4; i++) {
-   // var arrow = createArrowEntity("white", i*75);
+    var arrow = createArrowEntity("white", i*75);
     //listOfArrows.push(arrow);
     //wrapper.appendChild(arrow);  
     if(i==1){
@@ -122,8 +118,8 @@ function drawDestinations(){
 }
 	
 function createArrowEntity(image, angle){
-	var scale = new THREE.Vector3(1.63, 3.28, 1);
-	var rotation = new THREE.Vector3(90, 0, angle);															
+	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
+	var rotation = new THREE.Vector3(-90, 0, angle);															
 	if(image == "blue"){
 		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)))
 		loadImage(blueArrowImage, rotation, scale, position)
