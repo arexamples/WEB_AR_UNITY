@@ -372,7 +372,7 @@ function loadSprite(url, rotation, scale, position)
 {
 	//const map = new THREE.TextureLoader().load( 'images/images/redball.png' );
 	const map = new THREE.TextureLoader().load(url);
-	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(angle)} );
+	const material = new THREE.SpriteMaterial( { map: map, color: 0xffffff, rotation:toRadians(rotation.z)} );
 	//material.rotation.set(rotation.x, rotation.y, rotation.z);
 	
 
