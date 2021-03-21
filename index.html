@@ -70,7 +70,7 @@ function drawDestinations(){
 	
 function createSignDestination(angle){
 	group = new THREE.Group();
-	group.rotation.set(-90, 0, 0);
+	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadImage(doorImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
@@ -84,7 +84,7 @@ function createSignDestination(angle){
 	
 function createSign(angle){
 	group = new THREE.Group();
-	group.rotation.set(-90, 0, 0);
+	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0), 1));
@@ -94,7 +94,7 @@ function createSign(angle){
   
 function createSignStack2(angle){
 	group = new THREE.Group();
-	group.rotation.set(-90, 0, 0);
+	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelStack2Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0), 1));
@@ -105,7 +105,7 @@ function createSignStack2(angle){
   
 function createSignStack3(angle){
 	group = new THREE.Group();
-	group.rotation.set(-90, 0, 0);
+	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelStack3Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, 0), 1));
@@ -285,9 +285,6 @@ function makeTextSprite( message, parameters )
 	texture.needsUpdate = true;
 
 	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide, transparent: true, depthTest: false } );
-console.log(canvas.width)
-	console.log(canvas.height)
-	console.log(canvas.width / canvas.height)
 	var mesh = new THREE.Mesh(
 	new THREE.PlaneGeometry(canvas.width / canvas.height, 1),
 	material
