@@ -123,7 +123,7 @@ function drawDestinations(){
 	
 function createArrowEntity(image, angle){
 	var scale = new THREE.Vector3(1.63, 3.28, 0.01);
-	var rotation = new THREE.Vector3(-90, 0, angle);															
+	var rotation = new THREE.Vector3(90, 0, angle);															
 	if(image == "blue"){
 		var position = new THREE.Vector3(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)))
 		loadImage(blueArrowImage, rotation, scale, position)
@@ -376,7 +376,7 @@ function loadImage(url, rotation, scale, position)
 	
 	// load an image
 	var imageObj = new Image();
-	imageObj.src = "/images/Modra.png";
+	imageObj.src = url;
 	console.log(imageObj)
 	// after the image is loaded, this function executes
 	imageObj.onload = function()
