@@ -371,7 +371,16 @@ function makeTextSprite( message, parameters )
 	
 function loadImage(url, rotation, scale, position)
 {
-	var canvas = document.createElement('canvas');
+	const texture = new THREE.TextureLoader().load(url);
+
+	const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+	const material = new THREE.MeshBasicMaterial( { map: texture } );
+
+	mesh = new THREE.Mesh( geometry, material );
+	markerRoot1.add( mesh );
+	
+	
+	/*var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas);
@@ -398,7 +407,7 @@ function loadImage(url, rotation, scale, position)
 	mesh.scale.copy(scale);
 	mesh.position.copy(position);
 	mesh.rotation.set(rotation.x, rotation.y, rotation.z);
-	markerRoot1.add( mesh );	
+	markerRoot1.add( mesh );	*/
 }
 	
 
