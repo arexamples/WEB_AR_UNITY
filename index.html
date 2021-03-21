@@ -377,7 +377,7 @@ function loadImage(url, rotation, scale, position)
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.scale.copy(scale);
 	mesh.position.copy(position);
-	mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+	mesh.rotation.set(toRadians(rotation.x), toRadians(rotation.y), toRadians(rotation.z));
 	
 	markerRoot1.add( mesh );
 	
