@@ -230,11 +230,11 @@ function createArrowEntity(imageSrc, angle){
 	arrowEntity.setAttribute('material', "depthTest: false; transparent: true")																			
 	if(imageSrc == "#blue_arrow"){
 		arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
-  	textEntity.setAttribute('render-order', "1")													
+		arrowEntity.setAttribute('render-order', "1")													
 	}
 	else{
 		arrowEntity.setAttribute('position', {x: R*Math.cos(toRadians(angle+90)), y: 0, z: R*Math.sin(toRadians(angle-90))});
-    textEntity.setAttribute('render-order', "0")																						 
+		arrowEntity.setAttribute('render-order', "0")																						 
 	}				      
   
   
