@@ -74,10 +74,10 @@ function createSignDestination(angle){
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(2.128, 1.512, 0.01), new THREE.Vector3(0, 0, 0), 0) );
 	group.add( loadImage(doorImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.06, 0), 1));
-	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 50, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.25, 0.15, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(1.1, -0.75, 0), renderOrder:1}));
-	group.add(makeTextSprite( "Q4234", { fontsize: 40, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.8, -0.4, 0), renderOrder:1}));
-	group.add(makeTextSprite( "3 min", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.1, -0.75, 0), renderOrder:1}));
+	group.add(makeTextSprite( "MŮJ CÍL", { fontsize: 44, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.3, 0.1, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(1.25, -0.75, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 36, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.8, -0.4, 0), renderOrder:1}));
+	group.add(makeTextSprite( "3 min", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.25, -0.75, 0), renderOrder:1}));
 	
 	markerRoot1.add(group)
 } 
