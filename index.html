@@ -84,9 +84,10 @@ function createSign(angle){
 	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.08, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.19, 0), 1));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, 0.2, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.2, -0.2, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -0.4, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -0.8, 0), renderOrder:1}));
 	
 	markerRoot1.add(group)
 }
@@ -96,12 +97,14 @@ function createSignStack2(angle){
 	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelStack2Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 1.762, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.59, 0), 1));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, 0.6, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.2, 0.25, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, 0, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -0.35, 0), renderOrder:1}));
+	
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.26, 0), 1));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.25, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.2, -0.6, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -0.85, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -1.2, 0), renderOrder:1}));
 		
 	markerRoot1.add(group)
 }  
@@ -111,15 +114,18 @@ function createSignStack3(angle){
 	group.rotation.set(toRadians(-90), 0, 0);
 	group.position.set(R*Math.cos(toRadians(angle+90)), 0, R*Math.sin(toRadians(angle-90)));
 	group.add( loadImage(labelStack3Image, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.52, 2.736, 0.01), new THREE.Vector3(0, 0, 0), 0) );
+	
 	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.99, 0), 1));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, 1, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.2, 0.65, 0), renderOrder:1}));
-	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, 0.14, 0), 1));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, 0.15, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.2, -0.2, 0), renderOrder:1}));
-	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.66, 0), 1));
-	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.2, -0.65, 0), renderOrder:1}));
-	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.2, -1, 0), renderOrder:1}));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, 0.4, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, 0.25, 0), renderOrder:1}));
+	
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -0.54, 0), 1));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -0.55, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -0.8, 0), renderOrder:1}));
+	
+	group.add( loadImage(exitImage, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.225, 0.225, 0.01), new THREE.Vector3(-0.4, -1.46, 0), 1));
+	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -1.45, 0), renderOrder:1}));
+	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -1.6, 0), renderOrder:1}));
 	
 	markerRoot1.add(group)
 }   
