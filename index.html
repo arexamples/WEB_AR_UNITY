@@ -173,8 +173,7 @@ function initialize()
 		alpha: true
 	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	//renderer.setSize( 640, 480 );
-	renderer.setSize( window.innerHeight, window.innerWidth);
+	renderer.setSize( 640, 480 );
 	renderer.domElement.style.position = 'absolute'
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
@@ -306,6 +305,7 @@ function makeTextSprite( message, parameters )
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
 	texture.minFilter = THREE.LinearFilter;
+	texture.magFilter = THREE.LinearFilter;
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 	texture.generateMipmaps = false;
 	texture.needsUpdate = true;
