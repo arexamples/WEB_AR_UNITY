@@ -223,7 +223,6 @@ function initialize()
 
 	
 	drawDestinations()
-	renderer.capabilities.getMaxAnisotropy()
 }
 	
 function makeTextSprite( message, parameters )
@@ -285,11 +284,11 @@ function makeTextSprite( message, parameters )
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
-	texture.anisotropy = renderer.getMaxAnisotropy();
+	//texture.anisotropy = renderer.getMaxAnisotropy();
 
 	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide, transparent: true, depthTest: false } );
-	material.map.minFilter = THREE.LinearFilter;
-	material.map.magFilter = THREE.LinearFilter;
+	//material.map.minFilter = THREE.LinearFilter;
+	//material.map.magFilter = THREE.LinearFilter;
 	var mesh = new THREE.Mesh(
 	new THREE.PlaneGeometry(canvas.width / canvas.height, 1),
 	material
@@ -313,13 +312,13 @@ function makeTextSprite( message, parameters )
 function loadImage(url, rotation, scale, position, renderOrder)
 {
 	const texture = new THREE.TextureLoader().load(url);
-	texture.anisotropy = renderer.getMaxAnisotropy();
+	//texture.anisotropy = renderer.getMaxAnisotropy();
 
 	//const geometry = new THREE.PlaneGeometry(1,1);
 	const geometry = new THREE.PlaneGeometry(scale.x, scale.y);
 	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, transparent: true, depthTest: false } );
-	material.map.minFilter = THREE.LinearFilter;
-	material.map.magFilter = THREE.LinearFilter;
+	//material.map.minFilter = THREE.LinearFilter;
+	//material.map.magFilter = THREE.LinearFilter;
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
