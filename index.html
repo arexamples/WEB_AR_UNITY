@@ -16,7 +16,6 @@
 	<script src="https://rawcdn.githack.com/AR-js-org/AR.js/master/three.js/src/threex/threex-armarkercontrols.js"></script>
 
 	<script src='https://rawcdn.githack.com/arexamples/ar/main/libs/js/GLTFLoader.js'></script>
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 </head>
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 <div style='position: absolute; top: 0px;width: 100%; padding: 10px; box-sizing: border-box; text-align: center; z-index: 1;'></div>
@@ -230,8 +229,9 @@ function makeTextSprite( message, parameters )
 {
 	if ( parameters === undefined ) parameters = {};
 	
-	var fontface = parameters.hasOwnProperty("fontface") ? 
-		parameters["fontface"] : "Roboto";
+	/*var fontface = parameters.hasOwnProperty("fontface") ? 
+		parameters["fontface"] : "Roboto";*/
+	var fontface = "Arial"
 	
 	var fontsize = parameters.hasOwnProperty("fontsize") ? 
 		parameters["fontsize"] : 18;	
