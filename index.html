@@ -7,8 +7,9 @@
 <script src="https://aframe.io/releases/1.2.0/aframe.js"></script>
 <!-- include ar.js -->
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<!-- END: Top HTML -->
-<!-- END: Unity Compiled Events -->
+	
+<script src="https://unpkg.com/aframe-render-order-component@1.0.0/dist/aframe-render-order-component.min.js"></script>
+	
 
 <!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
@@ -204,6 +205,7 @@ function createImageEntity(imageSrc, scale, position){
   imageEntity.setAttribute('scale', scale);
   imageEntity.setAttribute('position', position);
   imageEntity.setAttribute('material', "depthTest: false");	
+	imageEntity.setAttribute('render-order', "0")							 
 
   
   return imageEntity;
@@ -240,7 +242,8 @@ function createTextEntity(textValue, textColor, size, position){
   var textEntity = document.createElement('a-entity');
   var textParamas = "value:" + textValue + "; color:" + textColor + ";shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center" 
   
-  textEntity.setAttribute('material', "depthTest: false")																	 
+  textEntity.setAttribute('material', "depthTest: false")	
+  textEntity.setAttribute('render-order', "1")								
   textEntity.setAttribute('text', textParamas);
   textEntity.setAttribute('scale', {x: size, y: size, z: 0.1});
   textEntity.setAttribute('position', position);
