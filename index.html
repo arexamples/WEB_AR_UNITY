@@ -42,6 +42,8 @@ var exitImage = 'https://rawcdn.githack.com/adamspanik/WEB_AR_UNITY/master/image
 
 var textColor1 = "#0055B4";
 var textColor2 = "#343A3E";
+	
+var groups = [];	
 
 initialize();
 animate();
@@ -76,6 +78,7 @@ function createSignDestination(angle){
 	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -0.4, 0), renderOrder:1}));
 	group.add(makeTextSprite( "3 min", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.25, -0.8, 0), renderOrder:1}));
 	
+	groups.add(group)
 	markerRoot1.add(group)
 } 
 	
@@ -89,6 +92,7 @@ function createSign(angle){
 	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -0.2, 0), renderOrder:1}));
 	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -0.6, 0), renderOrder:1}));
 	
+	groups.add(group)
 	markerRoot1.add(group)
 }
   
@@ -106,6 +110,7 @@ function createSignStack2(angle){
 	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -0.65, 0), renderOrder:1}));
 	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -1, 0), renderOrder:1}));
 		
+	groups.add(group)
 	markerRoot1.add(group)
 }  
   
@@ -127,6 +132,7 @@ function createSignStack3(angle){
 	group.add(makeTextSprite( "Q4234", { fontsize: 32, fontface: "Roboto", textColor: textColor2, position: new THREE.Vector3(0.9, -1.1, 0), renderOrder:1}));
 	group.add(makeTextSprite( "150 m", { fontsize: 28, fontface: "Roboto", textColor: textColor1, position: new THREE.Vector3(0.9, -1.45, 0), renderOrder:1}));
 	
+	groups.add(group)
 	markerRoot1.add(group)
 }   
 	
@@ -424,6 +430,13 @@ function update()
 	// update artoolkit on every frame
 	if ( arToolkitSource.ready !== false )
 		arToolkitContext.update( arToolkitSource.domElement );
+	var camPosition = camera.position;	
+	for (var i = 0; i < groups.length; i++) 
+	{
+		groups[i].lookAt(new THREE.Vector3(camPosition.x, 0, camPosition.z))
+
+	}
+}
 }
 
 
