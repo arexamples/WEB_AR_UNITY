@@ -304,7 +304,6 @@ function makeTextSprite( message, parameters )
 
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
-	texture.magFilter = THREE.LinearFilter;
 	texture.minFilter = THREE.LinearFilter;
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 	texture.generateMipmaps = false;
@@ -339,22 +338,14 @@ function makeTextSprite( message, parameters )
 function loadImage(url, rotation, scale, position, renderOrder)
 {
 	const texture = new THREE.TextureLoader().load(url);
-	texture.magFilter = THREE.LinearFilter;
-	texture.minFilter = THREE.LinearFilter;
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-	texture.generateMipmaps = false;
 	texture.needsUpdate = true;
 
-	//const geometry = new THREE.PlaneGeometry(1,1);
 	const geometry = new THREE.PlaneGeometry(scale.x, scale.y);
 	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, transparent: true, depthTest: false } );
-	//material.map.magFilter = THREE.LinearMipMapLinearFilter 
-	//material.map.minFilter = THREE.LinearMipMapLinearFilter 
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
-	//mesh.scale.copy(scale);
-	//mesh.position.copy(position);
 	mesh.position.set(position.x, position.y, position.z);
 	mesh.rotation.set(toRadians(rotation.x), toRadians(rotation.y), toRadians(rotation.z));
 	
