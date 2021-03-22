@@ -285,12 +285,13 @@ function makeTextSprite( message, parameters )
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+	texture.generateMipmaps = false;
 
 	var material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide, transparent: true, depthTest: false } );
 	//material.map.minFilter = THREE.LinearFilter;
 	//material.map.magFilter = THREE.LinearFilter;
-	material.map.magFilter = THREE.LinearMipMapLinearFilter 
-	material.map.minFilter = THREE.LinearMipMapLinearFilter 
+	//material.map.magFilter = THREE.LinearMipMapLinearFilter 
+	//material.map.minFilter = THREE.LinearMipMapLinearFilter 
 	var mesh = new THREE.Mesh(
 	new THREE.PlaneGeometry(canvas.width / canvas.height, 1),
 	material
@@ -315,12 +316,13 @@ function loadImage(url, rotation, scale, position, renderOrder)
 {
 	const texture = new THREE.TextureLoader().load(url);
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+	texture.generateMipmaps = false;
 
 	//const geometry = new THREE.PlaneGeometry(1,1);
 	const geometry = new THREE.PlaneGeometry(scale.x, scale.y);
 	const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide, transparent: true, depthTest: false } );
-	material.map.magFilter = THREE.LinearMipMapLinearFilter 
-	material.map.minFilter = THREE.LinearMipMapLinearFilter 
+	//material.map.magFilter = THREE.LinearMipMapLinearFilter 
+	//material.map.minFilter = THREE.LinearMipMapLinearFilter 
 	
 	mesh = new THREE.Mesh( geometry, material );
 	mesh.renderOrder = renderOrder
