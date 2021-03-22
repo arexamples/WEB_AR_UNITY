@@ -283,6 +283,8 @@ function makeTextSprite( message, parameters )
 
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
+	texture.magFilter = THREE.LinearFilter;
+	texture.minFilter = THREE.LinearFilter;
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 	texture.generateMipmaps = false;
 	texture.needsUpdate = true;
@@ -316,6 +318,8 @@ function makeTextSprite( message, parameters )
 function loadImage(url, rotation, scale, position, renderOrder)
 {
 	const texture = new THREE.TextureLoader().load(url);
+	texture.magFilter = THREE.LinearFilter;
+	texture.minFilter = THREE.LinearFilter;
 	texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 	texture.generateMipmaps = false;
 	texture.needsUpdate = true;
