@@ -204,8 +204,8 @@ function createImageEntity(imageSrc, scale, position, renderOrder){
   imageEntity.setAttribute('src', imageSrc);
   imageEntity.setAttribute('scale', scale);
   imageEntity.setAttribute('position', position);
-  imageEntity.setAttribute('material', "depthTest: false");	
-	imageEntity.setAttribute('render-order', renderOrder)							 
+  imageEntity.setAttribute('material', "depthTest: false; transparent: true");	
+  imageEntity.setAttribute('render-order', renderOrder)							 
 
   
   return imageEntity;
@@ -242,7 +242,7 @@ function createTextEntity(textValue, textColor, size, position){
   var textEntity = document.createElement('a-entity');
   var textParamas = "value:" + textValue + "; color:" + textColor + ";shader: msdf; font:fonts/Roboto-Bold-msdf.json; negate:false; align:center" 
   
-  textEntity.setAttribute('material', "depthTest: false")	
+  textEntity.setAttribute('material', "depthTest: false; transparent: true")	
   textEntity.setAttribute('render-order', "1")								
   textEntity.setAttribute('text', textParamas);
   textEntity.setAttribute('scale', {x: size, y: size, z: 0.1});
