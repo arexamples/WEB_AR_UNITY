@@ -270,7 +270,6 @@ function callMyLocal(imageData){
       'Content-Type': 'application/json'
   },  
   body: JSON.stringify(imageData)
-					console.log(JSON.stringify(imageData))
   }).then(function(response) {
   	return response.json();
   }).then(function(data) { 
@@ -289,6 +288,7 @@ function startTimer() {
 	//callMyLocal(imageData);
 	var video = document.querySelector('video')
 	var imageData = new ImageDataEntity(takeSnapshot(video));
+	console.log(JSON.stringify(imageData))
 	callMyLocal(imageData);
 	}, 1000); 
 } 
